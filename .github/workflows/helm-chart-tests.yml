@@ -1,0 +1,27 @@
+on:
+  issue_comment:
+    types:
+      - created
+
+jobs:
+  helm-chart-check:
+    runs-on: ubuntu-20.04
+    name: "Helm-chart test: ${{ matrix.version }} - ${{ matrix.os_test }}"
+    strategy:
+      fail-fast: false
+      matrix:
+        version: [ "10", "11", "12", "13", "14", "15" ]
+        image_register: [ "", "", "" ]
+
+    if: |
+      github.event.issue.pull_request
+      && contains(github.event.comment.body, '[test]')
+      && contains(fromJson('["OWNER", "MEMBER"]'), github.event.comment.author_association)
+    steps:
+      - uses: sclorg/testing-farm-as-github-action@v1
+        with:
+          os_test: RHEL-8.6.0-Nightly
+          tmt_plan_regex: rhel8-openshift-4
+          tf_scope: private
+          git_url: https://gitlab.cee.redhat.com/platform-eng-core-services/sclorg-tmt-plans
+          api_key: ${{ secrets.TF_INTERNAL_API_KEY }}

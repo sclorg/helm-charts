@@ -12,6 +12,8 @@ The first of all download and Helm. Follow instructions mentioned [here](https:/
 
 ## How to work with PostgreSQL helm chart
 
+The default PostgreSQL helm chart configuration is for RHEL7 redhat.access.redhat.com/rhscl/postgresql-10-rhel7 version
+
 Before deploying helm chart to OpenShift, you have to create a package.
 This can be done by command:
 
@@ -27,6 +29,36 @@ The next step is to upload Helm Chart to OpenShift. This is done by command:
 $ helm install postgresql-persistent postgresql-persistent-v0.0.1.tgz
 ```
 
+In case you would like to use this helm chart for different versions and even RHEL versions.
+you need to modify installing command.
+
+E.g. For RHEL8
+
+```commandline
+$ helm install postgresql-persistent postgresql-persistent-v0.0.1.tgz --set image.repository=registry.redhat.io/rhel8/postgresql-13 --set image.version=13
+```
+The values that can be overwritten are specified in file [values.yaml](./values.yaml)
+
+To test in PostgreSQL helm chart is working properly run command:
+
+```commandline
+$ helm test postgresql-persistent --logs
+```
+that will print output like:
+```commandline
+NAME: postgresql-persistent
+LAST DEPLOYED: Mon Mar 27 09:36:23 2023
+NAMESPACE: pgsql-13
+STATUS: deployed
+REVISION: 1
+TEST SUITE:     postgresql-persistent-connection-test
+Last Started:   Mon Mar 27 09:37:13 2023
+Last Completed: Mon Mar 27 09:37:19 2023
+Phase:          Succeeded
+
+POD LOGS: postgresql-persistent-connection-test
+postgresql-testing:5432 - accepting connections
+```
 ## Troubleshooting
 For case you need a computer readable output you can add to command mentioned above option `-o json`.
 

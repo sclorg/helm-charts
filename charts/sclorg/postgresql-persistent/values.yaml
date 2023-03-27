@@ -8,6 +8,6 @@ config:
   postgresql_user: testu
   port: 5432
 image:
-  repository: registry.access.redhat.com/rhscl/postgresql
+  repository: registry.access.redhat.com/rhscl/postgresql-10-rhel7
   tag: latest
   version: 10

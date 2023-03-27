@@ -7,7 +7,7 @@ spec:
     - name: latest
       from:
         kind: DockerImage
-        name: "{{ .Values.image.repository }}-{{ .Values.image.version}}-rhel7:{{ .Values.image.tag }}"
+        name: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
       importPolicy:
         # periodically query registry to synchronize tag and image metadata
         scheduled: true

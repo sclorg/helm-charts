@@ -8,13 +8,17 @@ You need to have access to a cluster for each operation with OpenShift 4, like d
 
 ## How to start with helm charts
 
-The first of all download and Helm. Follow instructions mentioned [here](https://helm.sh/docs/intro/install/).
+The first download and install Helm. Follow instructions mentioned [here](https://helm.sh/docs/intro/install/).
 
-## How to work with PostgreSQL helm chart
+## Prerequisite for PostgreSQL-persistent helm chart
+Before deploying helm chart to OpenShift, you have to create a package for postgresql-imagestream.
+See details [postgresql-imagestreams](../postgresql-imagestreams/README.md)
 
-The default PostgreSQL helm chart configuration is for RHEL7 redhat.access.redhat.com/rhscl/postgresql-10-rhel7 version
 
-Before deploying helm chart to OpenShift, you have to create a package.
+## How to work with PostgreSQL-persistent helm chart
+
+The default PostgreSQL helm chart configuration is for RHEL7 PostgreSQL version 10.
+
 This can be done by command:
 
 ```commandline

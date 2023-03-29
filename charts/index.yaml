@@ -2,15 +2,15 @@ apiVersion: v1
 entries:
   postgresql-imagestreams:
   - apiVersion: v1
-    created: "2023-03-29T14:02:10.274188+02:00"
+    created: "2023-03-29T14:16:42.034136+02:00"
     description: PostgreSQL database service imagestreams. For more information about
       PostgreSQL container see https://github.com/sclorg/postgresql-container/.
-    digest: 6c1de2b1b2a50fae7b88baacb2eae321e1ccb760dd4e69264d872c8fc0505012
+    digest: f3122a1afb42fb09943d88295135dcb6a523b2642156d59fac782802cc15d370
     name: postgresql-imagestreams
     sources:
     - https://github.com/sclorg/helm-charts
     tags: database,postgresql
     urls:
-    - postgresql-imagestreams-v0.0.1.tgz
+    - https://sclorg.github.io/postgresql-imagestreams-v0.0.1.tgz
     version: v0.0.1
-generated: "2023-03-29T14:02:10.273772+02:00"
+generated: "2023-03-29T14:16:42.033718+02:00"

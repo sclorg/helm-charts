@@ -36,16 +36,6 @@ $ helm package ./charts/sclorg/<chart-name>
 
 Package can then be placed directly under `./charts/sclorg/<chart-name>` for example: `./charts/sclorg/postgresql-persistent/`.
 
-### Contributing Helm Charts 
-
-Interested in getting your helm charts Red Hat OpenShift certified? read the [certification documention](https://github.com/sclorg/helm-charts/pulls)
-
-## Installation
-
-```bash
-$ helm repo add sclorg-helm-charts https://charts.openshift.io/
-```
-
 ## Using Helm
 
 Once this repository is available and configured, Helm Charts will be available in the [OpenShift Developer Perspective](https://docs.openshift.com/container-platform/latest/applications/application_life_cycle_management/odc-working-with-helm-charts-using-developer-perspective.html)

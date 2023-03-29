@@ -37,7 +37,7 @@ spec:
             secretKeyRef:
               key: database-name
               name: {{ .Values.database_service_name }}
-        image: "postgresql-{{ .Values.image.version }}"
+        image: "postgresql:{{ .Values.image.tag }}"
         imagePullPolicy: IfNotPresent
         livenessProbe:
           exec:
@@ -46,7 +46,7 @@ spec:
             - --live
           initialDelaySeconds: 120
           timeoutSeconds: 10
-        name: "postgresql-{{ .Values.image.version }}-testing"
+        name: "postgresql-{{ .Values.image.tag }}-testing"
         ports:
         - containerPort: {{ .Values.config.port }}
           protocol: TCP
@@ -76,10 +76,10 @@ spec:
   - imageChangeParams:
       automatic: true
       containerNames:
-      - "postgresql-{{ .Values.image.version }}-testing"
+      - "postgresql-{{ .Values.image.tag }}-testing"
       from:
         kind: ImageStreamTag
-        name: "postgresql-{{ .Values.image.version }}:{{ .Values.image.tag }}"
+        name: "postgresql:{{ .Values.image.tag }}"
         namespace: {{ .Values.namespace }}
       lastTriggeredImage: ""
     type: ImageChange

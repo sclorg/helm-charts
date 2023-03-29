@@ -1,6 +1,6 @@
 database_service_name: postgresql-testing
 memory_limit: 512Mi
-namespace: postgresql-helm-chart
+namespace: postgresql-persistent-testing
 volume_capacity: 1Gi
 config:
   postgresql_database: testdb
@@ -8,6 +8,4 @@ config:
   postgresql_user: testu
   port: 5432
 image:
-  repository: registry.access.redhat.com/rhscl/postgresql-10-rhel7
-  tag: latest
-  version: 10
+  tag: "10-el7"

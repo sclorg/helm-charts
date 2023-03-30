@@ -5,4 +5,4 @@ name: postgresql-imagestreams
 tags: database,postgresql
 sources:
   - https://github.com/sclorg/helm-charts
-version: v0.0.1
+version: "0.0.1"

@@ -79,7 +79,9 @@ spec:
       - "postgresql-{{ .Values.image.tag }}-testing"
       from:
         kind: ImageStreamTag
-        name: "postgresql:{{ .Values.image.tag }}"
+        {{- range .Values.image.tag }}
+        name: "postgresql:{{ . }}"
+        {{- end }}
         namespace: {{ .Values.namespace }}
       lastTriggeredImage: ""
     type: ImageChange

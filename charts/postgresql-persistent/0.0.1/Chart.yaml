@@ -6,8 +6,8 @@ name: postgresql-persistent
 tags: database,postgresql
 sources:
   - https://github.com/sclorg/helm-charts
-version: v0.0.1
+version: "0.0.1"
 dependencies:
   - name: postgresql-imagestreams
-    version: "v0.0.1"
+    version: "0.0.1"
     repository: "https://github.com/sclorg/helm-charts"

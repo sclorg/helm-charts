@@ -1,0 +1,9 @@
+chart:
+  name: postgresql-imagestreams
+  description: This is the CentOS Postgresql imagestreams chart
+publicPgpKey: null
+users:
+  - githubUsername: phracek
+vendor:
+  label: centos
+  name: Cent OS

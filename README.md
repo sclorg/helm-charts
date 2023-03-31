@@ -9,7 +9,7 @@ Charts go through an automated Red Hat OpenShift certification workflow, which g
 ```
 .
 └── charts
-    └── sclorg
+    └── <centos|redhat>
         └── <chart-name>
             └── src
                 ├── Chart.yaml
@@ -31,10 +31,10 @@ Charts go through an automated Red Hat OpenShift certification workflow, which g
 The chart can also be packaged using the following command:
 
 ```bash
-$ helm package ./charts/sclorg/<chart-name>
+$ helm package ./charts/<centos|redhat>/<chart-name>
 ```
 
-Package can then be placed directly under `./charts/sclorg/<chart-name>` for example: `./charts/sclorg/postgresql-persistent/`.
+Package can then be placed directly under `./charts/<centos|redhat>/<chart-name>` for example: `./charts/redhat/postgresql-persistent/`.
 
 ## Using Helm
 

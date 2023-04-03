@@ -7,7 +7,4 @@ tags: database,postgresql
 sources:
   - https://github.com/sclorg/helm-charts
 version: "0.0.1"
-dependencies:
-  - name: postgresql-imagestreams
-    version: "0.0.1"
-    repository: "https://github.com/sclorg/helm-charts"
+

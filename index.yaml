@@ -1,11 +1,15 @@
 apiVersion: v1
 entries:
   postgresql-imagestreams:
-  - apiVersion: v1
-    created: "2023-04-03T09:59:05.044595+02:00"
+  - annotations:
+      charts.openshift.io/name: Red Hat PostgreSQL database service imagestreams.
+    apiVersion: v2
+    appVersion: 0.0.1
+    created: "2023-04-03T11:58:06.652013+02:00"
     description: Red Hat PostgreSQL database service imagestreams. For more information
       about PostgreSQL container see https://github.com/sclorg/postgresql-container/.
-    digest: 8b5fdd19061d78f5c42ada917aa1b216b6d3651d3905a25d169ef15f113281c2
+    digest: 4232e3df1046a9d865fcfd8358024bb3d476b6441fb2ccd174ba33a446707b00
+    kubeVersion: '>=1.20.0'
     name: postgresql-imagestreams
     sources:
     - https://github.com/sclorg/helm-charts
@@ -14,13 +18,17 @@ entries:
     - postgresql-imagestreams-0.0.1.tgz
     version: 0.0.1
   postgresql-persistent:
-  - apiVersion: v1
-    created: "2023-04-03T09:59:05.045094+02:00"
+  - annotations:
+      charts.openshift.io/name: Red Hat PostgreSQL database service, with persistent
+        storage.
+    apiVersion: v2
+    appVersion: 0.0.1
+    created: "2023-04-03T11:58:06.653206+02:00"
     description: 'PostgreSQL database service, with persistent storage. For more information
       about using this template, including OpenShift considerations, see https://github.com/sclorg/postgresql-container/.  NOTE:
       Scaling to more than one replica is not supported. You must have persistent
       volumes available in your cluster to use this template.'
-    digest: 67b4f98ad2605a271c867fbd077608f5a82f865fa29e3c551c06e47e0b76660e
+    digest: eb4e0feddf5f24cb4b9fb6b41165635ca643d79d59ab5bb2b4a02a10fddc14b8
     name: postgresql-persistent
     sources:
     - https://github.com/sclorg/helm-charts
@@ -28,4 +36,4 @@ entries:
     urls:
     - postgresql-persistent-0.0.1.tgz
     version: 0.0.1
-generated: "2023-04-03T09:59:05.044159+02:00"
+generated: "2023-04-03T11:58:06.651563+02:00"

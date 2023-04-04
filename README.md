@@ -159,6 +159,8 @@ docker run --rm -i -e KUBECONFIG=/.kube/config -v "${HOME}/.kube":/.kube \
           /helm-charts/<helm-chart-name>.tgz
 ```
 
+Address all issues detected by chart-verifier.
+
 ## File pull request
 
 When Helm chart is ready to merge generate and update [index.yaml](./index.yaml) and add them into pull request.

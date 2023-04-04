@@ -46,7 +46,7 @@ You can also use Helm CLI commands, please refere to [Using Helm Guide](https://
 
 In case of Helm chart is related to CentOS, CentOS Stream 8, or CentOS Stream 9 then use [centos](charts/centos) directory.
 
-In case of Helm chart is related to Red Hat then use [redhat](charts/redhat) directory.
+In case of Helm chart is related to RHEL system then use [redhat](charts/redhat) directory.
 
 As soon as your Helm chart follows directory structure as mentioned above, let's test it.
 
@@ -56,22 +56,22 @@ Follow the same guidelines for creating like they are specified here [openshift-
 Each helm chart name has to contain file OWNERS. E.g. [OWNERS](./charts/redhat/postgresql-imagestreams/OWNERS)
 
 Each helm chart change, in [templates](./charts/redhat/postgresql-persistent/0.0.1/templates) or [OWNERS](./charts/redhat/postgresql-persistent/OWNERS) file
-has to increase version
+has to bump version
 
 ### How to test Helm chart
 
-For Helm chart testing you should have a connection to OpenShift 4 cluster and download and install oc binary.
-For access to OpenShift 4 cluster please ask phracek@redhat.com.
+As a prerequisite to testing Helm charts, you need to be connected to the OpenShift 4 cluster using the oc binary generated from the cluster itself.
+To get access to OpenShift 4 cluster please ask phracek@redhat.com.
 
 #### Create a Helm chart package
 
-Before any testing proposes and deploying Helm chart to OpenShift cluster, you have to create a package by command:
+Before any testing proposes and deploying Helm chart to OpenShift cluster, you have to create a package using command:
 
 ```commandline
 $ helm package <path_to_helm_chart>
 ```
 
-E.g. in case of postgresql-persistent Helm chart you see message, like:
+E.g. Using postgresql-persistent Helm chart:
 
 ```commandline
 $ helm package charts/redhat/postgresql-persistent/0.0.1
@@ -80,13 +80,13 @@ Successfully packaged chart and saved it to: <FULL_PATH_TO_CWD>/helm-charts/post
 
 #### Deploy Helm chart to OpenShift
 
-Now let's deploy Helm chart to OpenShift by command:
+You can deploy the Helm chart to the OpenShift cluster using command:
 
 ```commandline
 $ helm install <helm_chart_name> <tar_ball_path>
 ```
 
-E.g in case of postgresql-persistent Helm chart you see message, like:
+E.g Using postgresql-persistent Helm chart:
 
 ```commandline
 $ helm install postgresql-imagestreams postgresql-imagestreams-0.0.1.tgz
@@ -98,13 +98,13 @@ REVISION: 1
 TEST SUITE: None
 ```
 
-To check if Helm chart is really deployd, run command:
+To check if Helm chart is really deployed, run command:
 
 ```bash
 helm list
 ```
 
-The output will be like:
+Examples of the `helm test` output:
 
 ```commandline
 $ helm list
@@ -140,7 +140,8 @@ postgresql-testing:5432 - accepting connections
 ```
 
 
-Use this command to verify if Helm chart has all proper information in case of Helm chart is already merged.
+In case the Helm chart has already been merged,
+use the following command to verify if all the required information is contained within the Helm chart.
 
 ```commandline
 docker run --rm -i -e KUBECONFIG=/.kube/config -v "${HOME}/.kube":/.kube \
@@ -149,22 +150,23 @@ docker run --rm -i -e KUBECONFIG=/.kube/config -v "${HOME}/.kube":/.kube \
           https://sclorg.github.io/helm-charts/<helm-chart-name>.tgz
 ```
 
-Use this command to verify if Helm chart has all proper information for local testing.
+Use the following command to verify if all the required information for local testing is contained within the Helm chart.
 
 ```commandline
 docker run --rm -i -e KUBECONFIG=/.kube/config -v "${HOME}/.kube":/.kube \
-          -v "<full_path_to_this_dir":/helm-charts
+          -v "<full_path_to_this_dir>":/helm-charts
           "quay.io/redhat-certification/chart-verifier:latest" \
           verify \
           /helm-charts/<helm-chart-name>.tgz
 ```
 
+
 Address all issues detected by chart-verifier.
 
-## File pull request
+## Create Pull Request
 
-When Helm chart is ready to merge generate and update [index.yaml](./index.yaml) and add them into pull request.
-Once pull request is merged your Helm package will be part of [https://sclorg.github.io/helm-charts/](https://sclorg.github.io/helm-charts/)
+When Helm chart is ready to merge generate and update [index.yaml](./index.yaml) and add them into Pull Request.
+Once Pull Request is merged your Helm package will be part of [https://sclorg.github.io/helm-charts/](https://sclorg.github.io/helm-charts/)
 
 ### Generate Helm chart package
 
@@ -173,13 +175,13 @@ To generate package use command:
 $ helm package <path_to_helm_chart>
 ```
 
-The package should be present in the root of this repo. Add them to pull request
+The package should be present in the root of this repo. Add them to Pull Request
 
 ### Update index package
 
-To update [index.yaml](./index.yaml) file call command:
+To update [index.yaml](./index.yaml) file use command:
 ```commandline
 $ helm repo index ./
 ```
 
-Add the index.yaml file as a part of pull request as well.
+Add the index.yaml file to the Pull Request as well.

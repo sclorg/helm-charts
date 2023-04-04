@@ -158,6 +158,57 @@ docker run --rm -i -e KUBECONFIG=/.kube/config -v "${HOME}/.kube":/.kube \
           /helm-charts/<helm-chart-name>.tgz
 ```
 
+The output from commands mentioned above could be:
+
+```commandline
+results:
+    - check: v1.0/required-annotations-present
+      type: Mandatory
+      outcome: PASS
+      reason: All required annotations present
+    - check: v1.0/signature-is-valid
+      type: Mandatory
+      outcome: SKIPPED
+      reason: 'Chart is not signed : Signature verification not required'
+    - check: v1.0/chart-testing
+      type: Mandatory
+      outcome: FAIL
+      reason: |-
+        Chart Install failure: values don't meet the specifications of the schema(s) in the following chart(s):
+        postgresql-persistent:
+        enum items must be unique
+[snipped]
+    - check: v1.0/helm-lint
+      type: Mandatory
+      outcome: FAIL
+      reason: |
+        Helm lint has failed:  [INFO] Chart.yaml: icon is recommended
+        [ERROR] values.yaml: enum items must be unique
+        [ERROR] templates/: values don't meet the specifications of the schema(s) in the following chart(s):
+        postgresql-persistent:
+        enum items must be unique
+[snipped]
+    - check: v1.1/has-kubeversion
+      type: Mandatory
+      outcome: FAIL
+      reason: Kubernetes version is not specified
+    - check: v1.1/images-are-certified
+      type: Mandatory
+      outcome: FAIL
+      reason: |-
+        Failed to certify images : Failed to get images, error running helm template : values don't meet the specifications of the schema(s) in the following chart(s):
+        postgresql-persistent:
+        enum items must be unique
+[snipped]
+    - check: v1.0/contains-values
+      type: Mandatory
+      outcome: PASS
+      reason: Values file exist
+    - check: v1.0/not-contains-crds
+      type: Mandatory
+      outcome: PASS
+      reason: Chart does not contain CRDs
+```
 
 Address all issues detected by chart-verifier.
 

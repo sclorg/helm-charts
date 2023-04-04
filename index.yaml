@@ -5,7 +5,7 @@ entries:
       charts.openshift.io/name: Red Hat PostgreSQL database service imagestreams.
     apiVersion: v2
     appVersion: 0.0.1
-    created: "2023-04-03T11:58:06.652013+02:00"
+    created: "2023-04-04T12:59:45.484101+02:00"
     description: Red Hat PostgreSQL database service imagestreams. For more information
       about PostgreSQL container see https://github.com/sclorg/postgresql-container/.
     digest: 4232e3df1046a9d865fcfd8358024bb3d476b6441fb2ccd174ba33a446707b00
@@ -23,12 +23,12 @@ entries:
         storage.
     apiVersion: v2
     appVersion: 0.0.1
-    created: "2023-04-03T11:58:06.653206+02:00"
+    created: "2023-04-04T12:59:45.485234+02:00"
     description: 'PostgreSQL database service, with persistent storage. For more information
       about using this template, including OpenShift considerations, see https://github.com/sclorg/postgresql-container/.  NOTE:
       Scaling to more than one replica is not supported. You must have persistent
       volumes available in your cluster to use this template.'
-    digest: eb4e0feddf5f24cb4b9fb6b41165635ca643d79d59ab5bb2b4a02a10fddc14b8
+    digest: 6ae1f4e5d2ed910e0c4730152f498aa307575603db2b8af159b6d62cba604c3a
     name: postgresql-persistent
     sources:
     - https://github.com/sclorg/helm-charts
@@ -36,4 +36,4 @@ entries:
     urls:
     - postgresql-persistent-0.0.1.tgz
     version: 0.0.1
-generated: "2023-04-03T11:58:06.651563+02:00"
+generated: "2023-04-04T12:59:45.483316+02:00"

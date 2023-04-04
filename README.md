@@ -50,8 +50,6 @@ In case of Helm chart is related to RHEL system then use [redhat](charts/redhat)
 
 As soon as your Helm chart follows directory structure as mentioned above, let's test it.
 
-Follow the same guidelines for creating like they are specified here [openshift-helm-charts](https://github.com/openshift-helm-charts/charts/tree/main/docs).
-
 ### General notes for Helm charts
 Each helm chart name has to contain file OWNERS. E.g. [OWNERS](./charts/redhat/postgresql-imagestreams/OWNERS)
 

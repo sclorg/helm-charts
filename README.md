@@ -175,7 +175,14 @@ To generate package use command:
 $ helm package <path_to_helm_chart>
 ```
 
-The package should be present in the root of this repo. Add them to Pull Request
+E.g. Using postgresql-persistent Helm chart:
+
+```commandline
+$ helm package charts/redhat/postgresql-persistent/0.0.1
+Successfully packaged chart and saved it to: <FULL_PATH_TO_CWD>/helm-charts/postgresql-persistent-0.0.1.tgz
+```
+
+The package, e.g. postgresql-persistent-0.0.1.tgz, has to be added to the Pull Request.
 
 ### Update index package
 
@@ -184,4 +191,4 @@ To update [index.yaml](./index.yaml) file use command:
 $ helm repo index ./
 ```
 
-Add the index.yaml file to the Pull Request as well.
+Add the updated index.yaml file to the Pull Request.

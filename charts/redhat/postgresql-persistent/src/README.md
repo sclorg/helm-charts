@@ -25,12 +25,12 @@ This can be done by command:
 $ helm package ./
 ```
 
-that will create a helm package named, `postgresql-persistent-v0.0.1.tgz` in this directory.
+that will create a helm package named, `postgresql-persistent-0.0.2.tgz` in this directory.
 
 The next step is to upload Helm Chart to OpenShift. This is done by command:
 
 ```commandline
-$ helm install postgresql-persistent postgresql-persistent-v0.0.1.tgz
+$ helm install postgresql-persistent postgresql-persistent-0.0.2.tgz
 ```
 
 In case you would like to use this helm chart for different versions and even RHEL versions.
@@ -39,7 +39,7 @@ you need to modify installing command.
 E.g. For RHEL8
 
 ```commandline
-$ helm install postgresql-persistent postgresql-persistent-v0.0.1.tgz --set image.repository=registry.redhat.io/rhel8/postgresql-13 --set image.version=13
+$ helm install postgresql-persistent postgresql-persistent-0.0.2.tgz --set image.repository=registry.redhat.io/rhel8/postgresql-13 --set image.version=13
 ```
 The values that can be overwritten are specified in file [values.yaml](./values.yaml)
 

@@ -8,15 +8,4 @@ config:
   postgresql_user: testu
   port: 5432
 image:
-  tag:
-    - "latest"
-    - "13-el9"
-    - "13-el8"
-    - "13-el8"
-    - "13-el7"
-    - "12-el8"
-    - "12-el7"
-    - "12"
-    - "10-el8"
-    - "10-el7"
-    - "10"
+  tag: "latest"

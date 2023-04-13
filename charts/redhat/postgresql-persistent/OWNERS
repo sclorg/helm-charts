@@ -1,6 +1,6 @@
 chart:
   name: postgresql-persistent
-  description: This is the Red Hat Postgresql persistent storage chart
+  description: This is the Red Hat PostgreSQL persistent storage
 publicPgpKey: null
 users:
   - githubUsername: phracek

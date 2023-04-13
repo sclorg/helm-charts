@@ -20,8 +20,7 @@ spec:
         name: {{ .Values.database_service_name }}
     spec:
       containers:
-      - capabilities: {}
-        env:
+      - env:
         - name: POSTGRESQL_USER
           valueFrom:
             secretKeyRef:
@@ -46,7 +45,7 @@ spec:
             - --live
           initialDelaySeconds: 120
           timeoutSeconds: 10
-        name: "postgresql-{{ .Values.image.tag }}-testing"
+        name: "postgresql-testing"
         ports:
         - containerPort: {{ .Values.config.port }}
           protocol: TCP
@@ -76,13 +75,10 @@ spec:
   - imageChangeParams:
       automatic: true
       containerNames:
-      - "postgresql-{{ .Values.image.tag }}-testing"
+      - "postgresql-testing"
       from:
         kind: ImageStreamTag
-        {{- range .Values.image.tag }}
-        name: "postgresql:{{ . }}"
-        {{- end }}
-        namespace: {{ .Values.namespace }}
+        name: "postgresql:{{ .Values.image.tag }}"
       lastTriggeredImage: ""
     type: ImageChange
   - type: ConfigChange

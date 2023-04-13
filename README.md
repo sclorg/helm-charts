@@ -53,8 +53,30 @@ As soon as your Helm chart follows directory structure as mentioned above, let's
 ### General notes for Helm charts
 Each helm chart name has to contain file OWNERS. E.g. [OWNERS](./charts/redhat/postgresql-imagestreams/OWNERS)
 
-Each helm chart change, in [templates](./charts/redhat/postgresql-persistent/0.0.1/templates) or [OWNERS](./charts/redhat/postgresql-persistent/OWNERS) file
-has to bump version
+Each helm chart change, in [templates](./charts/redhat/postgresql-persistent/src/templates),
+[Chart.yaml](./charts/redhat/postgresql-persistent/src/Chart.yaml),
+[values.yaml](./charts/redhat/postgresql-persistent/src/values.yaml),
+[values.schema.json](./charts/redhat/postgresql-persistent/src/values.schema.json),
+or [OWNERS](./charts/redhat/postgresql-persistent/OWNERS) file
+has to bump version.
+Bump the version `appVersion` and `version` in `Chart.yaml` file.
+
+```commandline
+description: |-
+  PostgreSQL database service, with persistent storage. For more information about using this template, including OpenShift considerations, see https://github.com/sclorg/postgresql-container/.
+
+  NOTE: Scaling to more than one replica is not supported. You must have persistent volumes available in your cluster to use this template.
+annotations:
+  charts.openshift.io/name: Red Hat PostgreSQL database service, with persistent storage.
+apiVersion: v2
+appVersion: 0.0.2
+name: postgresql-persistent
+tags: database,postgresql
+sources:
+  - https://github.com/sclorg/helm-charts
+version: 0.0.2
+
+```
 
 ### How to test Helm chart
 
@@ -72,7 +94,7 @@ $ helm package <path_to_helm_chart>
 E.g. Using postgresql-persistent Helm chart:
 
 ```commandline
-$ helm package charts/redhat/postgresql-persistent/0.0.1
+$ helm package charts/redhat/postgresql-persistent/src
 Successfully packaged chart and saved it to: <FULL_PATH_TO_CWD>/helm-charts/postgresql-persistent-0.0.1.tgz
 ```
 
@@ -81,14 +103,14 @@ Successfully packaged chart and saved it to: <FULL_PATH_TO_CWD>/helm-charts/post
 You can deploy the Helm chart to the OpenShift cluster using command:
 
 ```commandline
-$ helm install <helm_chart_name> <tar_ball_path>
+$ helm install <helm_chart_name> <tarball_path>
 ```
 
 E.g Using postgresql-persistent Helm chart:
 
 ```commandline
 $ helm install postgresql-imagestreams postgresql-imagestreams-0.0.1.tgz
-NAME: postgresql-imagestreams001
+NAME: postgresql-imagestreams
 LAST DEPLOYED: Tue Apr  4 10:29:33 2023
 NAMESPACE: pgsql-13
 STATUS: deployed
@@ -102,18 +124,19 @@ To check if Helm chart is really deployed, run command:
 helm list
 ```
 
-Examples of the `helm test` output:
+Examples of the `helm list` output:
 
 ```commandline
 $ helm list
 NAME                      	NAMESPACE	REVISION	UPDATED                              	STATUS  	CHART                        	APP VERSION
 postgresql-imagestreams  	pgsql-13 	1       	2023-04-04 10:29:33.878674 +0200 CEST	deployed	postgresql-imagestreams-0.0.1	0.0.1
-postgresql-persistent     	pgsql-13 	1       	2023-03-28 16:59:56.498783 +0200 CEST	deployed	postgresql-persistent-v0.0.1
+postgresql-persistent     	pgsql-13 	1       	2023-03-28 16:59:56.498783 +0200 CEST	deployed	postgresql-persistent-0.0.1
 ```
 
-### How to verify Helm chart
+#### How to test Helm chart
 
-As soon as a Helm chart is ready and tested let's verify it. The first we have to create a package by command:
+As soon as a Helm chart is deployed on OpenShift 4 cluster, let's test it.
+Use the following command to test
 
 ```commandline
 $ helm test <helm_chart_name> --logs
@@ -137,6 +160,11 @@ POD LOGS: postgresql-persistent-connection-test
 postgresql-testing:5432 - accepting connections
 ```
 
+The end of the output shows, that PostgreSQL server accepts connections.
+
+### How to verify Helm chart
+
+As soon as a Helm chart is ready and tested let's verify it.
 
 In case the Helm chart has already been merged,
 use the following command to verify if all the required information is contained within the Helm chart.
@@ -212,32 +240,6 @@ results:
 
 Address all issues detected by chart-verifier.
 
-## Create Pull Request
+## Troubleshooting
 
-When Helm chart is ready to merge generate and update [index.yaml](./index.yaml) and add them into Pull Request.
-Once Pull Request is merged your Helm package will be part of [https://sclorg.github.io/helm-charts/](https://sclorg.github.io/helm-charts/)
-
-### Generate Helm chart package
-
-To generate package use command:
-```commandline
-$ helm package <path_to_helm_chart>
-```
-
-E.g. Using postgresql-persistent Helm chart:
-
-```commandline
-$ helm package charts/redhat/postgresql-persistent/0.0.1
-Successfully packaged chart and saved it to: <FULL_PATH_TO_CWD>/helm-charts/postgresql-persistent-0.0.1.tgz
-```
-
-The package, e.g. postgresql-persistent-0.0.1.tgz, has to be added to the Pull Request.
-
-### Update index package
-
-To update [index.yaml](./index.yaml) file use command:
-```commandline
-$ helm repo index ./
-```
-
-Add the updated index.yaml file to the Pull Request.
+Before any questions, see [https://github.com/openshift-helm-charts/charts/blob/main/docs/README.md](https://github.com/openshift-helm-charts/charts/blob/main/docs/README.md).

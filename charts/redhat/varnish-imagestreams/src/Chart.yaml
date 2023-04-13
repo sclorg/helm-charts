@@ -1,0 +1,13 @@
+description: |-
+  Red Hat Varnish Cache HTTP reverse proxy imagestreams.
+  For more information about Varnish container see https://github.com/sclorg/varnish-container/.
+annotations:
+  charts.openshift.io/name: Red Hat Varnish Cache HTTP reverse proxy imagestreams.
+apiVersion: v2
+appVersion: 0.0.1
+kubeVersion: '>=1.20.0'
+name: varnish-imagestreams
+tags: builder,varnish
+sources:
+  - https://github.com/sclorg/helm-charts
+version: 0.0.1

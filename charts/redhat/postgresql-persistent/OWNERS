@@ -1,6 +1,6 @@
 chart:
   name: postgresql-persistent
-  description: This is the Red Hat PostgreSQL persistent storage
+  description: This is the Red Hat Varnish Cache HTTP reverse proxy imagestream chart
 publicPgpKey: null
 users:
   - githubUsername: phracek

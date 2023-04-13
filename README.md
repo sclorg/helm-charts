@@ -186,7 +186,7 @@ docker run --rm -i -e KUBECONFIG=/.kube/config -v "${HOME}/.kube":/.kube \
           /helm-charts/<helm-chart-name>.tgz
 ```
 
-The output from commands mentioned above could be:
+The output from commands mentioned above could look like:
 
 ```commandline
 results:

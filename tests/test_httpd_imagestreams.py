@@ -23,10 +23,9 @@ class TestHelmHttpdImageStreams:
         [
             ("2.4-ubi9", "registry.redhat.io/ubi9/httpd-24:latest"),
             ("2.4-ubi8", "registry.redhat.io/ubi8/httpd-24:latest"),
-            ("2.4-el8", "registry.redhat.io/rhel8/httpd-24:latest"),
-            ("2.4-el7", "registry.redhat.io/rhscl/httpd-24-rhel7:latest"),
-            ("2.4", "registry.redhat.io/rhscl/httpd-24-rhel7:latest"),
-            ("12-el7", "registry.redhat.io/rhscl/postgresql-12-rhel7:latest"),
+            ("2.4-el8", "registry.redhat.io/rhel8/httpd-24"),
+            ("2.4-el7", "registry.redhat.io/rhscl/httpd-24-rhel7"),
+            ("2.4", "registry.redhat.io/rhscl/httpd-24-rhel7"),
         ],
     )
     def test_package_imagestream(self, version, registry):

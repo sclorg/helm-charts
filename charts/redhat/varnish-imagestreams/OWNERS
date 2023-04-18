@@ -1,6 +1,6 @@
 chart:
-  name: postgresql-imagestreams
-  description: This is the Red Hat Postgresql imagestreams chart
+  name: varnish-imagestreams
+  description: This is the Red Hat Varnish imagestreams chart
 publicPgpKey: null
 users:
   - githubUsername: phracek

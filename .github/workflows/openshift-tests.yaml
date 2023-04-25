@@ -5,8 +5,12 @@ on:
 jobs:
   openshift-tests:
     # This job only runs for '[test]' pull request comments by owner, member
-    name: "Integration tests for our Helm charts tested on RHEL-8 OpenShift 4"
+    name: "Integration tests for Helm charts ${{ matrix.helm_chart }} tested on RHEL-8 OpenShift 4"
     runs-on: ubuntu-20.04
+    strategy:
+      fail-fast: false
+      matrix:
+        helm_chart: ["httpd", "mariadb", "mysql", "nginx", "postgresql", "redis"]
 
     if: |
       github.event.issue.pull_request
@@ -27,5 +31,5 @@ jobs:
           git_ref:  "master"
           tf_scope: "private"
           tmt_plan_regex: "helm-charts"
-          pull_request_status_name: "Helm charts"
-          variables: "REPO_URL=$GITHUB_SERVER_URL/$GITHUB_REPOSITORY;REPO_NAME=$GITHUB_REPOSITORY;PR_NUMBER=${{ github.event.issue.number }};TEST_NAME=test"
+          pull_request_status_name: "Helm chart - ${{ matrix.helm_chart }}"
+          variables: "REPO_URL=$GITHUB_SERVER_URL/$GITHUB_REPOSITORY;REPO_NAME=$GITHUB_REPOSITORY;PR_NUMBER=${{ github.event.issue.number }};TEST_NAME=test-${{ matrix.helm_chart }}"

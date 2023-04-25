@@ -15,11 +15,11 @@ spec:
       imagePullPolicy: IfNotPresent
       env:
         - name: MARIADB_USER
-          value: "{{ .Values.config.mysql_user }}"
+          value: "{{ .Values.mysql_user }}"
         - name: MARIADB_PASSWORD
-          value: "{{ .Values.config.mysql_password }}"
+          value: "{{ .Values.mysql_password }}"
         - name: MARIADB_DATABASE
-          value: "{{ .Values.config.mysql_database }}"
+          value: "{{ .Values.mysql_database }}"
       command:
         - /bin/bash
         - -ec

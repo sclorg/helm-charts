@@ -28,4 +28,4 @@ class TestHelmPostgresqlPersistent:
         self.hc_api.helm_package()
         assert self.hc_api.helm_installation(values={".image.tag": "13-el8", ".namespace": self.hc_api.namespace})
         assert self.hc_api.is_pod_running()
-        assert self.hc_api.test_helm_chart(expected_str="accepting connection")
+        assert self.hc_api.test_helm_chart(expected_str=["accepting connection"])

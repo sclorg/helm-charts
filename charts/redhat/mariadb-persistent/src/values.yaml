@@ -1,10 +1,9 @@
 database_service_name: mariadb
-memory_limit: 512Mi
-volume_capacity: 1Gi
-namespace: mariadb-persistent-testing
-config:
-  mysql_database: sampledb
-  mysql_password: testp # TODO: must define a default value for .mysql_password'
-  mysql_root_password: testu # TODO: must define a default value for .mysql_root_password'
-  mysql_user: testu # TODO: must define a default value for .mysql_user'
 mariadb_version: 10.3-el8
+memory_limit: 512Mi
+mysql_database: testdb
+mysql_password: testu
+mysql_root_password: testur
+mysql_user: testu
+namespace: openshift
+volume_capacity: 1Gi

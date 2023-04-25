@@ -18,14 +18,13 @@ spec:
         name: {{ .Values.database_service_name }}
     spec:
       containers:
-      - capabilities: {}
-        env:
+      - env:
         - name: REDIS_PASSWORD
           valueFrom:
             secretKeyRef:
               key: database-password
               name: {{ .Values.database_service_name }}
-        image: ' '
+        image: "redis:{{ .Values.redis_version }}"
         imagePullPolicy: IfNotPresent
         livenessProbe:
           initialDelaySeconds: 30
@@ -69,7 +68,6 @@ spec:
       from:
         kind: ImageStreamTag
         name: redis:{{ .Values.redis_version }}
-        namespace: {{ .Values.namespace }}
       lastTriggeredImage: ""
     type: ImageChange
   - type: ConfigChange

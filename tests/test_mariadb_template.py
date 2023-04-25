@@ -26,6 +26,6 @@ class TestHelmMariaDBPersistent:
         self.hc_api.set_version("0.0.1")
         self.hc_api.package_name = "mariadb-persistent"
         self.hc_api.helm_package()
-        assert self.hc_api.helm_installation(values={".image.tag": "10.5-el8", ".namespace": self.hc_api.namespace})
+        assert self.hc_api.helm_installation(values={".mariadb_version": "10.5-el8", ".namespace": self.hc_api.namespace})
         assert self.hc_api.is_pod_running()
         assert self.hc_api.test_helm_chart(expected_str=["42", "testval"])

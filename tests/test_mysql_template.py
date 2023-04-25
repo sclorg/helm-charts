@@ -13,9 +13,10 @@ class TestHelmMySQLDBPersistent:
     def setup_method(self):
         package_name = "mysql-persistent"
         path = test_dir / "../charts/redhat"
-        self.hc_api = HelmChartsAPI(path=path, package_name=package_name, namespace="mariadb-helm", tarball_dir=test_dir, delete_prj=False)
+        self.hc_api = HelmChartsAPI(path=path, package_name=package_name, tarball_dir=test_dir)
 
     def teardown_method(self):
+
         self.hc_api.delete_project()
 
     def test_package_persistent(self):

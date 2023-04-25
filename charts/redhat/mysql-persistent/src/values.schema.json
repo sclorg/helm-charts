@@ -9,22 +9,17 @@
         "namespace": {
             "type": "string"
         },
-        "config": {
-            "type": "object",
-            "properties": {
-                "mysql_database": {
-                    "type": "string"
-                },
-                "mysql_password": {
-                    "type": "string"
-                },
-                "mysql_root_password": {
-                    "type": "string"
-                },
-                "mysql_user": {
-                    "type": "string"
-                }
-            }
+        "mysql_database": {
+            "type": "string"
+        },
+        "mysql_password": {
+            "type": "string"
+        },
+        "mysql_root_password": {
+            "type": "string"
+        },
+        "mysql_user": {
+            "type": "string"
         },
         "volume_capacity": {
             "type": "string",

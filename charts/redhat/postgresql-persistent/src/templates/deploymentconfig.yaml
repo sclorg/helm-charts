@@ -7,7 +7,7 @@ metadata:
     template: postgresql-persistent-template
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
-  name: {{ .Release.Name }}
+  name: {{ .Release.Namespace }}
 spec:
   replicas: 1
   selector:
@@ -45,7 +45,7 @@ spec:
             - --live
           initialDelaySeconds: 120
           timeoutSeconds: 10
-        name: "postgresql-testing"
+        name: "postgresql-{{ .Values.image.tag }}-testing"
         ports:
         - containerPort: {{ .Values.config.port }}
           protocol: TCP
@@ -75,10 +75,11 @@ spec:
   - imageChangeParams:
       automatic: true
       containerNames:
-      - "postgresql-testing"
+      - "postgresql-{{ .Values.image.tag }}-testing"
       from:
         kind: ImageStreamTag
         name: "postgresql:{{ .Values.image.tag }}"
+        namespace: {{ .Values.namespace }}
       lastTriggeredImage: ""
     type: ImageChange
   - type: ConfigChange

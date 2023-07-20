@@ -4,10 +4,11 @@ description: |-
   NOTE: Scaling to more than one replica is not supported. You must have persistent volumes available in your cluster to use this template.
 name: mysql-persistent
 tags: database,mysql
-version: 0.0.1
+version: 0.0.2
 annotations:
   charts.openshift.io/name: Red Hat MySQL database service, with persistent storage (experimental).
 apiVersion: v2
-appVersion: 0.0.1
+appVersion: 0.0.2
+kubeVersion: '>=1.20.0'
 sources:
   - https://github.com/sclorg/helm-charts

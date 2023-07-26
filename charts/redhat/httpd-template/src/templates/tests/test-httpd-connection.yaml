@@ -14,9 +14,10 @@ spec:
       image: "registry.redhat.io/rhel8/httpd-24:latest"
       imagePullPolicy: IfNotPresent
       command:
-        - /bin/bash
-        - -ec
-        - "curl httpd-example | grep \"Welcome to your static httpd application on OpenShift\""
+        - '/bin/bash'
+        - '-ec'
+        - >
+          curl {{ .Values.name }}.{{ .Release.Namespace}}:8080 | grep "{{ .Values.expected_str }}"
   lookupPolicy:
     local: true
   restartPolicy: Never

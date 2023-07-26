@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - env: []
-        image: "httpd:{{ .Values.httpd_version }}"
+        image: "{{ .Values.name }}:latest"
         livenessProbe:
           httpGet:
             path: /
@@ -48,7 +48,7 @@ spec:
       - httpd-example
       from:
         kind: ImageStreamTag
-        name: "httpd:{{ .Values.httpd_version }}"
+        name: "{{ .Values.name }}:latest"
         namespace: {{ .Values.namespace }}
     type: ImageChange
   - type: ConfigChange

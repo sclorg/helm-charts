@@ -1,7 +1,7 @@
 on:
-  pull_request:
-    branches:
-    - main
+  issue_comment:
+    types:
+      - created
 jobs:
   openshift-tests:
     # This job only runs for '[test]' pull request comments by owner, member
@@ -11,6 +11,11 @@ jobs:
       fail-fast: false
       matrix:
         helm_chart: ["httpd", "mariadb", "mysql", "nginx", "postgresql", "redis"]
+
+    if: |
+      github.event.issue.pull_request
+      && contains(github.event.comment.body, '[test]')
+      && contains(fromJson('["OWNER", "MEMBER"]'), github.event.comment.author_association)
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3

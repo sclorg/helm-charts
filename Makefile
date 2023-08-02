@@ -14,4 +14,6 @@ test-postgresql:
 	cd tests && PYTHONPATH=$(CURDIR) python3 -m pytest --color=yes --verbose --showlocals test_postgresql_*
 test-redis:
 	cd tests && PYTHONPATH=$(CURDIR) python3 -m pytest --color=yes --verbose --showlocals test_redis_*
+test-php:
+	cd tests && PYTHONPATH=$(CURDIR) python3 -m pytest --color=yes --verbose --showlocals test_php_*
 test-all: test test-httpd test-mariadb test-mysql test-nginx test-postgresql test-redis

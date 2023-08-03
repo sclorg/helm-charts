@@ -21,7 +21,7 @@ class TestHelmHttpdImageStreams:
     @pytest.mark.parametrize(
         "version,registry",
         [
-            ("latest", "registry.redhat.io/ubi8/php-80:latest"),
+            ("8.1-ubi9", "registry.redhat.io/ubi9/php-81:latest"),
             ("8.0-ubi9", "registry.redhat.io/ubi9/php-80:latest"),
             ("8.0-ubi8", "registry.redhat.io/ubi8/php-80:latest"),
             ("7.4-ubi8", "registry.redhat.io/ubi8/php-74:latest"),

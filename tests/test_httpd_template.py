@@ -28,8 +28,8 @@ class TestHelmHTTPDTemplate:
         self.hc_api.helm_package()
         assert self.hc_api.helm_installation(
             values={
-                ".httpd_version": "2.4-el8",
-                ".namespace": self.hc_api.namespace
+                "httpd_version": "2.4-el8",
+                "namespace": self.hc_api.namespace
             }
         )
         assert self.hc_api.is_pod_running()

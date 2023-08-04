@@ -1,4 +1,4 @@
-.PHONY: test test-httpd test-php test-perl test-mariadb test-mysql test-nginx test-postgresql test-redis test-all
+.PHONY: test test-httpd test-php test-perl test-mariadb test-mysql test-nginx test-postgresql test-redis test-all test-nodejs test-ruby test-python
 
 test:
 	cd tests && PYTHONPATH=$(CURDIR) python3 -m pytest --color=yes --verbose --showlocals test_varnish_*
@@ -27,8 +27,17 @@ test-php:
 test-php:
 	cd tests && PYTHONPATH=$(CURDIR) python3 -m pytest --color=yes --verbose --showlocals test_php_*
 
-test-all: test test-php test-httpd test-mariadb test-mysql test-nginx test-postgresql test-redis test-perl
+test-nodejs:
+	cd tests && PYTHONPATH=$(CURDIR) python3 -m pytest --color=yes --verbose --showlocals test_php_*
+
+test-python:
+	cd tests && PYTHONPATH=$(CURDIR) python3 -m pytest --color=yes --verbose --showlocals test_php_*
+
+test-ruby:
+	cd tests && PYTHONPATH=$(CURDIR) python3 -m pytest --color=yes --verbose --showlocals test_php_*
+
+test-all: test test-php test-httpd test-mariadb test-mysql test-nginx test-postgresql test-redis test-perl test-python test-ruby test-nodejs
 
 test-nons2i: test test-httpd test-mariadb test-mysql test-nginx test-postgresql test-redis
 
-test-s2i: test-php test-perl
+test-s2i: test-php test-perl test-nodejs test-python test-ruby

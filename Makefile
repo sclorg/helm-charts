@@ -34,7 +34,7 @@ test-python:
 	cd tests && PYTHONPATH=$(CURDIR) python3 -m pytest --color=yes --verbose --showlocals test_php_*
 
 test-ruby:
-	cd tests && PYTHONPATH=$(CURDIR) python3 -m pytest --color=yes --verbose --showlocals test_php_*
+	cd tests && PYTHONPATH=$(CURDIR) python3 -m pytest --color=yes --verbose --showlocals test_ruby_*
 
 test-all: test test-php test-httpd test-mariadb test-mysql test-nginx test-postgresql test-redis test-perl test-python test-ruby test-nodejs
 

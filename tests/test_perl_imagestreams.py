@@ -8,7 +8,7 @@ from container_ci_suite.helm import HelmChartsAPI
 test_dir = Path(os.path.abspath(os.path.dirname(__file__)))
 
 
-class TestHelmHttpdImageStreams:
+class TestHelmPerlImageStreams:
 
     def setup_method(self):
         package_name = "perl-imagestreams"

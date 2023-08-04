@@ -8,10 +8,10 @@ from container_ci_suite.helm import HelmChartsAPI
 test_dir = Path(os.path.abspath(os.path.dirname(__file__)))
 
 
-class TestHelmPHPImageStreams:
+class TestHelmNodeJSImageStreams:
 
     def setup_method(self):
-        package_name = "php-imagestreams"
+        package_name = "nodejs-imagestreams"
         path = test_dir / "../charts/redhat"
         self.hc_api = HelmChartsAPI(path=path, package_name=package_name, tarball_dir=test_dir)
 
@@ -21,12 +21,11 @@ class TestHelmPHPImageStreams:
     @pytest.mark.parametrize(
         "version,registry",
         [
-            ("8.1-ubi9", "registry.redhat.io/ubi9/php-81:latest"),
-            ("8.0-ubi9", "registry.redhat.io/ubi9/php-80:latest"),
-            ("8.0-ubi8", "registry.redhat.io/ubi8/php-80:latest"),
-            ("7.4-ubi8", "registry.redhat.io/ubi8/php-74:latest"),
-            ("7.3-ubi7", "registry.redhat.io/ubi7/php-73:latest"),
-            ("7.3",  "registry.redhat.io/rhscl/php-73-rhel7:latest"),
+            ("16-ubi9", "registry.redhat.io/ubi9/nodejs-16:latest"),
+            ("16-ubi9-minimal", "registry.redhat.io/ubi9/nodejs-16-minimal:latest"),
+            ("16-ubi8", "registry.redhat.io/ubi8/nodejs-16:latest"),
+            ("16-ubi8-minimal", "registry.redhat.io/ubi8/nodejs-16-minimal:latest"),
+            ("14-ubi7", "registry.redhat.io/ubi7/nodejs-14:latest"),
         ],
     )
     def test_package_imagestream(self, version, registry):

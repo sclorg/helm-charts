@@ -10,7 +10,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        helm_chart: ["httpd", "mariadb", "mysql", "nginx", "postgresql", "redis", "php", "perl"]
+        helm_chart: ["httpd", "mariadb", "mysql", "nginx", "postgresql", "redis", "php", "perl", "nodejs", "ruby", "python"]
 
     if: |
       github.event.issue.pull_request

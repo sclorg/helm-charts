@@ -1,0 +1,9 @@
+chart:
+  name: nodejs-imagestreams
+  description: This is the CentOS NodeJS applications imagestream chart
+publicPgpKey: null
+users:
+  - githubUsername: phracek
+vendor:
+  label: centos
+  name: Cent OS

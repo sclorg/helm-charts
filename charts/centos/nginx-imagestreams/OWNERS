@@ -1,0 +1,9 @@
+chart:
+  name: nginx-imagestreams
+  description: This is the CentOS Ngnix Server imagestream chart
+publicPgpKey: null
+users:
+  - githubUsername: phracek
+vendor:
+  label: centos
+  name: Cent OS

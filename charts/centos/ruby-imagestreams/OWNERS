@@ -1,0 +1,9 @@
+chart:
+  name: ruby-imagestreams
+  description: This is the CentOS Ruby applications imagestream chart
+publicPgpKey: null
+users:
+  - githubUsername: phracek
+vendor:
+  label: centos
+  name: Cent OS

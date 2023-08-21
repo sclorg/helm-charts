@@ -49,12 +49,12 @@ class TestHelmCentOSPerlImageStreams:
     @pytest.mark.parametrize(
         "version,registry",
         [
-            ("5.32-ubi9", "registry.redhat.io/ubi9/perl-532:latest"),
-            ("5.32-ubi8", "registry.redhat.io/ubi8/perl-532:latest"),
-            ("5.30-ubi8", "registry.redhat.io/ubi8/perl-530:latest"),
+            ("5.32-ubi9", "registry.access.redhat.com/ubi9/perl-532:latest"),
+            ("5.32-ubi8", "registry.access.redhat.com/ubi8/perl-532:latest"),
+            ("5.30-ubi8", "registry.access.redhat.com/ubi8/perl-530:latest"),
             ("5.30-el7", "quay.io/centos7/perl-530-centos7:latest"),
             ("5.30", "quay.io/centos7/perl-530-centos7:latest"),
-            ("5.26-ubi8", "registry.redhat.io/ubi8/perl-526:latest"),
+            ("5.26-ubi8", "registry.access.redhat.com/ubi8/perl-526:latest"),
         ],
     )
     def test_package_imagestream(self, version, registry):

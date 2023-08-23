@@ -24,8 +24,8 @@ test-redis:
 test-php:
 	cd tests && PYTHONPATH=$(CURDIR) python3 -m pytest --color=yes --verbose --showlocals test_php_*
 
-test-php:
-	cd tests && PYTHONPATH=$(CURDIR) python3 -m pytest --color=yes --verbose --showlocals test_php_*
+test-perl:
+	cd tests && PYTHONPATH=$(CURDIR) python3 -m pytest --color=yes --verbose --showlocals test_perl_*
 
 test-nodejs:
 	cd tests && PYTHONPATH=$(CURDIR) python3 -m pytest --color=yes --verbose --showlocals test_nodejs_*

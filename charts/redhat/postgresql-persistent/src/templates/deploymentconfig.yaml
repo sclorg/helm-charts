@@ -7,7 +7,7 @@ metadata:
     template: postgresql-persistent-template
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
-  name: {{ .Values.database_service_name }}
+  name: {{ .Release.Namespace }}
 spec:
   replicas: 1
   selector:

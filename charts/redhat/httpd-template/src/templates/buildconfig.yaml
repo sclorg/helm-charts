@@ -8,11 +8,13 @@ metadata:
     app: httpd-example
     template: httpd-example
   name: {{ .Values.name }}
+  namespace: {{ .Release.Namespace }}
 spec:
   output:
     to:
       kind: ImageStreamTag
       name: {{ .Values.name }}:latest
+      namespace: {{ .Release.Namespace }}
   source:
     contextDir: {{ .Values.context_dir }}
     git:

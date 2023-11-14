@@ -1,24 +1,36 @@
-apiVersion: apps.openshift.io/v1
-kind: DeploymentConfig
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   annotations:
     description: Defines how to deploy the application server
     template.alpha.openshift.io/wait-for-ready: "true"
+    image.openshift.io/triggers: |-
+      [
+        {
+          "from":{
+            "kind":"ImageStreamTag",
+            "name":"{{ .Values.name }}:example-latest"
+          },
+          "fieldPath":"spec.template.spec.containers[0].image"
+        }
+      ]
+  name: "{{ .Values.name }}"
   labels:
-    app: httpd-example
-    template: httpd-example
-  name: {{ .Values.name }}
+    app: "{{ .Values.name }}-example"
+    template: "{{ .Values.name }}-example"
+  namespace: "{{ .Release.Namespace }}"
 spec:
   replicas: 1
   selector:
-    name: {{ .Values.name }}
+    matchLabels:
+      app: "{{ .Values.name }}-example"
   strategy:
-    type: Rolling
+    type: RollingUpdate
   template:
     metadata:
       labels:
-        name: {{ .Values.name }}
-      name: {{ .Values.name }}
+        app: "{{ .Values.name }}-example"
+      namespace: "{{ .Release.Namespace }}"
     spec:
       containers:
       - env: []
@@ -29,7 +41,7 @@ spec:
             port: 8080
           initialDelaySeconds: 30
           timeoutSeconds: 3
-        name: httpd-example
+        name: "{{ .Values.name }}-example"
         ports:
         - containerPort: 8080
         readinessProbe:
@@ -41,14 +53,3 @@ spec:
         resources:
           limits:
             memory: {{ .Values.memory_limit }}
-  triggers:
-  - imageChangeParams:
-      automatic: true
-      containerNames:
-      - httpd-example
-      from:
-        kind: ImageStreamTag
-        name: "{{ .Values.name }}:latest"
-        namespace: {{ .Values.namespace }}
-    type: ImageChange
-  - type: ConfigChange

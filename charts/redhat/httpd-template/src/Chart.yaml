@@ -4,10 +4,10 @@ description: This content is expermental, do not use it in production. An exampl
 name: httpd-template
 tags: quickstart,httpd
 kubeVersion: '>=1.20.0'
-version: 0.0.4
+version: 0.0.5
 annotations:
   charts.openshift.io/name: Red Hat Apache HTTP Server (httpd) application (experimental).
 apiVersion: v2
-appVersion: 0.0.4
+appVersion: 0.0.5
 sources:
   - https://github.com/sclorg/helm-charts

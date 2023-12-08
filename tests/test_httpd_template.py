@@ -23,7 +23,7 @@ class TestHelmHTTPDTemplate:
         self.hc_api.package_name = "httpd-imagestreams"
         self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
-        self.hc_api.set_version("0.0.4")
+        self.hc_api.set_version("0.0.5")
         self.hc_api.package_name = "httpd-template"
         self.hc_api.helm_package()
         assert self.hc_api.helm_installation(
@@ -32,7 +32,7 @@ class TestHelmHTTPDTemplate:
                 "namespace": self.hc_api.namespace
             }
         )
-        assert self.hc_api.is_pod_running()
+        assert self.hc_api.is_s2i_pod_running()
         assert self.hc_api.test_helm_curl_output(
             route_name="httpd",
             expected_str="Welcome to your static httpd application on OpenShift"

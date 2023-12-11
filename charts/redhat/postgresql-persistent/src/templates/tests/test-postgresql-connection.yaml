@@ -24,8 +24,6 @@ spec:
           value: "{{ .Values.config.port }}"
       command:
         - /bin/bash
-        - -ec
+        - -exc
         - "PGPASSWORD=$PGPASSWORD /usr/bin/pg_isready -d $POSTGRESQL_DATABASE -h {{ .Values.database_service_name }} -p $POSTGRESQL_PORT -U $POSTGRESQL_USER"
-  lookupPolicy:
-    local: true
   restartPolicy: Never

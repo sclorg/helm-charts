@@ -19,11 +19,9 @@ class TestHelmPostgresqlPersistent:
         self.hc_api.delete_project()
 
     def test_package_persistent(self):
-        self.hc_api.set_version("0.0.1")
         self.hc_api.package_name = "postgresql-imagestreams"
         self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
-        self.hc_api.set_version("0.0.3")
         self.hc_api.package_name = "postgresql-persistent"
         self.hc_api.helm_package()
         assert self.hc_api.helm_installation(values={".image.tag": "13-el8", ".namespace": self.hc_api.namespace})

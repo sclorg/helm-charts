@@ -17,7 +17,7 @@ metadata:
     template: postgresql-persistent-template
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
-  name: {{ .Release.Namespace }}
+  name: {{ .Release.Name }}
 spec:
   replicas: 1
   selector:
@@ -56,7 +56,7 @@ spec:
             - --live
           initialDelaySeconds: 120
           timeoutSeconds: 10
-        name: "postgresql-testing"
+        name: "postgresql-persistent"
         ports:
         - containerPort: {{ .Values.config.port }}
           protocol: TCP

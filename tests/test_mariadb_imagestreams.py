@@ -30,7 +30,6 @@ class TestHelmRHELMariadbImageStreams:
         ],
     )
     def test_package_imagestream(self, version, registry):
-        self.hc_api.set_version("0.0.1")
         self.hc_api.helm_package()
         self.hc_api.helm_installation()
         assert self.hc_api.check_imagestreams(version=version, registry=registry)

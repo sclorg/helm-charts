@@ -19,11 +19,9 @@ class TestHelmMariaDBPersistent:
         self.hc_api.delete_project()
 
     def test_package_persistent(self):
-        self.hc_api.set_version("0.0.1")
         self.hc_api.package_name = "mariadb-imagestreams"
         self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
-        self.hc_api.set_version("0.0.2")
         self.hc_api.package_name = "mariadb-persistent"
         self.hc_api.helm_package()
         assert self.hc_api.helm_installation(values={".mariadb_version": "10.5-el8", ".namespace": self.hc_api.namespace})

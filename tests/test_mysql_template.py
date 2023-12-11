@@ -20,11 +20,9 @@ class TestHelmMySQLDBPersistent:
         self.hc_api.delete_project()
 
     def test_package_persistent(self):
-        self.hc_api.set_version("0.0.1")
         self.hc_api.package_name = "mysql-imagestreams"
         self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
-        self.hc_api.set_version("0.0.2")
         self.hc_api.package_name = "mysql-persistent"
         self.hc_api.helm_package()
         assert self.hc_api.helm_installation(values={".mysql_version": "8.0-el8", ".namespace": self.hc_api.namespace})

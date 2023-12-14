@@ -2,11 +2,12 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    template.openshift.io/expose-uri: postgres://{.spec.clusterIP}:{.spec.ports[?(.name=="postgresql")].port}
+    template.openshift.io/expose-uri: postgres://{.metadata.name}.{.metadata.namespace}.svc.cluster.local:{.spec.ports[?(.name=="postgresql")].port}
   labels:
     template: postgresql-persistent-template
   name: {{ .Values.database_service_name }}
 spec:
+  clusterIP: None
   ports:
   - name: postgresql
     nodePort: 0
@@ -17,5 +18,4 @@ spec:
     name: {{ .Values.database_service_name }}
   sessionAffinity: None
   type: ClusterIP
-status:
-  loadBalancer: {}
+

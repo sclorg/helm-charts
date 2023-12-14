@@ -1,5 +1,5 @@
+kind: StatefulSet
 apiVersion: apps/v1
-kind: Deployment
 metadata:
   annotations:
     template.alpha.openshift.io/wait-for-ready: "true"
@@ -19,14 +19,15 @@ metadata:
     app.kubernetes.io/managed-by: {{ .Release.Service }}
   name: {{ .Release.Name }}
 spec:
+  serviceName: {{ .Values.database_service_name }}
   replicas: 1
   selector:
     matchLabels:
       name: {{ .Values.database_service_name }}
-  strategy:
-    type: Recreate
   template:
     metadata:
+      annotations:
+        alpha.image.policy.openshift.io/resolve-names: "*"
       labels:
         name: {{ .Values.database_service_name }}
     spec:
@@ -48,7 +49,7 @@ spec:
               key: database-name
               name: {{ .Values.database_service_name }}
         image: "postgresql:{{ .Values.image.tag }}"
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: "IfNotPresent"
         livenessProbe:
           exec:
             command:
@@ -70,16 +71,19 @@ spec:
           limits:
             memory: {{ .Values.memory_limit }}
         securityContext:
-          capabilities: {}
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
           privileged: false
+          runAsNonRoot: true
+          seccompProfile:
+            type: RuntimeDefault
         terminationMessagePath: /dev/termination-log
         volumeMounts:
         - mountPath: /var/lib/pgsql/data
           name: {{ .Values.database_service_name }}-data
-      dnsPolicy: ClusterFirst
-      restartPolicy: Always
       volumes:
       - name: {{ .Values.database_service_name }}-data
         persistentVolumeClaim:
           claimName: {{ .Values.database_service_name }}
-status: {}

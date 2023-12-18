@@ -17,7 +17,7 @@ spec:
         - '/bin/bash'
         - '-ec'
         - >
-          curl {{ .Values.name }}.{{ .Release.Namespace}}:8080 | grep "{{ .Values.expected_str }}"
+          curl {{ .Values.name }}.{{ .Release.Namespace}} | grep "{{ .Values.expected_str }}"
   lookupPolicy:
     local: true
   restartPolicy: Never

@@ -35,3 +35,18 @@ class TestHelmHTTPDTemplate:
             route_name="httpd",
             expected_str="Welcome to your static httpd application on OpenShift"
         )
+
+    def test_by_helm_chart_test(self):
+        self.hc_api.package_name = "httpd-imagestreams"
+        self.hc_api.helm_package()
+        assert self.hc_api.helm_installation()
+        self.hc_api.package_name = "httpd-template"
+        self.hc_api.helm_package()
+        assert self.hc_api.helm_installation(
+            values={
+                "httpd_version": "2.4-el8",
+                "namespace": self.hc_api.namespace
+            }
+        )
+        assert self.hc_api.is_s2i_pod_running()
+        assert self.hc_api.test_helm_chart(expected_str=["Welcome to your static httpd application on OpenShift"])

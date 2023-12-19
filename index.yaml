@@ -2,7 +2,7 @@ apiVersion: v1
 entries:
   httpd-imagestreams:
   - annotations:
-      charts.openshift.io/name: Red Hat Apache HTTP Server imagestreams (experimental).
+      charts.openshift.io/name: Red Hat Apache HTTP Server imagestreams (experimental)
     apiVersion: v2
     appVersion: 0.0.1
     created: "2023-10-19T13:24:43.225144+02:00"
@@ -20,7 +20,7 @@ entries:
     version: 0.0.1
   httpd-template:
   - annotations:
-      charts.openshift.io/name: Red Hat Apache HTTP Server (httpd) application (experimental).
+      charts.openshift.io/name: Red Hat Apache HTTP Server (httpd) application (experimental)
     apiVersion: v2
     appVersion: 0.0.4
     created: "2023-10-19T13:24:43.226255+02:00"
@@ -38,7 +38,7 @@ entries:
     - httpd-template-0.0.4.tgz
     version: 0.0.4
   - annotations:
-      charts.openshift.io/name: Red Hat Apache HTTP Server (httpd) application (experimental).
+      charts.openshift.io/name: Red Hat Apache HTTP Server (httpd) application (experimental)
     apiVersion: v2
     appVersion: 0.0.3
     created: "2023-10-19T13:24:43.225886+02:00"
@@ -56,7 +56,7 @@ entries:
     - httpd-template-0.0.3.tgz
     version: 0.0.3
   - annotations:
-      charts.openshift.io/name: Red Hat Apache HTTP Server (httpd) application (experimental).
+      charts.openshift.io/name: Red Hat Apache HTTP Server (httpd) application (experimental)
     apiVersion: v2
     appVersion: 0.0.1
     created: "2023-10-19T13:24:43.225513+02:00"
@@ -74,7 +74,7 @@ entries:
     version: 0.0.1
   mariadb-imagestreams:
   - annotations:
-      charts.openshift.io/name: Red Hat MariaDB database service imagestreams (experimental).
+      charts.openshift.io/name: Red Hat MariaDB database service imagestreams (experimental)
     apiVersion: v2
     appVersion: 0.0.1
     created: "2023-10-19T13:24:43.226494+02:00"
@@ -131,7 +131,7 @@ entries:
     version: 0.0.1
   mysql-imagestreams:
   - annotations:
-      charts.openshift.io/name: Red Hat MySQL database service imagestreams (experimental).
+      charts.openshift.io/name: Red Hat MySQL database service imagestreams (experimental)
     apiVersion: v2
     appVersion: 0.0.1
     created: "2023-10-19T13:24:43.227461+02:00"
@@ -208,7 +208,7 @@ entries:
     version: 0.0.1
   nodejs-imagestreams:
   - annotations:
-      charts.openshift.io/name: Red Hat PHP applications on UBI (experimental).
+      charts.openshift.io/name: Red Hat PHP applications on UBI (experimental)
     apiVersion: v2
     appVersion: 0.0.1
     created: "2023-10-19T13:24:43.228747+02:00"
@@ -226,7 +226,7 @@ entries:
     version: 0.0.1
   perl-imagestreams:
   - annotations:
-      charts.openshift.io/name: Red Hat Perl applications on UBI (experimental).
+      charts.openshift.io/name: Red Hat Perl applications on UBI (experimental)
     apiVersion: v2
     appVersion: 0.0.1
     created: "2023-10-19T13:24:43.228967+02:00"
@@ -244,7 +244,7 @@ entries:
     version: 0.0.1
   php-imagestreams:
   - annotations:
-      charts.openshift.io/name: Red Hat PHP applications on UBI (experimental).
+      charts.openshift.io/name: Red Hat PHP applications on UBI (experimental)
     apiVersion: v2
     appVersion: 0.0.1
     created: "2023-10-19T13:24:43.22919+02:00"
@@ -262,7 +262,7 @@ entries:
     version: 0.0.1
   postgresql-imagestreams:
   - annotations:
-      charts.openshift.io/name: Red Hat PostgreSQL database service imagestreams (experimental).
+      charts.openshift.io/name: Red Hat PostgreSQL database service imagestreams (experimental)
     apiVersion: v2
     appVersion: 0.0.1
     created: "2023-10-19T13:24:43.229435+02:00"
@@ -337,7 +337,7 @@ entries:
     version: 0.0.1
   python-imagestreams:
   - annotations:
-      charts.openshift.io/name: Red Hat Python applications on UBI (experimental).
+      charts.openshift.io/name: Red Hat Python applications on UBI (experimental)
     apiVersion: v2
     appVersion: 0.0.1
     created: "2023-10-19T13:24:43.230814+02:00"
@@ -355,7 +355,7 @@ entries:
     version: 0.0.1
   redis-imagestreams:
   - annotations:
-      charts.openshift.io/name: Provides a Redis database on RHEL imagestreams (experimental).
+      charts.openshift.io/name: Provides a Redis database on RHEL imagestreams (experimental)
     apiVersion: v2
     appVersion: 0.0.1
     created: "2023-10-19T13:24:43.231062+02:00"
@@ -411,7 +411,7 @@ entries:
     version: 0.0.1
   ruby-imagestreams:
   - annotations:
-      charts.openshift.io/name: Red Hat Ruby applications on UBI (experimental).
+      charts.openshift.io/name: Red Hat Ruby applications on UBI (experimental)
     apiVersion: v2
     appVersion: 0.0.1
     created: "2023-10-19T13:24:43.231977+02:00"

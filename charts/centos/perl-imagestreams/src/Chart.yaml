@@ -3,7 +3,7 @@ description: |-
   For more information about using this builder image, including OpenShift considerations,
   see https://github.com/sclorg/s2i-perl-container/blob/master/5.32/README.md.
 annotations:
-  charts.openshift.io/name: CentOS Perl applications on UBI (experimental).
+  charts.openshift.io/name: CentOS Perl applications on UBI (experimental)
 apiVersion: v2
 appVersion: 0.0.1
 kubeVersion: '>=1.20.0'

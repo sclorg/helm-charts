@@ -2,7 +2,7 @@ description: |-
   This content is expermental, do not use it in production. Build and serve static content via Nginx HTTP server
   and a reverse proxy (nginx) on CentOS. https://github.com/sclorg/nginx-container/blob/master/README.md.
 annotations:
-  charts.openshift.io/name: CentOS Nginx HTTP server and a reverse proxy (nginx) (experimental).
+  charts.openshift.io/name: CentOS Nginx HTTP server and a reverse proxy (nginx) (experimental)
 apiVersion: v2
 appVersion: 0.0.1
 kubeVersion: '>=1.20.0'

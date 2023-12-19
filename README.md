@@ -67,7 +67,7 @@ description: |-
 
   NOTE: Scaling to more than one replica is not supported. You must have persistent volumes available in your cluster to use this template.
 annotations:
-  charts.openshift.io/name: Red Hat PostgreSQL database service, with persistent storage.
+  charts.openshift.io/name: Red Hat PostgreSQL database service, with persistent storage
 apiVersion: v2
 appVersion: 0.0.2
 name: postgresql-persistent

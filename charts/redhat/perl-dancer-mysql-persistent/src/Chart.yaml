@@ -1,0 +1,14 @@
+description: An example Dancer application with a MySQL database. For more information
+  about using this template, including OpenShift considerations, see https://github.com/sclorg/dancer-ex/blob/master/README.md.
+annotations:
+  charts.openshift.io/name: Red Hat Dancer application with a MySQL on UBI (experimental)
+  charts.openshift.io/provider: Red Hat
+  charts.openshift.io/providerType: redhat
+name: dancer-mysql-persistent
+tags: quickstart,perl,dancer,mysql
+apiVersion: v2
+appVersion: 0.0.1
+kubeVersion: '>=1.20.0'
+sources:
+  - https://github.com/sclorg/helm-charts
+version: 0.0.1

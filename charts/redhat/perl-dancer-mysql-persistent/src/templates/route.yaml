@@ -1,0 +1,12 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  labels:
+    app: dancer-mysql-persistent
+    template: dancer-mysql-persistent
+  name: {{ .Values.name }}
+spec:
+  host: {{ .Values.application_domain }}
+  to:
+    kind: Service
+    name: {{ .Values.name }}

@@ -19,11 +19,9 @@ class TestHelmHTTPDTemplate:
         self.hc_api.delete_project()
 
     def test_package_persistent(self):
-        self.hc_api.set_version("0.0.1")
         self.hc_api.package_name = "httpd-imagestreams"
         self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
-        self.hc_api.set_version("0.0.5")
         self.hc_api.package_name = "httpd-template"
         self.hc_api.helm_package()
         assert self.hc_api.helm_installation(

@@ -10,14 +10,12 @@ metadata:
 spec:
   #serviceAccount: {{ .Values.serviceAccount }}
   containers:
-    - name: "httpd-connection-test"
-      image: "registry.redhat.io/rhel8/httpd-24:latest"
+    - name: "nginx-connection-test"
+      image: "registry.redhat.io/ubi8/nginx-122:latest"
       imagePullPolicy: IfNotPresent
       command:
         - '/bin/bash'
-        - '-ec'
+        - '-exc'
         - >
-          curl {{ .Values.name }}.{{ .Release.Namespace}} | grep "{{ .Values.expected_str }}"
-  lookupPolicy:
-    local: true
+          curl {{ .Values.name }}.{{ .Release.Namespace }}:8080 | grep "{{ .Values.expected_str }}"
   restartPolicy: Never

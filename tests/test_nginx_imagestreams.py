@@ -21,6 +21,8 @@ class TestHelmRHELNginxImageStreams:
     @pytest.mark.parametrize(
         "version,registry",
         [
+            ("1.22-ubi9", "registry.redhat.io/ubi9/nginx-122:latest"),
+            ("1.22-ubi8", "registry.redhat.io/ubi8/nginx-122:latest"),
             ("1.20-ubi9", "registry.redhat.io/ubi9/nginx-120:latest"),
             ("1.20-ubi8", "registry.redhat.io/ubi8/nginx-120:latest"),
             ("1.20-ubi7", "registry.redhat.io/ubi7/nginx-120:latest"),

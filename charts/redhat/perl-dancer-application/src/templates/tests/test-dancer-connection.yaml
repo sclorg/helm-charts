@@ -11,6 +11,7 @@ spec:
   #serviceAccount: {{ .Values.serviceAccount }}
   containers:
     - name: "{{ .Release.Name }}-connection-test"
+      namespace: "{{ .Release.Namespace }}"
       image: "registry.redhat.io/ubi8/perl-530:latest"
       imagePullPolicy: IfNotPresent
       command:

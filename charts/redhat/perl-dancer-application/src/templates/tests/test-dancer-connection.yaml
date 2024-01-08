@@ -2,22 +2,20 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: "{{ .Release.Name }}-connection-test"
-  namespace: "{{ .Release.Namespace }}"
   annotations:
     "helm.sh/hook": test
   labels:
-    name: {{ .Values.nase }}
+    name: {{ .Values.name }}
+    template: {{ .Values.name }}
 spec:
   #serviceAccount: {{ .Values.serviceAccount }}
   containers:
-    - name: "httpd-connection-test"
-      image: "registry.redhat.io/ubi8/perl:latest"
+    - name: "{{ .Release.Name }}-connection-test"
+      image: "registry.redhat.io/ubi8/perl-530:latest"
       imagePullPolicy: IfNotPresent
       command:
         - '/bin/bash'
-        - '-ec'
+        - '-exc'
         - >
           curl {{ .Values.name }}.{{ .Release.Namespace }}:8080 | grep "{{ .Values.expected_str }}"
-  lookupPolicy:
-    local: true
   restartPolicy: Never

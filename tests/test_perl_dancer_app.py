@@ -48,5 +48,5 @@ class TestHelmPerlDancerAppTemplate:
                 "namespace": self.hc_api.namespace
             }
         )
-        assert self.hc_api.is_pod_running()
+        assert self.hc_api.is_s2i_pod_running()
         assert self.hc_api.test_helm_chart(expected_str=["Welcome to your Dancer application on OpenShift"])

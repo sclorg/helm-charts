@@ -4,7 +4,7 @@ annotations:
   charts.openshift.io/name: Red Hat Dancer application with a MySQL on UBI (experimental)
   charts.openshift.io/provider: Red Hat
   charts.openshift.io/providerType: redhat
-name: dancer-mysql-persistent
+name: perl-dancer-mysql-persistent
 tags: quickstart,perl,dancer,mysql
 apiVersion: v2
 appVersion: 0.0.1

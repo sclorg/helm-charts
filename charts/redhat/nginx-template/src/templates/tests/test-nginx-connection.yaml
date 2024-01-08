@@ -15,7 +15,7 @@ spec:
       imagePullPolicy: IfNotPresent
       command:
         - '/bin/bash'
-        - '-ec'
+        - '-exc'
         - >
-          curl {{ .Values.name }}.{{ .Release.Namespace}}:8080 | grep "{{ .Values.expected_str }}"
+          curl {{ .Values.name }}.{{ .Release.Namespace }}:8080 | grep "{{ .Values.expected_str }}"
   restartPolicy: Never

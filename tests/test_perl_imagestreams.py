@@ -23,7 +23,6 @@ class TestHelmRHELPerlImageStreams:
         [
             ("5.32-ubi9", "registry.redhat.io/ubi9/perl-532:latest"),
             ("5.32-ubi8", "registry.redhat.io/ubi8/perl-532:latest"),
-            ("5.30-ubi8", "registry.redhat.io/ubi8/perl-530:latest"),
             ("5.30-el7", "registry.redhat.io/rhscl/perl-530-rhel7:latest"),
             ("5.30", "registry.redhat.io/rhscl/perl-530-rhel7:latest"),
             ("5.26-ubi8", "registry.redhat.io/ubi8/perl-526:latest"),

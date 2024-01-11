@@ -18,7 +18,7 @@ class TestHelmHTTPDTemplate:
     def teardown_method(self):
         self.hc_api.delete_project()
 
-    def test_package_persistent(self):
+    def test_package_persistent_by_curl(self):
         self.hc_api.package_name = "httpd-imagestreams"
         self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
@@ -32,11 +32,11 @@ class TestHelmHTTPDTemplate:
         )
         assert self.hc_api.is_s2i_pod_running()
         assert self.hc_api.test_helm_curl_output(
-            route_name="httpd",
+            route_name="httpd-example",
             expected_str="Welcome to your static httpd application on OpenShift"
         )
 
-    def test_by_helm_chart_test(self):
+    def test_package_persistent_by_helm_chart_test(self):
         self.hc_api.package_name = "httpd-imagestreams"
         self.hc_api.helm_package()
         assert self.hc_api.helm_installation()

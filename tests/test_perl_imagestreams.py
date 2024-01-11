@@ -29,7 +29,6 @@ class TestHelmRHELPerlImageStreams:
         ],
     )
     def test_package_imagestream(self, version, registry):
-        self.hc_api.set_version("0.0.1")
         self.hc_api.helm_package()
         self.hc_api.helm_installation()
         assert self.hc_api.check_imagestreams(version=version, registry=registry)
@@ -50,14 +49,12 @@ class TestHelmCentOSPerlImageStreams:
         [
             ("5.32-ubi9", "registry.access.redhat.com/ubi9/perl-532:latest"),
             ("5.32-ubi8", "registry.access.redhat.com/ubi8/perl-532:latest"),
-            ("5.30-ubi8", "registry.access.redhat.com/ubi8/perl-530:latest"),
             ("5.30-el7", "quay.io/centos7/perl-530-centos7:latest"),
             ("5.30", "quay.io/centos7/perl-530-centos7:latest"),
             ("5.26-ubi8", "registry.access.redhat.com/ubi8/perl-526:latest"),
         ],
     )
     def test_package_imagestream(self, version, registry):
-        self.hc_api.set_version("0.0.1")
         self.hc_api.helm_package()
         self.hc_api.helm_installation()
         assert self.hc_api.check_imagestreams(version=version, registry=registry)

@@ -26,7 +26,7 @@ class TestHelmPerlDancerAppTemplate:
         self.hc_api.helm_package()
         assert self.hc_api.helm_installation(
             values={
-                "perl_version": "5.30-ubi8",
+                "perl_version": "5.32-ubi8",
                 "namespace": self.hc_api.namespace
             }
         )
@@ -44,7 +44,7 @@ class TestHelmPerlDancerAppTemplate:
         self.hc_api.helm_package()
         assert self.hc_api.helm_installation(
             values={
-                "perl_version": "5.30-ubi8",
+                "perl_version": "5.32-ubi8",
                 "namespace": self.hc_api.namespace
             }
         )

@@ -1,0 +1,5 @@
+description: An example CakePHP application with a MySQL database. For more information
+  about using this template, including OpenShift considerations, see https://github.com/sclorg/cakephp-ex/blob/master/README.md.
+name: cakephp-mysql-persistent
+tags: quickstart,php,cakephp
+version: v0.0.1

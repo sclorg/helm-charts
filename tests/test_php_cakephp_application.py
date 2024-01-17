@@ -26,11 +26,11 @@ class TestHelmCakePHPTemplate:
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation(
             values={
-                "nginx_version": "8.0-ubi8",
+                "php_version": "8.0-ubi8",
                 "namespace": self.hc_api.namespace
             }
         )
-        assert self.hc_api.is_s2i_pod_running()
+        assert self.hc_api.is_s2i_pod_running(pod_name_prefix="cakephp-example")
         assert self.hc_api.test_helm_curl_output(
             route_name="cakephp-example",
             expected_str="Welcome to CakePHP 4.5"
@@ -44,9 +44,9 @@ class TestHelmCakePHPTemplate:
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation(
             values={
-                "nginx_version": "8.0-ubi8",
+                "php_version": "8.0-ubi8",
                 "namespace": self.hc_api.namespace
             }
         )
-        assert self.hc_api.is_s2i_pod_running()
+        assert self.hc_api.is_s2i_pod_running(pod_name_prefix="cakephp-example")
         assert self.hc_api.test_helm_chart(expected_str=["Welcome to CakePHP 4.5"])

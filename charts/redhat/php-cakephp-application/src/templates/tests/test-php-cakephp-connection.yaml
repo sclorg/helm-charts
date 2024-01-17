@@ -10,7 +10,6 @@ metadata:
 spec:
   containers:
     - name: "{{ .Release.Name }}-connection-test"
-      namespace: "{{ .Release.Namespace }}"
       image: "registry.redhat.io/ubi8/ubi:latest"
       imagePullPolicy: IfNotPresent
       command:

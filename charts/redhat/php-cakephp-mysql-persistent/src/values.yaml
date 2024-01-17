@@ -12,7 +12,7 @@ memory_limit: 512Mi
 memory_mysql_limit: 512Mi
 mysql_default_authentication_plugin: mysql_native_password
 mysql_version: 8.0-el8
-name: cakephp-mysql
+name: cakephp-mysql-persistent
 namespace: openshift
 opcache_revalidate_freq: "2"
 php_version: 8.1-ubi9

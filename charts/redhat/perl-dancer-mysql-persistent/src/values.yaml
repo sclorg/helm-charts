@@ -9,7 +9,7 @@ github_webhook_secret: "SOMETHING" # TODO: must define a default value for .gith
 memory_limit: 512Mi
 memory_mysql_limit: 512Mi
 mysql_default_authentication_plugin: mysql_native_password
-name: dancer-mysql-persistent
+name: dancer-example
 namespace: openshift
 perl_apache2_reload: "" # TODO: must define a default value for .perl_apache2_reload
 perl_version: 5.30-ubi8

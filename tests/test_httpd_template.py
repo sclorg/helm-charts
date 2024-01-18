@@ -30,7 +30,7 @@ class TestHelmHTTPDTemplate:
                 "namespace": self.hc_api.namespace
             }
         )
-        assert self.hc_api.is_s2i_pod_running()
+        assert self.hc_api.is_s2i_pod_running(pod_name_prefix="httpd-example")
         assert self.hc_api.test_helm_curl_output(
             route_name="httpd-example",
             expected_str="Welcome to your static httpd application on OpenShift"
@@ -48,5 +48,5 @@ class TestHelmHTTPDTemplate:
                 "namespace": self.hc_api.namespace
             }
         )
-        assert self.hc_api.is_s2i_pod_running()
+        assert self.hc_api.is_s2i_pod_running(pod_name_prefix="httpd-example")
         assert self.hc_api.test_helm_chart(expected_str=["Welcome to your static httpd application on OpenShift"])

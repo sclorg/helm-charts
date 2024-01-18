@@ -31,7 +31,7 @@ class TestHelmNginxTemplate:
             }
         )
         expected_str = "Welcome to your static nginx application on OpenShift"
-        assert self.hc_api.is_s2i_pod_running()
+        assert self.hc_api.is_s2i_pod_running(pod_name_prefix="nginx-example")
         assert self.hc_api.test_helm_curl_output(
             route_name="nginx-example",
             expected_str=expected_str
@@ -50,5 +50,5 @@ class TestHelmNginxTemplate:
             }
         )
         expected_str = "Welcome to your static nginx application on OpenShift"
-        assert self.hc_api.is_s2i_pod_running()
+        assert self.hc_api.is_s2i_pod_running(pod_name_prefix="nginx-example")
         assert self.hc_api.test_helm_chart(expected_str=[expected_str])

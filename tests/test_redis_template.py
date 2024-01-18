@@ -27,5 +27,5 @@ class TestHelmRedisPersistent:
         self.hc_api.package_name = "redis-persistent"
         self.hc_api.helm_package()
         assert self.hc_api.helm_installation(values={".redis_version": "6-el8", ".namespace": self.hc_api.namespace})
-        assert self.hc_api.is_pod_running()
+        assert self.hc_api.is_pod_running(pod_name_prefix="redis")
         assert self.hc_api.test_helm_chart(expected_str=["PONG"])

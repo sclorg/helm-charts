@@ -30,9 +30,9 @@ class TestHelmCakePHPTemplate:
                 "namespace": self.hc_api.namespace
             }
         )
-        assert self.hc_api.is_s2i_pod_running(pod_name_prefix="ruby-example")
+        assert self.hc_api.is_s2i_pod_running(pod_name_prefix="rails-example")
         assert self.hc_api.test_helm_curl_output(
-            route_name="ruby-example",
+            route_name="rails-example",
             expected_str="Welcome to your Rails application"
         )
 
@@ -44,9 +44,9 @@ class TestHelmCakePHPTemplate:
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation(
             values={
-                "ruby_version": "8.1-ubi8",
+                "ruby_version": "3.1-ubi8",
                 "namespace": self.hc_api.namespace
             }
         )
-        assert self.hc_api.is_s2i_pod_running(pod_name_prefix="ruby-example")
+        assert self.hc_api.is_s2i_pod_running(pod_name_prefix="rails-example")
         assert self.hc_api.test_helm_chart(expected_str=["Welcome to your Rails application"])

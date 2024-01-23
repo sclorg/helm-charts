@@ -1,5 +1,5 @@
 description: |-
-  An example Dancer application with no database. For more information
+  This content is experimental, do not use it in production. An example Dancer application with no database. For more information
   about using this template, including OpenShift considerations, 
   see https://github.com/sclorg/dancer-ex/blob/master/README.md.
 annotations:

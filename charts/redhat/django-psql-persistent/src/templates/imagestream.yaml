@@ -1,0 +1,9 @@
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  annotations:
+    description: Keeps track of changes in the application image
+  labels:
+    app: django-psql-persistent
+    template: django-psql-persistent
+  name: {{ .Values.name }}

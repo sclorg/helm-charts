@@ -1,0 +1,5 @@
+description: An example Django application with a PostgreSQL database. For more information
+  about using this template, including OpenShift considerations, see https://github.com/sclorg/django-ex/blob/master/README.md.
+name: django-psql-persistent
+tags: quickstart,python,django
+version: v0.0.1

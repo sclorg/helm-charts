@@ -1,0 +1,9 @@
+chart:
+  name: django-psql-persistent
+  description: This is the Red Hat Django application with PostgreSQL database
+publicPgpKey: null
+users:
+  - githubUsername: phracek
+vendor:
+  label: redhat
+  name: Red Hat

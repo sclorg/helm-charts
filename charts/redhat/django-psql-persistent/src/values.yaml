@@ -1,0 +1,20 @@
+app_config: "" # TODO: must define a default value for .app_config
+application_domain: "" # TODO: must define a default value for .application_domain
+context_dir: "" # TODO: must define a default value for .context_dir
+database_engine: postgresql
+database_name: default
+database_password: django # TODO: must define a default value for .database_password
+database_service_name: postgresql
+database_user: django
+django_secret_key: "FOOBAR" # TODO: must define a default value for .django_secret_key
+github_webhook_secret: "SOMETHING" # TODO: must define a default value for .github_webhook_secret
+memory_limit: 512Mi
+memory_postgresql_limit: 512Mi
+name: django-psql
+namespace: openshift
+pip_index_url: "" # TODO: must define a default value for .pip_index_url
+postgresql_version: 12-el8
+python_version: 3.11-ubi8
+source_repository_ref: 2.2.x # TODO: must define a default value for .source_repository_ref
+source_repository_url: https://github.com/sclorg/django-ex.git
+volume_capacity: 1Gi

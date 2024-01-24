@@ -1,0 +1,152 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    description: Defines how to deploy the application server
+    image.openshift.io/triggers: |-
+      [
+        {
+          "from": {
+            "kind": "ImageStreamTag",
+            "name": "{{ .Values.name }}:latest"
+          },
+          "fieldPath": "spec.template.spec.containers[0].image"
+        }
+      ]
+    template.alpha.openshift.io/wait-for-ready: "true"
+  labels:
+    app: django-psql
+    template: django-psql
+  name: {{ .Values.name }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: {{ .Values.name }}
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        name: {{ .Values.name }}
+      name: {{ .Values.name }}
+    spec:
+      containers:
+      - env:
+        - name: DATABASE_SERVICE_NAME
+          value: {{ .Values.database_service_name }}
+        - name: DATABASE_ENGINE
+          value: {{ .Values.database_engine }}
+        - name: DATABASE_NAME
+          value: {{ .Values.database_name }}
+        - name: DATABASE_USER
+          valueFrom:
+            secretKeyRef:
+              key: database-user
+              name: {{ .Values.name }}
+        - name: DATABASE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: database-password
+              name: {{ .Values.name }}
+        - name: APP_CONFIG
+          value: {{ .Values.app_config }}
+        - name: DJANGO_SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              key: django-secret-key
+              name: {{ .Values.name }}
+        image: ' '
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 30
+          timeoutSeconds: 3
+        name: django-psql
+        ports:
+        - containerPort: 8080
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 3
+          timeoutSeconds: 3
+        resources:
+          limits:
+            memory: {{ .Values.memory_limit }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    description: Defines how to deploy the database
+    image.openshift.io/triggers: |-
+      [
+        {
+          "from": {
+            "kind": "ImageStreamTag",
+            "name": "postgresql:{{ .Values.postgresql_version }}"
+          },
+          "fieldPath": "spec.template.spec.containers[0].image"
+        }
+      ]
+    template.alpha.openshift.io/wait-for-ready: "true"
+  labels:
+    app: django-psql
+    template: django-psql
+  name: {{ .Values.database_service_name }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: {{ .Values.database_service_name }}
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        name: {{ .Values.database_service_name }}
+      name: {{ .Values.database_service_name }}
+    spec:
+      containers:
+      - env:
+        - name: POSTGRESQL_USER
+          valueFrom:
+            secretKeyRef:
+              key: database-user
+              name: {{ .Values.name }}
+        - name: POSTGRESQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: database-password
+              name: {{ .Values.name }}
+        - name: POSTGRESQL_DATABASE
+          value: {{ .Values.database_name }}
+        image: " "
+        livenessProbe:
+          exec:
+            command:
+            - /usr/libexec/check-container
+            - --live
+          initialDelaySeconds: 120
+          timeoutSeconds: 10
+        name: postgresql
+        ports:
+        - containerPort: 5432
+        readinessProbe:
+          exec:
+            command:
+            - /usr/libexec/check-container
+          initialDelaySeconds: 5
+          timeoutSeconds: 1
+        resources:
+          limits:
+            memory: {{ .Values.memory_postgresql_limit }}
+        volumeMounts:
+        - mountPath: /var/lib/pgsql/data
+          name: {{ .Values.database_service_name }}-data
+      volumes:
+      - name: {{ .Values.database_service_name }}-data
+        persistentVolumeClaim:
+          claimName: {{ .Values.database_service_name }}

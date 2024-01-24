@@ -2,8 +2,8 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   labels:
-    app: django-psql-persistent
-    template: django-psql-persistent
+    app: django-psql
+    template: django-psql
   name: {{ .Values.name }}
 spec:
   host: {{ .Values.application_domain }}

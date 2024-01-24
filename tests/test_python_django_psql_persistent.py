@@ -8,7 +8,7 @@ from container_ci_suite.helm import HelmChartsAPI
 test_dir = Path(os.path.abspath(os.path.dirname(__file__)))
 
 
-class TestHelmPythonDjangoPsqlAppTemplate:
+class TestHelmPythonDjangoPsqlTemplate:
 
     def setup_method(self):
         package_name = "django-psql-persistent"
@@ -33,9 +33,9 @@ class TestHelmPythonDjangoPsqlAppTemplate:
                 "namespace": self.hc_api.namespace
             }
         )
-        assert self.hc_api.is_s2i_pod_running(pod_name_prefix="django-psql-persistent")
+        assert self.hc_api.is_s2i_pod_running(pod_name_prefix="django-psql")
         assert self.hc_api.test_helm_curl_output(
-            route_name="django-psql-persistent",
+            route_name="django-psql",
             expected_str="Welcome to your Django application"
         )
 
@@ -54,5 +54,5 @@ class TestHelmPythonDjangoPsqlAppTemplate:
                 "namespace": self.hc_api.namespace
             }
         )
-        assert self.hc_api.is_s2i_pod_running(pod_name_prefix="django-psql-persistent")
+        assert self.hc_api.is_s2i_pod_running(pod_name_prefix="django-psql")
         assert self.hc_api.test_helm_chart(expected_str=["Welcome to your Django application"])

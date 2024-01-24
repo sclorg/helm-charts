@@ -15,8 +15,8 @@ metadata:
       ]
     template.alpha.openshift.io/wait-for-ready: "true"
   labels:
-    app: django-psql-persistent
-    template: django-psql-persistent
+    app: django-psql
+    template: django-psql
   name: {{ .Values.name }}
 spec:
   replicas: 1
@@ -63,7 +63,7 @@ spec:
             port: 8080
           initialDelaySeconds: 30
           timeoutSeconds: 3
-        name: django-psql-persistent
+        name: django-psql
         ports:
         - containerPort: 8080
         readinessProbe:
@@ -93,8 +93,8 @@ metadata:
       ]
     template.alpha.openshift.io/wait-for-ready: "true"
   labels:
-    app: django-psql-persistent
-    template: django-psql-persistent
+    app: django-psql
+    template: django-psql
   name: {{ .Values.database_service_name }}
 spec:
   replicas: 1

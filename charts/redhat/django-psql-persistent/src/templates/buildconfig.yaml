@@ -5,8 +5,8 @@ metadata:
     description: Defines how to build the application
     template.alpha.openshift.io/wait-for-ready: "true"
   labels:
-    app: django-psql-persistent
-    template: django-psql-persistent
+    app: django-psql
+    template: django-psql
   name: {{ .Values.name }}
 spec:
   output:

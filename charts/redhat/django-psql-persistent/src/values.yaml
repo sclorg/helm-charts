@@ -3,14 +3,14 @@ application_domain: "" # TODO: must define a default value for .application_doma
 context_dir: "" # TODO: must define a default value for .context_dir
 database_engine: postgresql
 database_name: default
-database_password: djangopwd # TODO: must define a default value for .database_password
+database_password: django # TODO: must define a default value for .database_password
 database_service_name: postgresql
 database_user: django
 django_secret_key: "FOOBAR" # TODO: must define a default value for .django_secret_key
 github_webhook_secret: "SOMETHING" # TODO: must define a default value for .github_webhook_secret
 memory_limit: 512Mi
 memory_postgresql_limit: 512Mi
-name: django-psql-persistent
+name: django-psql
 namespace: openshift
 pip_index_url: "" # TODO: must define a default value for .pip_index_url
 postgresql_version: 12-el8

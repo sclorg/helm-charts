@@ -6,8 +6,8 @@ metadata:
     service.alpha.openshift.io/dependencies: '[{"name": "{{ .Values.database_service_name }}",
       "kind": "Service"}]'
   labels:
-    app: django-psql-persistent
-    template: django-psql-persistent
+    app: django-psql
+    template: django-psql
   name: {{ .Values.name }}
 spec:
   ports:
@@ -23,8 +23,8 @@ metadata:
   annotations:
     description: Exposes the database server
   labels:
-    app: django-psql-persistent
-    template: django-psql-persistent
+    app: django-psql
+    template: django-psql
   name: {{ .Values.database_service_name }}
 spec:
   ports:

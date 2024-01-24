@@ -1,0 +1,14 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  labels:
+    app: cakephp-mysql
+    template: cakephp-mysql
+  name: {{ .Values.name }}
+spec:
+  host: {{ .Values.application_domain }}
+  tls:
+    termination: Edge
+  to:
+    kind: Service
+    name: {{ .Values.name }}

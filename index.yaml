@@ -1,15 +1,36 @@
 apiVersion: v1
 entries:
+  django-psql-persistent:
+  - annotations:
+      charts.openshift.io/name: Red Hat Python Django application with PostgreSQL
+        database (experimental)
+      charts.openshift.io/provider: Red Hat
+      charts.openshift.io/providerType: redhat
+    apiVersion: v2
+    appVersion: 0.0.1
+    created: "2024-03-08T11:48:15.148558+01:00"
+    description: This content is experimental, do not use it in production. An example
+      Django application with a PostgreSQL database. For more information about using
+      this template, including OpenShift considerations, see https://github.com/sclorg/django-ex/blob/master/README.md.
+    digest: 0146aea4dcf833a1dbc5d589bd0dbab7932038b7c6cbecb629de2a508dee02fe
+    kubeVersion: '>=1.20.0'
+    name: django-psql-persistent
+    sources:
+    - https://github.com/sclorg/helm-charts
+    tags: quickstart,python,django
+    urls:
+    - django-psql-persistent-0.0.1.tgz
+    version: 0.0.1
   httpd-imagestreams:
   - annotations:
       charts.openshift.io/name: Red Hat Apache HTTP Server imagestreams (experimental)
     apiVersion: v2
     appVersion: 0.0.1
-    created: "2023-10-19T13:24:43.225144+02:00"
+    created: "2024-03-08T11:48:15.148825+01:00"
     description: This content is expermental, do not use it in production. Red Hat
       Apache HTTP Server imagestreams. For more information about HTTPD container
       see https://github.com/sclorg/httpd-container/.
-    digest: 4a1ea335e13648ac1779df386043d4bad609bd12daec998f1ffc2bc7fee7607f
+    digest: b8c8b124c7ca18d7ca95b8060f99fb0316ca642b568af4cf4135d7939eb98f0f
     kubeVersion: '>=1.20.0'
     name: httpd-imagestreams
     sources:
@@ -21,9 +42,47 @@ entries:
   httpd-template:
   - annotations:
       charts.openshift.io/name: Red Hat Apache HTTP Server (httpd) application (experimental)
+      charts.openshift.io/provider: Red Hat
+      charts.openshift.io/providerType: redhat
+    apiVersion: v2
+    appVersion: 0.0.6
+    created: "2024-03-08T11:48:15.155627+01:00"
+    description: This content is experimental, do not use it in production. An example
+      Apache HTTP Server (httpd) application that serves static content. For more
+      information about using this template, including OpenShift considerations, see
+      https://github.com/sclorg/httpd-container/blob/master/README.md.
+    digest: 251a2f9e6dd85b4fc400d48863a2e9caea1a2f9dc4bb9594998080056fc4d78e
+    kubeVersion: '>=1.20.0'
+    name: httpd-template
+    sources:
+    - https://github.com/sclorg/helm-charts
+    tags: quickstart,httpd
+    urls:
+    - httpd-template-0.0.6.tgz
+    version: 0.0.6
+  - annotations:
+      charts.openshift.io/name: Red Hat Apache HTTP Server (httpd) application (experimental).
+    apiVersion: v2
+    appVersion: 0.0.5
+    created: "2024-03-08T11:48:15.155157+01:00"
+    description: This content is experimental, do not use it in production. An example
+      Apache HTTP Server (httpd) application that serves static content. For more
+      information about using this template, including OpenShift considerations, see
+      https://github.com/sclorg/httpd-container/blob/master/README.md.
+    digest: 7c12037343566a1af06ae7405b00236a68c043ba444727cb551079f3e030ab04
+    kubeVersion: '>=1.20.0'
+    name: httpd-template
+    sources:
+    - https://github.com/sclorg/helm-charts
+    tags: quickstart,httpd
+    urls:
+    - httpd-template-0.0.5.tgz
+    version: 0.0.5
+  - annotations:
+      charts.openshift.io/name: Red Hat Apache HTTP Server (httpd) application (experimental).
     apiVersion: v2
     appVersion: 0.0.4
-    created: "2023-10-19T13:24:43.226255+02:00"
+    created: "2024-03-08T11:48:15.153676+01:00"
     description: This content is expermental, do not use it in production. An example
       Apache HTTP Server (httpd) application that serves static content. For more
       information about using this template, including OpenShift considerations, see
@@ -38,10 +97,10 @@ entries:
     - httpd-template-0.0.4.tgz
     version: 0.0.4
   - annotations:
-      charts.openshift.io/name: Red Hat Apache HTTP Server (httpd) application (experimental)
+      charts.openshift.io/name: Red Hat Apache HTTP Server (httpd) application (experimental).
     apiVersion: v2
     appVersion: 0.0.3
-    created: "2023-10-19T13:24:43.225886+02:00"
+    created: "2024-03-08T11:48:15.151791+01:00"
     description: This content is expermental, do not use it in production. An example
       Apache HTTP Server (httpd) application that serves static content. For more
       information about using this template, including OpenShift considerations, see
@@ -56,10 +115,10 @@ entries:
     - httpd-template-0.0.3.tgz
     version: 0.0.3
   - annotations:
-      charts.openshift.io/name: Red Hat Apache HTTP Server (httpd) application (experimental)
+      charts.openshift.io/name: Red Hat Apache HTTP Server (httpd) application (experimental).
     apiVersion: v2
     appVersion: 0.0.1
-    created: "2023-10-19T13:24:43.225513+02:00"
+    created: "2024-03-08T11:48:15.15074+01:00"
     description: This content is expermental, do not use it in production. An example
       Apache HTTP Server (httpd) application that serves static content. For more
       information about using this template, including OpenShift considerations, see
@@ -77,11 +136,11 @@ entries:
       charts.openshift.io/name: Red Hat MariaDB database service imagestreams (experimental)
     apiVersion: v2
     appVersion: 0.0.1
-    created: "2023-10-19T13:24:43.226494+02:00"
+    created: "2024-03-08T11:48:15.155931+01:00"
     description: This content is expermental, do not use it in production. Provides
       a Red Hat MariaDB database. For more information about using this database image,
       including OpenShift considerations, see https://github.com/sclorg/mariadb-container/blob/master/README.md.
-    digest: e02f2ab3928412a16313cf939aa813e89b1c129b613306fbc82e15b5f8da927f
+    digest: e3ee801c78fa8c74cd5dd870ed15b1f998a11a4ba593d4d7f1cb51d05dd8459c
     kubeVersion: '>=1.20.0'
     name: mariadb-imagestreams
     sources:
@@ -93,10 +152,30 @@ entries:
   mariadb-persistent:
   - annotations:
       charts.openshift.io/name: Red Hat MariaDB database service, with persistent
+        storage (experimental)
+    apiVersion: v2
+    appVersion: 0.0.3
+    created: "2024-03-08T11:48:15.15898+01:00"
+    description: 'This content is expermental, do not use it in production. MariaDB
+      database service, with persistent storage. For more information about using
+      this template, including OpenShift considerations, see https://github.com/sclorg/mariadb-container/blob/master/10.3/root/usr/share/container-scripts/mysql/README.md.  NOTE:
+      Scaling to more than one replica is not supported. You must have persistent
+      volumes available in your cluster to use this template.'
+    digest: 9dd104f6514507608832bc3acfc882ab34e35956453ff9514c4da25c4bac2df8
+    kubeVersion: '>=1.20.0'
+    name: mariadb-persistent
+    sources:
+    - https://github.com/sclorg/helm-charts
+    tags: database,mariadb
+    urls:
+    - mariadb-persistent-0.0.3.tgz
+    version: 0.0.3
+  - annotations:
+      charts.openshift.io/name: Red Hat MariaDB database service, with persistent
         storage (experimental).
     apiVersion: v2
     appVersion: 0.0.2
-    created: "2023-10-19T13:24:43.227226+02:00"
+    created: "2024-03-08T11:48:15.158529+01:00"
     description: 'This content is expermental, do not use it in production. MariaDB
       database service, with persistent storage. For more information about using
       this template, including OpenShift considerations, see https://github.com/sclorg/mariadb-container/blob/master/10.3/root/usr/share/container-scripts/mysql/README.md.  NOTE:
@@ -116,7 +195,7 @@ entries:
         storage (experimental).
     apiVersion: v2
     appVersion: 0.0.1
-    created: "2023-10-19T13:24:43.226864+02:00"
+    created: "2024-03-08T11:48:15.157458+01:00"
     description: 'MariaDB database service, with persistent storage. For more information
       about using this template, including OpenShift considerations, see https://github.com/sclorg/mariadb-container/blob/master/10.3/root/usr/share/container-scripts/mysql/README.md.  NOTE:
       Scaling to more than one replica is not supported. You must have persistent
@@ -134,11 +213,11 @@ entries:
       charts.openshift.io/name: Red Hat MySQL database service imagestreams (experimental)
     apiVersion: v2
     appVersion: 0.0.1
-    created: "2023-10-19T13:24:43.227461+02:00"
+    created: "2024-03-08T11:48:15.159251+01:00"
     description: This content is expermental, do not use it in production. Provides
       a MySQL 8.0 database. For more information about using this database image,
       including OpenShift considerations, see https://github.com/sclorg/mysql-container/blob/master/README.md.
-    digest: 7d62f710c4a414284898436ca646c0a6407eac33c8172ce70b0c105d9566b097
+    digest: 8b3a708ac7d0ac2cfaaa3739321e3808bd82520f05f77d7a64cd9999d898b987
     kubeVersion: '>=1.20.0'
     name: mysql-imagestreams
     sources:
@@ -150,10 +229,30 @@ entries:
   mysql-persistent:
   - annotations:
       charts.openshift.io/name: Red Hat MySQL database service, with persistent storage
+        (experimental)
+    apiVersion: v2
+    appVersion: 0.0.3
+    created: "2024-03-08T11:48:15.1621+01:00"
+    description: 'This content is expermental, do not use it in production. MySQL
+      database service, with persistent storage. For more information about using
+      this template, including OpenShift considerations, see https://github.com/sclorg/mysql-container/blob/master/8.0/root/usr/share/container-scripts/mysql/README.md.  NOTE:
+      Scaling to more than one replica is not supported. You must have persistent
+      volumes available in your cluster to use this template.'
+    digest: e67368fbd490f4cac59929068fd782dea01894d5e8deda205fa84ce4a65b96f1
+    kubeVersion: '>=1.20.0'
+    name: mysql-persistent
+    sources:
+    - https://github.com/sclorg/helm-charts
+    tags: database,mysql
+    urls:
+    - mysql-persistent-0.0.3.tgz
+    version: 0.0.3
+  - annotations:
+      charts.openshift.io/name: Red Hat MySQL database service, with persistent storage
         (experimental).
     apiVersion: v2
     appVersion: 0.0.2
-    created: "2023-10-19T13:24:43.22826+02:00"
+    created: "2024-03-08T11:48:15.161661+01:00"
     description: 'This content is expermental, do not use it in production. MySQL
       database service, with persistent storage. For more information about using
       this template, including OpenShift considerations, see https://github.com/sclorg/mysql-container/blob/master/8.0/root/usr/share/container-scripts/mysql/README.md.  NOTE:
@@ -173,7 +272,7 @@ entries:
         (experimental).
     apiVersion: v2
     appVersion: 0.0.1
-    created: "2023-10-19T13:24:43.227841+02:00"
+    created: "2024-03-08T11:48:15.160854+01:00"
     description: 'This content is expermental, do not use it in production. MySQL
       database service, with persistent storage. For more information about using
       this template, including OpenShift considerations, see https://github.com/sclorg/mysql-container/blob/master/8.0/root/usr/share/container-scripts/mysql/README.md.  NOTE:
@@ -190,14 +289,32 @@ entries:
   nginx-imagestreams:
   - annotations:
       charts.openshift.io/name: Red Hat Nginx HTTP server and a reverse proxy (nginx)
-        (experimental).
+        (experimental)
     apiVersion: v2
-    appVersion: 0.0.1
-    created: "2023-10-19T13:24:43.228517+02:00"
+    appVersion: 0.0.2
+    created: "2024-03-08T11:48:15.163788+01:00"
     description: This content is expermental, do not use it in production. Build and
       serve static content via Nginx HTTP server and a reverse proxy (nginx) on RHEL.
       https://github.com/sclorg/nginx-container/blob/master/README.md.
-    digest: 2aeb6c2cbced99ec359986c3dcef3f090253b1885c8cf1cb7a350f14f585cdcc
+    digest: ced82096dbd45af3391f2dc1667a852e59bfc41bbd128495ee9101b2d5e221ef
+    kubeVersion: '>=1.20.0'
+    name: nginx-imagestreams
+    sources:
+    - https://github.com/sclorg/helm-charts
+    tags: builder,nginx
+    urls:
+    - nginx-imagestreams-0.0.2.tgz
+    version: 0.0.2
+  - annotations:
+      charts.openshift.io/name: Red Hat Nginx HTTP server and a reverse proxy (nginx)
+        (experimental)
+    apiVersion: v2
+    appVersion: 0.0.1
+    created: "2024-03-08T11:48:15.163449+01:00"
+    description: This content is expermental, do not use it in production. Build and
+      serve static content via Nginx HTTP server and a reverse proxy (nginx) on RHEL.
+      https://github.com/sclorg/nginx-container/blob/master/README.md.
+    digest: f1c2d354949f3d7c278365e176cfda458524f98dbdbf41f801217549ed317f7e
     kubeVersion: '>=1.20.0'
     name: nginx-imagestreams
     sources:
@@ -206,16 +323,74 @@ entries:
     urls:
     - nginx-imagestreams-0.0.1.tgz
     version: 0.0.1
+  nginx-template:
+  - annotations:
+      charts.openshift.io/name: Red Hat Nginx HTTP Server (nginx) application (experimental).
+      charts.openshift.io/provider: Red Hat
+      charts.openshift.io/providerType: redhat
+    apiVersion: v2
+    appVersion: 0.0.1
+    created: "2024-03-08T11:48:15.164282+01:00"
+    description: An example Nginx HTTP server and a reverse proxy (nginx) application
+      that serves static content. For more information about using this template,
+      including OpenShift considerations, see https://github.com/sclorg/nginx-ex/blob/master/README.md.
+    digest: 7c288968f937308caf9c2d620322494f9d6d8e7ef24f4b89c1b898b06b443c40
+    kubeVersion: '>=1.20.0'
+    name: nginx-template
+    sources:
+    - https://github.com/sclorg/helm-charts
+    tags: quickstart,nginx
+    urls:
+    - nginx-template-0.0.1.tgz
+    version: 0.0.1
+  nodejs-application:
+  - annotations:
+      charts.openshift.io/name: Red Hat Apache Rails application with no database
+        (experimental)
+      charts.openshift.io/provider: Red Hat
+      charts.openshift.io/providerType: redhat
+    apiVersion: v2
+    appVersion: 0.0.1
+    created: "2024-03-08T11:48:15.164708+01:00"
+    description: This content is experimental, do not use it in production. An example
+      Node.js application with no database. For more information about using this
+      template, including OpenShift considerations, see https://github.com/sclorg/nodejs-ex/blob/master/README.md.
+    digest: b247904522cc5cee5c042b60d6069d11c08598c8f8e39775da01588735458cbb
+    kubeVersion: '>=1.20.0'
+    name: nodejs-application
+    sources:
+    - https://github.com/sclorg/helm-charts
+    tags: quickstart,nodejs
+    urls:
+    - nodejs-application-0.0.1.tgz
+    version: 0.0.1
   nodejs-imagestreams:
+  - annotations:
+      charts.openshift.io/name: Red Hat NodeJS applications on UBI (experimental)
+    apiVersion: v2
+    appVersion: 0.0.2
+    created: "2024-03-08T11:48:15.165915+01:00"
+    description: This content is expermental, do not use it in production. Build and
+      run NodeJS applications on UBI. For more information about using this builder
+      image, including OpenShift considerations, see https://github.com/sclorg/s2i-nodejs-container/blob/master/20/README.md.
+    digest: 02fdfd16c6b6547038ac74639e473c759eacf9bf8b0876d4ebe16e867694c6bc
+    kubeVersion: '>=1.20.0'
+    name: nodejs-imagestreams
+    sources:
+    - https://github.com/sclorg/helm-charts
+    tags: builder,nodejs
+    urls:
+    - nodejs-imagestreams-0.0.2.tgz
+    version: 0.0.2
   - annotations:
       charts.openshift.io/name: Red Hat PHP applications on UBI (experimental)
     apiVersion: v2
     appVersion: 0.0.1
-    created: "2023-10-19T13:24:43.228747+02:00"
+    created: "2024-03-08T11:48:15.165566+01:00"
     description: This content is expermental, do not use it in production. Build and
       run NodeJS applications on UBI. For more information about using this builder
       image, including OpenShift considerations, see https://github.com/sclorg/s2i-nodejs-container/blob/master/18/README.md.
-    digest: 224c116019a4b99350a41e60c70c2ffba3b6624259d5950ba43d6eeaa4830d0b
+    digest: 9716aa1f73b2c6c3e50c30d3bba152baf9b5ea563b82c66f3b771059236fe482
     kubeVersion: '>=1.20.0'
     name: nodejs-imagestreams
     sources:
@@ -224,16 +399,57 @@ entries:
     urls:
     - nodejs-imagestreams-0.0.1.tgz
     version: 0.0.1
+  perl-dancer-application:
+  - annotations:
+      charts.openshift.io/name: Red Hat Dancer application on UBI (experimental)
+      charts.openshift.io/provider: Red Hat
+      charts.openshift.io/providerType: redhat
+    apiVersion: v2
+    appVersion: 0.0.1
+    created: "2024-03-08T11:48:15.166387+01:00"
+    description: This content is experimental, do not use it in production. An example
+      Dancer application with no database. For more information about using this template,
+      including OpenShift considerations,  see https://github.com/sclorg/dancer-ex/blob/master/README.md.
+    digest: eee2a62cccb4803a33aff03b98ed93c2f6264e9dbc15f66353bc2ed7b2932125
+    kubeVersion: '>=1.20.0'
+    name: perl-dancer-application
+    sources:
+    - https://github.com/sclorg/helm-charts
+    tags: quickstart,perl,dancer
+    urls:
+    - perl-dancer-application-0.0.1.tgz
+    version: 0.0.1
+  perl-dancer-mysql-persistent:
+  - annotations:
+      charts.openshift.io/name: Red Hat Dancer application with a MySQL on UBI (experimental)
+      charts.openshift.io/provider: Red Hat
+      charts.openshift.io/providerType: redhat
+    apiVersion: v2
+    appVersion: 0.0.1
+    created: "2024-03-08T11:48:15.166928+01:00"
+    description: An example Dancer application with a MySQL database. For more information
+      about using this template, including OpenShift considerations, see https://github.com/sclorg/dancer-ex/blob/master/README.md.
+    digest: 662a24ec7cc8c1aa29dc34275428f75487ab15c880a05a3507ae5129508e3dce
+    kubeVersion: '>=1.20.0'
+    name: perl-dancer-mysql-persistent
+    sources:
+    - https://github.com/sclorg/helm-charts
+    tags: quickstart,perl,dancer,mysql
+    urls:
+    - perl-dancer-mysql-persistent-0.0.1.tgz
+    version: 0.0.1
   perl-imagestreams:
   - annotations:
       charts.openshift.io/name: Red Hat Perl applications on UBI (experimental)
+      charts.openshift.io/provider: Red Hat
+      charts.openshift.io/providerType: redhat
     apiVersion: v2
     appVersion: 0.0.1
-    created: "2023-10-19T13:24:43.228967+02:00"
+    created: "2024-03-08T11:48:15.167245+01:00"
     description: This content is expermental, do not use it in production. Build and
       run Perl applications on UBI. For more information about using this builder
       image, including OpenShift considerations, see https://github.com/sclorg/s2i-perl-container/blob/master/5.32/README.md.
-    digest: b51490e055e6cdf4c8d4ab4687f1042480973f51f002388afd41f8246d0603e1
+    digest: 920752d31223851f69caf18ab5eaa4194809c0dcf3c4caddbaa226b28158c743
     kubeVersion: '>=1.20.0'
     name: perl-imagestreams
     sources:
@@ -242,16 +458,37 @@ entries:
     urls:
     - perl-imagestreams-0.0.1.tgz
     version: 0.0.1
+  php-cakephp-application:
+  - annotations:
+      charts.openshift.io/name: Red Hat Apache CakePHP application with no database
+        (experimental)
+      charts.openshift.io/provider: Red Hat
+      charts.openshift.io/providerType: redhat
+    apiVersion: v2
+    appVersion: 0.0.1
+    created: "2024-03-08T11:48:15.168467+01:00"
+    description: This content is experimental, do not use it in production. An example
+      CakePHP application with no database. For more information about using this
+      template, including OpenShift considerations, see https://github.com/sclorg/cakephp-ex/blob/master/README.md.
+    digest: 5846f638fa642a32e3d9f20c7ab4a06122cedb2ce5b323a3a068e6886cd8d74c
+    kubeVersion: '>=1.20.0'
+    name: php-cakephp-application
+    sources:
+    - https://github.com/sclorg/helm-charts
+    tags: quickstart,php,cakephp
+    urls:
+    - php-cakephp-application-0.0.1.tgz
+    version: 0.0.1
   php-imagestreams:
   - annotations:
       charts.openshift.io/name: Red Hat PHP applications on UBI (experimental)
     apiVersion: v2
     appVersion: 0.0.1
-    created: "2023-10-19T13:24:43.22919+02:00"
+    created: "2024-03-08T11:48:15.16877+01:00"
     description: This content is expermental, do not use it in production. Build and
       run PHP applications on UBI. For more information about using this builder image,
       including OpenShift considerations, see https://github.com/sclorg/s2i-php-container/blob/master/8.0/README.md.
-    digest: 87fe461d3be0f97c110976ab314537e5e85a6c1e2914b537342016868c7107b9
+    digest: 074dafaefdb5ec199a224f650ffe95e5c9100227a6453eced8d315b072904ab5
     kubeVersion: '>=1.20.0'
     name: php-imagestreams
     sources:
@@ -265,11 +502,11 @@ entries:
       charts.openshift.io/name: Red Hat PostgreSQL database service imagestreams (experimental)
     apiVersion: v2
     appVersion: 0.0.1
-    created: "2023-10-19T13:24:43.229435+02:00"
+    created: "2024-03-08T11:48:15.16945+01:00"
     description: This content is expermental, do not use it in production. Red Hat
       PostgreSQL database service imagestreams. For more information about PostgreSQL
       container see https://github.com/sclorg/postgresql-container/.
-    digest: f04ce33b3ae85a7593a1f022112c69f2c84751d425e8e87d8e053f1d8900bbdf
+    digest: 4b20db2ba5d06c261aff54fe7e23d5a5ce148b89c6485330b961e4a1e1342c8c
     kubeVersion: '>=1.20.0'
     name: postgresql-imagestreams
     sources:
@@ -281,16 +518,16 @@ entries:
   postgresql-persistent:
   - annotations:
       charts.openshift.io/name: Red Hat PostgreSQL database service, with persistent
-        storage (experimental).
+        storage (experimental)
     apiVersion: v2
     appVersion: 0.0.3
-    created: "2023-10-19T13:24:43.23056+02:00"
+    created: "2024-03-08T11:48:15.172779+01:00"
     description: 'This content is expermental, do not use it in production. PostgreSQL
       database service, with persistent storage. For more information about using
       this template, including OpenShift considerations, see https://github.com/sclorg/postgresql-container/.  NOTE:
       Scaling to more than one replica is not supported. You must have persistent
       volumes available in your cluster to use this template.'
-    digest: 622fb2027eb4cab128b17114e59ceac9f2934cb6a39c69645bac993e6eed6465
+    digest: d4371715c4bb1f5412fee56a5788d9511ed96866c404db16bb072218d7b0671f
     name: postgresql-persistent
     sources:
     - https://github.com/sclorg/helm-charts
@@ -303,7 +540,7 @@ entries:
         storage (experimental).
     apiVersion: v2
     appVersion: 0.0.2
-    created: "2023-10-19T13:24:43.230209+02:00"
+    created: "2024-03-08T11:48:15.172254+01:00"
     description: 'This content is expermental, do not use it in production. PostgreSQL
       database service, with persistent storage. For more information about using
       this template, including OpenShift considerations, see https://github.com/sclorg/postgresql-container/.  NOTE:
@@ -322,7 +559,7 @@ entries:
         storage.
     apiVersion: v2
     appVersion: 0.0.1
-    created: "2023-10-19T13:24:43.229838+02:00"
+    created: "2024-03-08T11:48:15.170355+01:00"
     description: 'PostgreSQL database service, with persistent storage. For more information
       about using this template, including OpenShift considerations, see https://github.com/sclorg/postgresql-container/.  NOTE:
       Scaling to more than one replica is not supported. You must have persistent
@@ -335,16 +572,36 @@ entries:
     urls:
     - postgresql-persistent-0.0.1.tgz
     version: 0.0.1
+  python-django-application:
+  - annotations:
+      charts.openshift.io/name: Red Hat Dancer application on UBI (experimental)
+      charts.openshift.io/provider: Red Hat
+      charts.openshift.io/providerType: redhat
+    apiVersion: v2
+    appVersion: 0.0.1
+    created: "2024-03-08T11:48:15.173222+01:00"
+    description: This content is experimental, do not use it in production. An example
+      Django application with no database. For more information about using this template,
+      including OpenShift considerations, see https://github.com/sclorg/django-ex/blob/master/README.md.
+    digest: c092ec151d802edb708667ca98e7299fc9a8985d20b5a0e4a19c7cff69c1602f
+    kubeVersion: '>=1.20.0'
+    name: python-django-application
+    sources:
+    - https://github.com/sclorg/helm-charts
+    tags: quickstart,python,django
+    urls:
+    - python-django-application-0.0.1.tgz
+    version: 0.0.1
   python-imagestreams:
   - annotations:
       charts.openshift.io/name: Red Hat Python applications on UBI (experimental)
     apiVersion: v2
     appVersion: 0.0.1
-    created: "2023-10-19T13:24:43.230814+02:00"
+    created: "2024-03-08T11:48:15.173499+01:00"
     description: This content is expermental, do not use it in production. Build and
       run Python applications on UBI. For more information about using this builder
       image, including OpenShift considerations, see https://github.com/sclorg/s2i-python-container/blob/master/3.11/README.md.
-    digest: 11a51c3b0e08470dd0f53beec78581652ef4cff1485950a7bb1ce818e33a225a
+    digest: aa454f8bf154aaca2343d88526d4190aad8a03dd59250392b572d913d5935ab2
     kubeVersion: '>=1.20.0'
     name: python-imagestreams
     sources:
@@ -358,11 +615,11 @@ entries:
       charts.openshift.io/name: Provides a Redis database on RHEL imagestreams (experimental)
     apiVersion: v2
     appVersion: 0.0.1
-    created: "2023-10-19T13:24:43.231062+02:00"
+    created: "2024-03-08T11:48:15.173778+01:00"
     description: This content is expermental, do not use it in production. Provides
       a Redis database on RHEL imagestreams. For more information about Redis container
       see https://github.com/sclorg/redis-container/.
-    digest: 28c17495d5d49c1acf395c676713e02133eacd8dacb467b30ac30aeec99d43af
+    digest: 1bc107e18dfb1bbf744936b61726821009d46828de3297349acf375e4491a492
     kubeVersion: '>=1.20.0'
     name: redis-imagestreams
     sources:
@@ -374,10 +631,29 @@ entries:
   redis-persistent:
   - annotations:
       charts.openshift.io/name: Red Hat Redis in-memory data structure store, with
+        persistent storage (experimental)
+    apiVersion: v2
+    appVersion: 0.0.3
+    created: "2024-03-08T11:48:15.176168+01:00"
+    description: 'This content is expermental, do not use it in production. Redis
+      in-memory data structure store, with persistent storage. For more information
+      about using this template, including OpenShift considerations, see https://github.com/sclorg/redis-container/blob/master/5.  NOTE:
+      You must have persistent volumes available in your cluster to use this template.'
+    digest: eee68037da7206f8d496e77716780e9096e309aee1d7eef9a5f597741d76ef09
+    kubeVersion: '>=1.20.0'
+    name: redis-persistent
+    sources:
+    - https://github.com/sclorg/helm-charts
+    tags: database,redis
+    urls:
+    - redis-persistent-0.0.3.tgz
+    version: 0.0.3
+  - annotations:
+      charts.openshift.io/name: Red Hat Redis in-memory data structure store, with
         persistent storage (experimental).
     apiVersion: v2
     appVersion: 0.0.2
-    created: "2023-10-19T13:24:43.231739+02:00"
+    created: "2024-03-08T11:48:15.175772+01:00"
     description: 'This content is expermental, do not use it in production. Redis
       in-memory data structure store, with persistent storage. For more information
       about using this template, including OpenShift considerations, see https://github.com/sclorg/redis-container/blob/master/5.  NOTE:
@@ -396,7 +672,7 @@ entries:
         persistent storage (experimental).
     apiVersion: v2
     appVersion: 0.0.1
-    created: "2023-10-19T13:24:43.231397+02:00"
+    created: "2024-03-08T11:48:15.174789+01:00"
     description: 'This content is expermental, do not use it in production. Redis
       in-memory data structure store, with persistent storage. For more information
       about using this template, including OpenShift considerations, see https://github.com/sclorg/redis-container/blob/master/5.  NOTE:
@@ -414,11 +690,11 @@ entries:
       charts.openshift.io/name: Red Hat Ruby applications on UBI (experimental)
     apiVersion: v2
     appVersion: 0.0.1
-    created: "2023-10-19T13:24:43.231977+02:00"
+    created: "2024-03-08T11:48:15.176436+01:00"
     description: This content is expermental, do not use it in production. Build and
       run Ruby applications on UBI. For more information about using this builder
       image, including OpenShift considerations, see https://github.com/sclorg/s2i-ruby-container/blob/master/3.0/README.md.
-    digest: 0a1f1d64e2345fc1fae569da5949b6cd2563c0f37d747e433b3ec4bdbc93c962
+    digest: 58711b2a0e5f3b1e4dd72f53738957777e513277dbf052bbb17adc480ef4bfeb
     kubeVersion: '>=1.20.0'
     name: ruby-imagestreams
     sources:
@@ -427,17 +703,38 @@ entries:
     urls:
     - ruby-imagestreams-0.0.1.tgz
     version: 0.0.1
+  ruby-rails-application:
+  - annotations:
+      charts.openshift.io/name: Red Hat Apache Rails application with no database
+        (experimental)
+      charts.openshift.io/provider: Red Hat
+      charts.openshift.io/providerType: redhat
+    apiVersion: v2
+    appVersion: 0.0.1
+    created: "2024-03-08T11:48:15.176848+01:00"
+    description: This content is experimental, do not use it in production. An example
+      Rails application with no database. For more information about using this template,
+      including OpenShift considerations, see https://github.com/sclorg/rails-ex/blob/master/README.md.
+    digest: d79c35c32c70cfccb78ad6fbe9d86645a40ffad3fe8be9d27379fc557c286ebc
+    kubeVersion: '>=1.20.0'
+    name: ruby-rails-application
+    sources:
+    - https://github.com/sclorg/helm-charts
+    tags: quickstart,ruby,rails
+    urls:
+    - ruby-rails-application-0.0.1.tgz
+    version: 0.0.1
   varnish-imagestreams:
   - annotations:
       charts.openshift.io/name: Red Hat Varnish Cache HTTP reverse proxy imagestreams
-        (experimental).
+        (experimental)
     apiVersion: v2
     appVersion: 0.0.1
-    created: "2023-10-19T13:24:43.232212+02:00"
+    created: "2024-03-08T11:48:15.177109+01:00"
     description: This content is expermental, do not use it in production. Red Hat
       Varnish Cache HTTP reverse proxy imagestreams. For more information about Varnish
       container see https://github.com/sclorg/varnish-container/.
-    digest: 6c303161eda58a77288fb7670259ccbb88a63e42a4abd4e9563a2fb3ccace093
+    digest: 299e3e4893fcdbdf6f224a06aaf27d265f8bcdd20fc1cc869e2821da75f6a957
     kubeVersion: '>=1.20.0'
     name: varnish-imagestreams
     sources:
@@ -446,4 +743,4 @@ entries:
     urls:
     - varnish-imagestreams-0.0.1.tgz
     version: 0.0.1
-generated: "2023-10-19T13:24:43.224717+02:00"
+generated: "2024-03-08T11:48:15.147917+01:00"

@@ -29,10 +29,6 @@ class TestHelmRHELNodeJSImageStreams:
             ("18-ubi9-minimal", "registry.redhat.io/ubi9/nodejs-18-minimal:latest"),
             ("18-ubi8", "registry.redhat.io/ubi8/nodejs-18:latest"),
             ("18-ubi8-minimal", "registry.redhat.io/ubi8/nodejs-18-minimal:latest"),
-            ("16-ubi9", "registry.redhat.io/ubi9/nodejs-16:latest"),
-            ("16-ubi9-minimal", "registry.redhat.io/ubi9/nodejs-16-minimal:latest"),
-            ("16-ubi8", "registry.redhat.io/ubi8/nodejs-16:latest"),
-            ("16-ubi8-minimal", "registry.redhat.io/ubi8/nodejs-16-minimal:latest"),
             ("14-ubi7", "registry.redhat.io/ubi7/nodejs-14:latest"),
         ],
     )
@@ -55,17 +51,12 @@ class TestHelmCentOSNodeJSImageStreams:
     @pytest.mark.parametrize(
         "version,registry",
         [
-            ("16-ubi9", "registry.access.redhat.com/ubi9/nodejs-16:latest"),
-            ("16-ubi9-minimal", "registry.access.redhat.com/ubi9/nodejs-16-minimal:latest"),
-            ("16-ubi8", "registry.access.redhat.com/ubi8/nodejs-16:latest"),
-            ("16-ubi8-minimal", "registry.access.redhat.com/ubi8/nodejs-16-minimal:latest"),
             ("14-ubi8", "registry.access.redhat.com/ubi8/nodejs-14:latest"),
             ("14-ubi8-minimal", "registry.access.redhat.com/ubi8/nodejs-14-minimal:latest"),
             ("14-ubi7", "registry.access.redhat.com/ubi7/nodejs-14:latest"),
         ],
     )
     def test_package_imagestream(self, version, registry):
-        self.hc_api.set_version("0.0.1")
         self.hc_api.helm_package()
         self.hc_api.helm_installation()
         assert self.hc_api.check_imagestreams(version=version, registry=registry)

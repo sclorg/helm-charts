@@ -21,16 +21,18 @@ class TestHelmRHELPostgresqlImageStreams:
     @pytest.mark.parametrize(
         "version,registry",
         [
+            ("16-el8", "registry.redhat.io/rhel8/postgresql-16:latest"),
+            ("16-el9", "registry.redhat.io/rhel9/postgresql-16:latest"),
+            ("15-el8", "registry.redhat.io/rhel8/postgresql-15:latest"),
+            ("15-el9", "registry.redhat.io/rhel9/postgresql-15:latest"),
             ("13-el8", "registry.redhat.io/rhel8/postgresql-13:latest"),
             ("13-el9", "registry.redhat.io/rhel9/postgresql-13:latest"),
             ("10", "registry.redhat.io/rhscl/postgresql-10-rhel7:latest"),
             ("10-el7", "registry.redhat.io/rhscl/postgresql-10-rhel7:latest"),
-            ("10-el8", "registry.redhat.io/rhel8/postgresql-10:latest"),
             ("12-el7", "registry.redhat.io/rhscl/postgresql-12-rhel7:latest"),
         ],
     )
     def test_package_imagestream(self, version, registry):
-        self.hc_api.set_version("0.0.1")
         self.hc_api.helm_package()
         self.hc_api.helm_installation()
         assert self.hc_api.check_imagestreams(version=version, registry=registry)
@@ -49,16 +51,17 @@ class TestHelmCentOSLPostgresqlImageStreams:
     @pytest.mark.parametrize(
         "version,registry",
         [
+            ("16-el9", "quay.io/sclorg/postgresql-16-c9s:latest"),
+            ("16-el8", "quay.io/sclorg/postgresql-16-c8s:latest"),
             ("15-el9", "quay.io/sclorg/postgresql-15-c9s:latest"),
+            ("15-el8", "quay.io/sclorg/postgresql-15-c8s:latest"),
             ("13-el9", "quay.io/sclorg/postgresql-13-c9s:latest"),
             ("15-el8", "quay.io/sclorg/postgresql-15-c8s:latest"),
             ("13-el8", "quay.io/sclorg/postgresql-13-c8s:latest"),
             ("12-el8", "quay.io/sclorg/postgresql-12-c8s:latest"),
-            ("10-el8", "quay.io/sclorg/postgresql-10-c8s:latest"),
         ],
     )
     def test_package_imagestream(self, version, registry):
-        self.hc_api.set_version("0.0.1")
         self.hc_api.helm_package()
         self.hc_api.helm_installation()
         assert self.hc_api.check_imagestreams(version=version, registry=registry)

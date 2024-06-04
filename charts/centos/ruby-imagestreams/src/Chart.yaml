@@ -1,14 +1,14 @@
 description: |-
-  This content is expermental, do not use it in production. Build and run Ruby applications on UBI.
+  This content is experimental, do not use it in production. Build and run Ruby applications on UBI.
   For more information about using this builder image, including OpenShift considerations,
-  see https://github.com/sclorg/s2i-ruby-container/blob/master/3.0/README.md.
+  see https://github.com/sclorg/s2i-ruby-container/blob/master/3.3/README.md.
 annotations:
   charts.openshift.io/name: CentOS Ruby applications on UBI (experimental)
 apiVersion: v2
-appVersion: 0.0.1
+appVersion: 0.0.2
 kubeVersion: '>=1.20.0'
 name: ruby-imagestreams
 tags: builder,ruby
 sources:
   - https://github.com/sclorg/helm-charts
-version: 0.0.1
+version: 0.0.2

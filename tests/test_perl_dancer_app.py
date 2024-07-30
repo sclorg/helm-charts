@@ -20,10 +20,10 @@ class TestHelmPerlDancerAppTemplate:
 
     def test_dancer_application_curl_output(self):
         self.hc_api.package_name = "perl-imagestreams"
-        self.hc_api.helm_package()
+        assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
         self.hc_api.package_name = "perl-dancer-application"
-        self.hc_api.helm_package()
+        assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation(
             values={
                 "perl_version": "5.32-ubi8",
@@ -38,10 +38,10 @@ class TestHelmPerlDancerAppTemplate:
 
     def test_dancer_application_helm_test(self):
         self.hc_api.package_name = "perl-imagestreams"
-        self.hc_api.helm_package()
+        assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
         self.hc_api.package_name = "perl-dancer-application"
-        self.hc_api.helm_package()
+        assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation(
             values={
                 "perl_version": "5.32-ubi8",

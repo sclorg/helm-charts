@@ -25,14 +25,12 @@ class TestHelmRHELRubyImageStreams:
             ("3.1-ubi8", "registry.redhat.io/ubi8/ruby-31:latest"),
             ("3.0-ubi9", "registry.redhat.io/ubi9/ruby-30:latest"),
             ("3.0-ubi8", "registry.redhat.io/ubi8/ruby-30:latest"),
-            ("3.0-ubi7", "registry.redhat.io/ubi7/ruby-30:latest"),
             ("2.5-ubi8", "registry.redhat.io/ubi8/ruby-25:latest"),
         ],
     )
     def test_package_imagestream(self, version, registry):
-        self.hc_api.set_version("0.0.1")
-        self.hc_api.helm_package()
-        self.hc_api.helm_installation()
+        assert self.hc_api.helm_package()
+        assert self.hc_api.helm_installation()
         assert self.hc_api.check_imagestreams(version=version, registry=registry)
 
 
@@ -51,12 +49,10 @@ class TestHelmCentOSRubyImageStreams:
         [
             ("3.0-ubi9", "registry.access.redhat.com/ubi9/ruby-30:latest"),
             ("3.0-ubi8", "registry.access.redhat.com/ubi8/ruby-30:latest"),
-            ("3.0-ubi7", "registry.access.redhat.com/ubi7/ruby-30:latest"),
             ("2.5-ubi8", "registry.access.redhat.com/ubi8/ruby-25:latest"),
         ],
     )
     def test_package_imagestream(self, version, registry):
-        self.hc_api.set_version("0.0.1")
-        self.hc_api.helm_package()
-        self.hc_api.helm_installation()
+        assert self.hc_api.helm_package()
+        assert self.hc_api.helm_installation()
         assert self.hc_api.check_imagestreams(version=version, registry=registry)

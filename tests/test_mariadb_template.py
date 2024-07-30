@@ -20,10 +20,10 @@ class TestHelmMariaDBPersistent:
 
     def test_package_persistent(self):
         self.hc_api.package_name = "mariadb-imagestreams"
-        self.hc_api.helm_package()
+        assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
         self.hc_api.package_name = "mariadb-persistent"
-        self.hc_api.helm_package()
+        assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation(values={".mariadb_version": "10.5-el8", ".namespace": self.hc_api.namespace})
         assert self.hc_api.is_pod_running(pod_name_prefix="mariadb")
         assert self.hc_api.test_helm_chart(expected_str=["42", "testval"])

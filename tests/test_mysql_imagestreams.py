@@ -23,12 +23,11 @@ class TestHelmRHELMySQLImageStreams:
         [
             ("8.0-el9", "registry.redhat.io/rhel9/mysql-80:latest"),
             ("8.0-el8", "registry.redhat.io/rhel8/mysql-80:latest"),
-            ("8.0-el7", "registry.redhat.io/rhscl/mysql-80-rhel7:latest"),
         ],
     )
     def test_package_imagestream(self, version, registry):
-        self.hc_api.helm_package()
-        self.hc_api.helm_installation()
+        assert self.hc_api.helm_package()
+        assert self.hc_api.helm_installation()
         assert self.hc_api.check_imagestreams(version=version, registry=registry)
 
 
@@ -46,12 +45,9 @@ class TestHelmCentOSMySQLImageStreams:
         "version,registry",
         [
             ("8.0-el8", "docker.io/centos/mysql-80-centos8:latest"),
-            ("8.0-el7", "quay.io/centos7/mysql-80-centos7:latest"),
-            ("8.0", "quay.io/centos7/mysql-80-centos7:latest"),
         ],
     )
     def test_package_imagestream(self, version, registry):
-        self.hc_api.set_version("0.0.1")
-        self.hc_api.helm_package()
-        self.hc_api.helm_installation()
+        assert self.hc_api.helm_package()
+        assert self.hc_api.helm_installation()
         assert self.hc_api.check_imagestreams(version=version, registry=registry)

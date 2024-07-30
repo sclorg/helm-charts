@@ -20,10 +20,10 @@ class TestHelmHTTPDTemplate:
 
     def test_package_persistent_by_curl(self):
         self.hc_api.package_name = "httpd-imagestreams"
-        self.hc_api.helm_package()
+        assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
         self.hc_api.package_name = "httpd-template"
-        self.hc_api.helm_package()
+        assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation(
             values={
                 "httpd_version": "2.4-el8",

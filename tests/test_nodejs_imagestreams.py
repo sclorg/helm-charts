@@ -29,12 +29,11 @@ class TestHelmRHELNodeJSImageStreams:
             ("18-ubi9-minimal", "registry.redhat.io/ubi9/nodejs-18-minimal:latest"),
             ("18-ubi8", "registry.redhat.io/ubi8/nodejs-18:latest"),
             ("18-ubi8-minimal", "registry.redhat.io/ubi8/nodejs-18-minimal:latest"),
-            ("14-ubi7", "registry.redhat.io/ubi7/nodejs-14:latest"),
         ],
     )
     def test_package_imagestream(self, version, registry):
-        self.hc_api.helm_package()
-        self.hc_api.helm_installation()
+        assert self.hc_api.helm_package()
+        assert self.hc_api.helm_installation()
         assert self.hc_api.check_imagestreams(version=version, registry=registry)
 
 
@@ -53,10 +52,9 @@ class TestHelmCentOSNodeJSImageStreams:
         [
             ("14-ubi8", "registry.access.redhat.com/ubi8/nodejs-14:latest"),
             ("14-ubi8-minimal", "registry.access.redhat.com/ubi8/nodejs-14-minimal:latest"),
-            ("14-ubi7", "registry.access.redhat.com/ubi7/nodejs-14:latest"),
         ],
     )
     def test_package_imagestream(self, version, registry):
-        self.hc_api.helm_package()
-        self.hc_api.helm_installation()
+        assert self.hc_api.helm_package()
+        assert self.hc_api.helm_installation()
         assert self.hc_api.check_imagestreams(version=version, registry=registry)

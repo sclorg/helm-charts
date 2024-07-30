@@ -1,9 +1,0 @@
-chart:
-  name: varnish-imagestreams
-  description: This is the CentOS Varnish imagestream chart
-publicPgpKey: null
-users:
-  - githubUsername: phracek
-vendor:
-  label: centos
-  name: Cent OS

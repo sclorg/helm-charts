@@ -31,5 +31,6 @@ jobs:
           git_ref:  "master"
           tf_scope: "private"
           tmt_plan_regex: "rhel8-openshift-helms"
+          update_pull_request_status: true
           pull_request_status_name: "Helm chart - ${{ matrix.helm_chart }}"
           variables: "REPO_URL=${{ github.server_url }}/${{ github.repository }};REPO_NAME=${{ github.repository }};PR_NUMBER=${{ github.event.issue.number }};TEST_NAME=test-${{ matrix.helm_chart }}"

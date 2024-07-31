@@ -25,13 +25,11 @@ class TestHelmRHELNginxImageStreams:
             ("1.22-ubi8", "registry.redhat.io/ubi8/nginx-122:latest"),
             ("1.20-ubi9", "registry.redhat.io/ubi9/nginx-120:latest"),
             ("1.20-ubi8", "registry.redhat.io/ubi8/nginx-120:latest"),
-            ("1.20-ubi7", "registry.redhat.io/ubi7/nginx-120:latest"),
         ],
     )
     def test_package_imagestream(self, version, registry):
-        self.hc_api.set_version("0.0.1")
-        self.hc_api.helm_package()
-        self.hc_api.helm_installation()
+        assert self.hc_api.helm_package()
+        assert self.hc_api.helm_installation()
         assert self.hc_api.check_imagestreams(version=version, registry=registry)
 
 
@@ -50,11 +48,9 @@ class TestHelmCentOSNginxImageStreams:
         [
             ("1.20-ubi9", "registry.access.redhat.com/ubi9/nginx-120:latest"),
             ("1.20-ubi8", "registry.access.redhat.com/ubi8/nginx-120:latest"),
-            ("1.20-ubi7", "registry.access.redhat.com/ubi7/nginx-120:latest")
         ],
     )
     def test_package_imagestream(self, version, registry):
-        self.hc_api.set_version("0.0.1")
-        self.hc_api.helm_package()
-        self.hc_api.helm_installation()
+        assert self.hc_api.helm_package()
+        assert self.hc_api.helm_installation()
         assert self.hc_api.check_imagestreams(version=version, registry=registry)

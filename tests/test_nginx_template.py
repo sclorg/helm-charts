@@ -20,7 +20,7 @@ class TestHelmNginxTemplate:
 
     def test_curl_connection(self):
         self.hc_api.package_name = "nginx-imagestreams"
-        self.hc_api.helm_package()
+        assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
         self.hc_api.package_name = "nginx-template"
         assert self.hc_api.helm_package()
@@ -39,7 +39,7 @@ class TestHelmNginxTemplate:
 
     def test_helm_connection(self):
         self.hc_api.package_name = "nginx-imagestreams"
-        self.hc_api.helm_package()
+        assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
         self.hc_api.package_name = "nginx-template"
         assert self.hc_api.helm_package()

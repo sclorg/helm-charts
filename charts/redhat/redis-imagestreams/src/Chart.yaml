@@ -4,10 +4,10 @@ description: |-
 annotations:
   charts.openshift.io/name: Provides a Redis database on RHEL imagestreams (experimental)
 apiVersion: v2
-appVersion: 0.0.1
+appVersion: 0.0.2
 kubeVersion: '>=1.20.0'
 name: redis-imagestreams
 tags: builder,redis
 sources:
   - https://github.com/sclorg/helm-charts
-version: 0.0.1
+version: 0.0.2

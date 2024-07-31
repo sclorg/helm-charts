@@ -19,13 +19,11 @@ class TestHelmRedisPersistent:
         self.hc_api.delete_project()
 
     def test_package_persistent(self):
-        self.hc_api.set_version("0.0.1")
         self.hc_api.package_name = "redis-imagestreams"
-        self.hc_api.helm_package()
+        assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
-        self.hc_api.set_version("0.0.2")
         self.hc_api.package_name = "redis-persistent"
-        self.hc_api.helm_package()
+        assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation(values={".redis_version": "6-el8", ".namespace": self.hc_api.namespace})
         assert self.hc_api.is_pod_running(pod_name_prefix="redis")
         assert self.hc_api.test_helm_chart(expected_str=["PONG"])

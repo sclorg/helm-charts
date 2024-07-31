@@ -24,14 +24,11 @@ class TestHelmRHELMariadbImageStreams:
             ("10.5-el9", "registry.redhat.io/rhel9/mariadb-105:latest"),
             ("10.3-el8", "registry.redhat.io/rhel8/mariadb-103:latest"),
             ("10.5-el8", "registry.redhat.io/rhel8/mariadb-105:latest"),
-            ("10.3-el7", "registry.redhat.io/rhscl/mariadb-103-rhel7:latest"),
-            ("10.3", "registry.redhat.io/rhscl/mariadb-103-rhel7:latest"),
-            ("10.5-el7", "registry.redhat.io/rhscl/mariadb-105-rhel7:latest"),
         ],
     )
     def test_package_imagestream(self, version, registry):
-        self.hc_api.helm_package()
-        self.hc_api.helm_installation()
+        assert self.hc_api.helm_package()
+        assert self.hc_api.helm_installation()
         assert self.hc_api.check_imagestreams(version=version, registry=registry)
 
 
@@ -48,14 +45,10 @@ class TestHelmCentOSMariadbImageStreams:
     @pytest.mark.parametrize(
         "version,registry",
         [
-            ("10.5-el7", "quay.io/centos7/mariadb-105-centos7:latest"),
             ("10.3-el8", "docker.io/centos/mariadb-103-centos8:latest"),
-            ("10.3-el7", "quay.io/centos7/mariadb-103-centos7:latest"),
-            ("10.3", "quay.io/centos7/mariadb-103-centos7:latest"),
         ],
     )
     def test_package_imagestream(self, version, registry):
-        self.hc_api.set_version("0.0.1")
-        self.hc_api.helm_package()
-        self.hc_api.helm_installation()
+        assert self.hc_api.helm_package()
+        assert self.hc_api.helm_installation()
         assert self.hc_api.check_imagestreams(version=version, registry=registry)

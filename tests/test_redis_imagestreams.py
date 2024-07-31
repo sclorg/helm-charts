@@ -22,14 +22,12 @@ class TestHelmRHELRedisImageStreams:
         "version,registry",
         [
             ("6-el9", "registry.redhat.io/rhel9/redis-6:latest"),
-            ("6-el7", "registry.redhat.io/rhscl/redis-6-rhel7:latest"),
             ("6-el8", "registry.redhat.io/rhel8/redis-6:latest"),
         ],
     )
     def test_package_imagestream(self, version, registry):
-        self.hc_api.set_version("0.0.1")
-        self.hc_api.helm_package()
-        self.hc_api.helm_installation()
+        assert self.hc_api.helm_package()
+        assert self.hc_api.helm_installation()
         assert self.hc_api.check_imagestreams(version=version, registry=registry)
 
 
@@ -46,11 +44,12 @@ class TestHelmCentOSRedisImageStreams:
     @pytest.mark.parametrize(
         "version,registry",
         [
-            ("6-el7", "quay.io/centos7/redis-6-centos7:latest"),
+            ("6-el8", "quay.io/sclorg/redis-6-c8s:latest"),
+            ("6-el9", "quay.io/sclorg/redis-6-c9s:latest"),
+            ("7-el9", "quay.io/sclorg/redis-7-c9s:latest"),
         ],
     )
     def test_package_imagestream(self, version, registry):
-        self.hc_api.set_version("0.0.1")
-        self.hc_api.helm_package()
-        self.hc_api.helm_installation()
+        assert self.hc_api.helm_package()
+        assert self.hc_api.helm_installation()
         assert self.hc_api.check_imagestreams(version=version, registry=registry)

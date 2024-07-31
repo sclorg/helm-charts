@@ -20,13 +20,13 @@ class TestHelmPythonDjangoPsqlTemplate:
 
     def test_django_psql_curl_output(self):
         self.hc_api.package_name = "postgresql-imagestreams"
-        self.hc_api.helm_package()
+        assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
         self.hc_api.package_name = "python-imagestreams"
-        self.hc_api.helm_package()
+        assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
         self.hc_api.package_name = "django-psql-persistent"
-        self.hc_api.helm_package()
+        assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation(
             values={
                 "python_version": "3.11-ubi8",
@@ -41,13 +41,13 @@ class TestHelmPythonDjangoPsqlTemplate:
 
     def test_django_psql_helm_test(self):
         self.hc_api.package_name = "postgresql-imagestreams"
-        self.hc_api.helm_package()
+        assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
         self.hc_api.package_name = "python-imagestreams"
-        self.hc_api.helm_package()
+        assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
         self.hc_api.package_name = "django-psql-persistent"
-        self.hc_api.helm_package()
+        assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation(
             values={
                 "python_version": "3.11-ubi8",

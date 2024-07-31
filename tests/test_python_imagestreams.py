@@ -21,21 +21,19 @@ class TestHelmRHELPythonImageStreams:
     @pytest.mark.parametrize(
         "version,registry",
         [
+            ("3.12-ubi9", "registry.redhat.io/ubi9/python-312:latest"),
+            ("3.12-ubi8", "registry.redhat.io/ubi8/python-312:latest"),
             ("3.11-ubi9", "registry.redhat.io/ubi9/python-311:latest"),
             ("3.11-ubi8", "registry.redhat.io/ubi8/python-311:latest"),
             ("3.9-ubi9", "registry.redhat.io/ubi9/python-39:latest"),
             ("3.9-ubi8", "registry.redhat.io/ubi8/python-39:latest"),
             ("3.8-ubi8", "registry.redhat.io/ubi8/python-38:latest"),
-            ("3.8-ubi7", "registry.redhat.io/ubi7/python-38:latest"),
-            ("3.8", "registry.redhat.io/rhscl/python-38-rhel7:latest"),
             ("3.6-ubi8", "registry.redhat.io/ubi8/python-36:latest"),
-            ("2.7-ubi8", "registry.redhat.io/ubi8/python-27:latest"),
         ],
     )
     def test_package_imagestream(self, version, registry):
-        self.hc_api.set_version("0.0.1")
-        self.hc_api.helm_package()
-        self.hc_api.helm_installation()
+        assert self.hc_api.helm_package()
+        assert self.hc_api.helm_installation()
         assert self.hc_api.check_imagestreams(version=version, registry=registry)
 
 
@@ -55,13 +53,10 @@ class TestHelmCentOSPythonImageStreams:
             ("3.9-ubi9", "registry.access.redhat.com/ubi9/python-39:latest"),
             ("3.9-ubi8", "registry.access.redhat.com/ubi8/python-39:latest"),
             ("3.8-ubi8", "registry.access.redhat.com/ubi8/python-38:latest"),
-            ("3.8-ubi7", "registry.access.redhat.com/ubi7/python-38:latest"),
             ("3.6-ubi8", "registry.access.redhat.com/ubi8/python-36:latest"),
-            ("2.7-ubi8", "registry.access.redhat.com/ubi8/python-27:latest"),
         ],
     )
     def test_package_imagestream(self, version, registry):
-        self.hc_api.set_version("0.0.1")
-        self.hc_api.helm_package()
-        self.hc_api.helm_installation()
+        assert self.hc_api.helm_package()
+        assert self.hc_api.helm_installation()
         assert self.hc_api.check_imagestreams(version=version, registry=registry)

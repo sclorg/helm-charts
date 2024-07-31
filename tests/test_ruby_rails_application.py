@@ -20,7 +20,7 @@ class TestHelmCakePHPTemplate:
 
     def test_curl_connection(self):
         self.hc_api.package_name = "ruby-imagestreams"
-        self.hc_api.helm_package()
+        assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
         self.hc_api.package_name = "ruby-rails-application"
         assert self.hc_api.helm_package()
@@ -38,7 +38,7 @@ class TestHelmCakePHPTemplate:
 
     def test_by_helm_test(self):
         self.hc_api.package_name = "ruby-imagestreams"
-        self.hc_api.helm_package()
+        assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
         self.hc_api.package_name = "ruby-rails-application"
         assert self.hc_api.helm_package()

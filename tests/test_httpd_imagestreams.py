@@ -24,14 +24,12 @@ class TestHelmRHELHttpdImageStreams:
             ("2.4-ubi9", "registry.redhat.io/ubi9/httpd-24:latest"),
             ("2.4-ubi8", "registry.redhat.io/ubi8/httpd-24:latest"),
             ("2.4-el8", "registry.redhat.io/rhel8/httpd-24"),
-            ("2.4-el7", "registry.redhat.io/rhscl/httpd-24-rhel7"),
-            ("2.4", "registry.redhat.io/rhscl/httpd-24-rhel7"),
         ],
     )
     def test_package_imagestream(self, version, registry):
         self.hc_api.set_version("0.0.1")
-        self.hc_api.helm_package()
-        self.hc_api.helm_installation()
+        assert self.hc_api.helm_package()
+        assert self.hc_api.helm_installation()
         assert self.hc_api.check_imagestreams(version=version, registry=registry)
 
 
@@ -50,12 +48,9 @@ class TestHelmCentOSHttpdImagestreams:
             ("2.4-ubi9", "registry.access.redhat.com/ubi9/httpd-24:latest"),
             ("2.4-ubi8", "registry.access.redhat.com/ubi8/httpd-24:latest"),
             ("2.4-el8", "docker.io/centos/httpd-24-centos8:latest"),
-            ("2.4-el7", "quay.io/centos7/httpd-24-centos7:latest"),
-            ("2.4", "quay.io/centos7/httpd-24-centos7:latest"),
         ]
     )
     def test_package_imagestream(self, version, registry):
-        self.hc_api.set_version("0.0.1")
-        self.hc_api.helm_package()
-        self.hc_api.helm_installation()
-        self.hc_api.check_imagestreams(version=version, registry=registry)
+        assert self.hc_api.helm_package()
+        assert self.hc_api.helm_installation()
+        assert self.hc_api.check_imagestreams(version=version, registry=registry)

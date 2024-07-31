@@ -20,7 +20,7 @@ class TestHelmPythonDjangoAppTemplate:
 
     def test_django_application_curl_output(self):
         self.hc_api.package_name = "python-imagestreams"
-        self.hc_api.helm_package()
+        assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
         self.hc_api.package_name = "python-django-application"
         self.hc_api.helm_package()
@@ -38,10 +38,10 @@ class TestHelmPythonDjangoAppTemplate:
 
     def test_django_application_helm_test(self):
         self.hc_api.package_name = "python-imagestreams"
-        self.hc_api.helm_package()
+        assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
         self.hc_api.package_name = "python-django-application"
-        self.hc_api.helm_package()
+        assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation(
             values={
                 "python_version": "3.11-ubi8",

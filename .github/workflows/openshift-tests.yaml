@@ -23,7 +23,7 @@ jobs:
           ref: "refs/pull/${{ github.event.issue.number }}/head"
 
       - name: Schedule tests on external Testing Farm by Testing-Farm-as-github-action
-        uses: sclorg/testing-farm-as-github-action@v1
+        uses: sclorg/testing-farm-as-github-action@main
         with:
           api_key:  ${{ secrets.TF_INTERNAL_API_KEY }}
           compose:  "RHEL-8.8.0-Nightly"

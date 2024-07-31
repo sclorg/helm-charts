@@ -44,7 +44,9 @@ class TestHelmCentOSRedisImageStreams:
     @pytest.mark.parametrize(
         "version,registry",
         [
-            ("6-el7", "quay.io/c8s/redis-6-c8s:latest"),
+            ("6-el8", "quay.io/sclorg/redis-6-c8s:latest"),
+            ("6-el9", "quay.io/sclorg/redis-6-c9s:latest"),
+            ("7-el9", "quay.io/sclorg/redis-7-c9s:latest"),
         ],
     )
     def test_package_imagestream(self, version, registry):

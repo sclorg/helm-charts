@@ -23,7 +23,10 @@ class TestHelmRHELPostgresqlImageStreams:
         [
             ("13-el8", "registry.redhat.io/rhel8/postgresql-13:latest"),
             ("13-el9", "registry.redhat.io/rhel9/postgresql-13:latest"),
-            ("10-el8", "registry.redhat.io/rhel8/postgresql-10:latest"),
+            ("15-el8", "registry.redhat.io/rhel8/postgresql-15:latest"),
+            ("15-el9", "registry.redhat.io/rhel9/postgresql-15:latest"),
+            ("16-el8", "registry.redhat.io/rhel8/postgresql-16:latest"),
+            ("16-el9", "registry.redhat.io/rhel9/postgresql-16:latest"),
         ],
     )
     def test_package_imagestream(self, version, registry):

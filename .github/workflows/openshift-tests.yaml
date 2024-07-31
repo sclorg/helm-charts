@@ -23,13 +23,13 @@ jobs:
           ref: "refs/pull/${{ github.event.issue.number }}/head"
 
       - name: Schedule tests on external Testing Farm by Testing-Farm-as-github-action
-        uses: sclorg/testing-farm-as-github-action@v1
+        uses: sclorg/testing-farm-as-github-action@main
         with:
           api_key:  ${{ secrets.TF_INTERNAL_API_KEY }}
           compose:  "RHEL-8.8.0-Nightly"
           git_url:  "https://gitlab.cee.redhat.com/platform-eng-core-services/sclorg-tmt-plans"
           git_ref:  "master"
           tf_scope: "private"
-          tmt_plan_regex: "helm-charts"
+          tmt_plan_regex: "tmt-testing-plan-rhel8-pytest"
           pull_request_status_name: "Helm chart - ${{ matrix.helm_chart }}"
           variables: "REPO_URL=$GITHUB_SERVER_URL/$GITHUB_REPOSITORY;REPO_NAME=$GITHUB_REPOSITORY;PR_NUMBER=${{ github.event.issue.number }};TEST_NAME=test-${{ matrix.helm_chart }}"

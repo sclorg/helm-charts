@@ -11,8 +11,8 @@ spec:
         openshift.io/display-name: MySQL (Latest)
         openshift.io/provider-display-name: Red Hat, Inc.
         description: >-
-          Provides a MySQL database on CentOS. For more information about using 
-          this database image, including OpenShift considerations, see 
+          Provides a MySQL database on CentOS. For more information about using
+          this database image, including OpenShift considerations, see
           https://github.com/sclorg/mysql-container/blob/master/README.md.
 
           WARNING: By selecting this tag, your application will automatically update to use the latest version of MySQL available on OpenShift, including major version updates.
@@ -25,17 +25,17 @@ spec:
         type: Local
     - name: 8.0-el8
       annotations:
-        openshift.io/display-name: MySQL 8.0 (CentOS 8)
+        openshift.io/display-name: MySQL 8.0 (CentOS Stream 8)
         openshift.io/provider-display-name: Red Hat, Inc.
         description: >-
-          Provides a MySQL 8.0 database on CentOS 8. For more information about 
-          using this database image, including OpenShift considerations, see 
+          Provides a MySQL 8.0 database on CentOS Stream 8. For more information about
+          using this database image, including OpenShift considerations, see
           https://github.com/sclorg/mysql-container/blob/master/README.md.
         iconClass: icon-mysql-database
         tags: mysql
         version: "8.0"
       from:
         kind: DockerImage
-        name: docker.io/centos/mysql-80-centos8:latest
+        name: quay.io/sclorg/mysql-80-c8s:latest
       referencePolicy:
         type: Local

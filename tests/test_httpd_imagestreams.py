@@ -24,6 +24,7 @@ class TestHelmRHELHttpdImageStreams:
             ("2.4-ubi9", "registry.redhat.io/ubi9/httpd-24:latest"),
             ("2.4-ubi8", "registry.redhat.io/ubi8/httpd-24:latest"),
             ("2.4-el8", "registry.redhat.io/rhel8/httpd-24"),
+            ("2.4-el9", "registry.redhat.io/rhel9/httpd-24"),
         ],
     )
     def test_package_imagestream(self, version, registry):
@@ -47,7 +48,8 @@ class TestHelmCentOSHttpdImagestreams:
         [
             ("2.4-ubi9", "registry.access.redhat.com/ubi9/httpd-24:latest"),
             ("2.4-ubi8", "registry.access.redhat.com/ubi8/httpd-24:latest"),
-            ("2.4-el8", "docker.io/centos/httpd-24-centos8:latest"),
+            ("2.4-el8", "quay.io/sclorg/httpd-24-c8s:latest"),
+            ("2.4-el9", "quay.io/sclorg/httpd-24-c9s:latest"),
         ]
     )
     def test_package_imagestream(self, version, registry):

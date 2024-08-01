@@ -27,7 +27,6 @@ class TestHelmRHELPythonImageStreams:
             ("3.11-ubi8", "registry.redhat.io/ubi8/python-311:latest"),
             ("3.9-ubi9", "registry.redhat.io/ubi9/python-39:latest"),
             ("3.9-ubi8", "registry.redhat.io/ubi8/python-39:latest"),
-            ("3.8-ubi8", "registry.redhat.io/ubi8/python-38:latest"),
             ("3.6-ubi8", "registry.redhat.io/ubi8/python-36:latest"),
         ],
     )
@@ -50,9 +49,12 @@ class TestHelmCentOSPythonImageStreams:
     @pytest.mark.parametrize(
         "version,registry",
         [
+            ("3.12-ubi9", "registry.access.redhat.com/ubi9/python-312:latest"),
+            ("3.12-ubi8", "registry.access.redhat.com/ubi8/python-312:latest"),
+            ("3.11-ubi9", "registry.access.redhat.com/ubi9/python-311:latest"),
+            ("3.11-ubi8", "registry.access.redhat.com/ubi8/python-311:latest"),
             ("3.9-ubi9", "registry.access.redhat.com/ubi9/python-39:latest"),
             ("3.9-ubi8", "registry.access.redhat.com/ubi8/python-39:latest"),
-            ("3.8-ubi8", "registry.access.redhat.com/ubi8/python-38:latest"),
             ("3.6-ubi8", "registry.access.redhat.com/ubi8/python-36:latest"),
         ],
     )

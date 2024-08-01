@@ -50,8 +50,14 @@ class TestHelmCentOSNodeJSImageStreams:
     @pytest.mark.parametrize(
         "version,registry",
         [
-            ("14-ubi8", "registry.access.redhat.com/ubi8/nodejs-14:latest"),
-            ("14-ubi8-minimal", "registry.access.redhat.com/ubi8/nodejs-14-minimal:latest"),
+            ("20-ubi9", "registry.access.redhat.com/ubi9/nodejs-20:latest"),
+            ("20-ubi9-minimal", "registry.access.redhat.com/ubi9/nodejs-20-minimal:latest"),
+            ("20-ubi8", "registry.access.redhat.com/ubi8/nodejs-20:latest"),
+            ("20-ubi8-minimal", "registry.access.redhat.com/ubi8/nodejs-20-minimal:latest"),
+            ("18-ubi9", "registry.access.redhat.com/ubi9/nodejs-18:latest"),
+            ("18-ubi9-minimal", "registry.access.redhat.com/ubi9/nodejs-18-minimal:latest"),
+            ("18-ubi8", "registry.access.redhat.com/ubi8/nodejs-18:latest"),
+            ("18-ubi8-minimal", "registry.access.redhat.com/ubi8/nodejs-18-minimal:latest"),
         ],
     )
     def test_package_imagestream(self, version, registry):

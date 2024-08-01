@@ -21,6 +21,8 @@ class TestHelmRHELNginxImageStreams:
     @pytest.mark.parametrize(
         "version,registry",
         [
+            ("1.24-ubi9", "registry.redhat.io/ubi9/nginx-124:latest"),
+            ("1.24-ubi8", "registry.redhat.io/ubi8/nginx-124:latest"),
             ("1.22-ubi9", "registry.redhat.io/ubi9/nginx-122:latest"),
             ("1.22-ubi8", "registry.redhat.io/ubi8/nginx-122:latest"),
             ("1.20-ubi9", "registry.redhat.io/ubi9/nginx-120:latest"),
@@ -46,6 +48,10 @@ class TestHelmCentOSNginxImageStreams:
     @pytest.mark.parametrize(
         "version,registry",
         [
+            ("1.24-ubi9", "registry.access.redhat.com/ubi9/nginx-124:latest"),
+            ("1.24-ubi8", "registry.access.redhat.com/ubi8/nginx-124:latest"),
+            ("1.22-ubi9", "registry.access.redhat.com/ubi9/nginx-122:latest"),
+            ("1.22-ubi8", "registry.access.redhat.com/ubi8/nginx-122:latest"),
             ("1.20-ubi9", "registry.access.redhat.com/ubi9/nginx-120:latest"),
             ("1.20-ubi8", "registry.access.redhat.com/ubi8/nginx-120:latest"),
         ],

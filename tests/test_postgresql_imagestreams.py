@@ -48,9 +48,11 @@ class TestHelmCentOSLPostgresqlImageStreams:
     @pytest.mark.parametrize(
         "version,registry",
         [
+            ("16-el9", "quay.io/sclorg/postgresql-16-c9s:latest"),
+            ("16-el8", "quay.io/sclorg/postgresql-16-c8s:latest"),
             ("15-el9", "quay.io/sclorg/postgresql-15-c9s:latest"),
-            ("13-el9", "quay.io/sclorg/postgresql-13-c9s:latest"),
             ("15-el8", "quay.io/sclorg/postgresql-15-c8s:latest"),
+            ("13-el9", "quay.io/sclorg/postgresql-13-c9s:latest"),
             ("13-el8", "quay.io/sclorg/postgresql-13-c8s:latest"),
             ("12-el8", "quay.io/sclorg/postgresql-12-c8s:latest"),
         ],

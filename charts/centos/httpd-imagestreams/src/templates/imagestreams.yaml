@@ -69,12 +69,12 @@ spec:
       name: 2.4-ubi8
     - annotations:
         description: >-
-          Build and serve static content via Apache HTTP Server (httpd) 2.4 on 
-          CentOS 8. For more information about using this builder image, 
-          including OpenShift considerations, see 
+          Build and serve static content via Apache HTTP Server (httpd) 2.4 on
+          CentOS 8. For more information about using this builder image,
+          including OpenShift considerations, see
           https://github.com/sclorg/httpd-container/blob/master/2.4/README.md.
         iconClass: icon-apache
-        openshift.io/display-name: Apache HTTP Server 2.4 (CentOS 8)
+        openshift.io/display-name: Apache HTTP Server 2.4 (CentOS Stream 8)
         openshift.io/provider-display-name: Red Hat, Inc.
         sampleRepo: https://github.com/sclorg/httpd-ex.git
         supports: httpd
@@ -82,7 +82,26 @@ spec:
         version: "2.4"
       from:
         kind: DockerImage
-        name: docker.io/centos/httpd-24-centos8:latest
+        name: quay.io/sclorg/httpd-24-c8s:latest
       referencePolicy:
         type: Local
       name: 2.4-el8
+    - annotations:
+        description: >-
+          Build and serve static content via Apache HTTP Server (httpd) 2.4 on 
+          CentOS 8. For more information about using this builder image, 
+          including OpenShift considerations, see 
+          https://github.com/sclorg/httpd-container/blob/master/2.4/README.md.
+        iconClass: icon-apache
+        openshift.io/display-name: Apache HTTP Server 2.4 (CentOS Stream 9)
+        openshift.io/provider-display-name: Red Hat, Inc.
+        sampleRepo: https://github.com/sclorg/httpd-ex.git
+        supports: httpd
+        tags: builder,httpd,hidden
+        version: "2.4"
+      from:
+        kind: DockerImage
+        name: quay.io/sclorg/httpd-24-c9s:latest
+      referencePolicy:
+        type: Local
+      name: 2.4-el9

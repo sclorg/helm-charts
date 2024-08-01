@@ -44,7 +44,7 @@ class TestHelmCentOSMySQLImageStreams:
     @pytest.mark.parametrize(
         "version,registry",
         [
-            ("8.0-el8", "docker.io/centos/mysql-80-centos8:latest"),
+            ("8.0-el8", "quay.io/sclorg/mysql-80-c8s:latest"),
         ],
     )
     def test_package_imagestream(self, version, registry):

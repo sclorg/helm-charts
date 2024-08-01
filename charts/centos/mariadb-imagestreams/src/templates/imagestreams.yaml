@@ -6,19 +6,83 @@ metadata:
     openshift.io/display-name: MariaDB
 spec:
   tags:
+    - name: 10.11-el9
+      annotations:
+        openshift.io/display-name: MariaDB 10.11 (CentOS Stream 9)
+        openshift.io/provider-display-name: Red Hat, Inc.
+        description: >-
+          Provides a MariaDB 10.11 database on CentOS Stream 9. For more information about
+          using this database image, including OpenShift considerations, see
+          https://github.com/sclorg/mariadb-container/tree/master/10.11/README.md.
+        iconClass: icon-mariadb
+        tags: database,mariadb
+        version: "10.11"
+      from:
+        kind: DockerImage
+        name: quay.io/sclorg/mariadb-1011-c9s:latest
+      referencePolicy:
+        type: Local
+    - name: 10.11-el8
+      annotations:
+        openshift.io/display-name: MariaDB 10.11 (CentOS Stream 8)
+        openshift.io/provider-display-name: Red Hat, Inc.
+        description: >-
+          Provides a MariaDB 10.11 database on CentOS Stream 8. For more information about
+          using this database image, including OpenShift considerations, see
+          https://github.com/sclorg/mariadb-container/tree/master/10.11/README.md.
+        iconClass: icon-mariadb
+        tags: database,mariadb
+        version: "10.11"
+      from:
+        kind: DockerImage
+        name: quay.io/sclorg/mariadb-1011-c8s:latest
+      referencePolicy:
+        type: Local
+    - name: 10.5-el9
+      annotations:
+        openshift.io/display-name: MariaDB 10.5 (CentOS Stream 9)
+        openshift.io/provider-display-name: Red Hat, Inc.
+        description: >-
+          Provides a MariaDB 10.5 database on CentOS Stream 9. For more information about
+          using this database image, including OpenShift considerations, see
+          https://github.com/sclorg/mariadb-container/tree/master/10.5/README.md.
+        iconClass: icon-mariadb
+        tags: database,mariadb
+        version: "10.5"
+      from:
+        kind: DockerImage
+        name: quay.io/sclorg/mariadb-105-c9s:latest
+      referencePolicy:
+        type: Local
+    - name: 10.5-el8
+      annotations:
+        openshift.io/display-name: MariaDB 10.5 (CentOS Stream 8)
+        openshift.io/provider-display-name: Red Hat, Inc.
+        description: >-
+          Provides a MariaDB 10.5 database on CentOS Stream 8. For more information about
+          using this database image, including OpenShift considerations, see
+          https://github.com/sclorg/mariadb-container/tree/master/10.5/README.md.
+        iconClass: icon-mariadb
+        tags: database,mariadb
+        version: "10.5"
+      from:
+        kind: DockerImage
+        name: quay.io/sclorg/mariadb-105-c8s:latest
+      referencePolicy:
+        type: Local
     - name: 10.3-el8
       annotations:
         openshift.io/display-name: MariaDB 10.3 (CentOS 8)
         openshift.io/provider-display-name: Red Hat, Inc.
         description: >-
-          Provides a MariaDB 10.3 database on CentOS 8. For more information about 
-          using this database image, including OpenShift considerations, see 
+          Provides a MariaDB 10.3 database on CentOS 8. For more information about
+          using this database image, including OpenShift considerations, see
           https://github.com/sclorg/mariadb-container/tree/master/10.3/README.md.
         iconClass: icon-mariadb
         tags: database,mariadb
         version: "10.3"
       from:
         kind: DockerImage
-        name: docker.io/centos/mariadb-103-centos8:latest
+        name: quay.io/sclorg/mariadb-103-c8s:latest
       referencePolicy:
         type: Local

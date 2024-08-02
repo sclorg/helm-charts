@@ -21,6 +21,8 @@ class TestHelmRHELPHPImageStreams:
     @pytest.mark.parametrize(
         "version,registry",
         [
+            ("8.2-ubi9", "registry.redhat.io/ubi9/php-82:latest"),
+            ("8.2-ubi8", "registry.redhat.io/ubi8/php-82:latest"),
             ("8.1-ubi9", "registry.redhat.io/ubi9/php-81:latest"),
             ("8.0-ubi9", "registry.redhat.io/ubi9/php-80:latest"),
             ("8.0-ubi8", "registry.redhat.io/ubi8/php-80:latest"),
@@ -46,6 +48,9 @@ class TestHelmCentOSPHPImageStreams:
     @pytest.mark.parametrize(
         "version,registry",
         [
+            ("8.2-ubi9", "registry.access.redhat.com/ubi9/php-82:latest"),
+            ("8.2-ubi8", "registry.access.redhat.com/ubi8/php-82:latest"),
+            ("8.1-ubi9", "registry.access.redhat.com/ubi9/php-81:latest"),
             ("8.0-ubi9", "registry.access.redhat.com/ubi9/php-80:latest"),
             ("8.0-ubi8", "registry.access.redhat.com/ubi8/php-80:latest"),
             ("7.4-ubi8", "registry.access.redhat.com/ubi8/php-74:latest"),

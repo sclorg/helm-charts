@@ -21,10 +21,11 @@ class TestHelmRHELRubyImageStreams:
     @pytest.mark.parametrize(
         "version,registry",
         [
+            ("3.3-ubi9", "registry.redhat.io/ubi9/ruby-33:latest"),
+            ("3.3-ubi8", "registry.redhat.io/ubi8/ruby-33:latest"),
             ("3.1-ubi9", "registry.redhat.io/ubi9/ruby-31:latest"),
             ("3.1-ubi8", "registry.redhat.io/ubi8/ruby-31:latest"),
             ("3.0-ubi9", "registry.redhat.io/ubi9/ruby-30:latest"),
-            ("3.0-ubi8", "registry.redhat.io/ubi8/ruby-30:latest"),
             ("2.5-ubi8", "registry.redhat.io/ubi8/ruby-25:latest"),
         ],
     )
@@ -47,8 +48,11 @@ class TestHelmCentOSRubyImageStreams:
     @pytest.mark.parametrize(
         "version,registry",
         [
+            ("3.3-ubi9", "registry.access.redhat.com/ubi9/ruby-33:latest"),
+            ("3.1-ubi9", "registry.access.redhat.com/ubi9/ruby-31:latest"),
+            ("3.3-ubi8", "registry.access.redhat.com/ubi8/ruby-33:latest"),
+            ("3.1-ubi8", "registry.access.redhat.com/ubi8/ruby-31:latest"),
             ("3.0-ubi9", "registry.access.redhat.com/ubi9/ruby-30:latest"),
-            ("3.0-ubi8", "registry.access.redhat.com/ubi8/ruby-30:latest"),
             ("2.5-ubi8", "registry.access.redhat.com/ubi8/ruby-25:latest"),
         ],
     )

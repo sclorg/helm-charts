@@ -26,7 +26,7 @@ class TestHelmCakePHPTemplate:
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation(
             values={
-                "ruby_version": "3.1-ubi8",
+                "ruby_version": "3.1-ubi9",
                 "namespace": self.hc_api.namespace
             }
         )
@@ -44,7 +44,7 @@ class TestHelmCakePHPTemplate:
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation(
             values={
-                "ruby_version": "3.1-ubi8",
+                "ruby_version": "3.1-ubi9",
                 "namespace": self.hc_api.namespace
             }
         )

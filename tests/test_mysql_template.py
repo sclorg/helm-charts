@@ -16,7 +16,6 @@ class TestHelmMySQLDBPersistent:
         self.hc_api = HelmChartsAPI(path=path, package_name=package_name, tarball_dir=test_dir)
 
     def teardown_method(self):
-
         self.hc_api.delete_project()
 
     def test_package_persistent(self):

@@ -19,6 +19,8 @@ class TestHelmHTTPDTemplate:
         self.hc_api.delete_project()
 
     def test_package_persistent_by_curl(self):
+        if self.hc_api.oc_api.shared_cluster:
+            pytest.skip("Do NOT test on shared cluster")
         self.hc_api.package_name = "httpd-imagestreams"
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()

@@ -19,6 +19,8 @@ class TestHelmCakePHPTemplate:
         self.hc_api.delete_project()
 
     def test_curl_connection(self):
+        if self.hc_api.oc_api.shared_cluster:
+            pytest.skip("Do NOT test on shared cluster")
         self.hc_api.package_name = "php-imagestreams"
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()

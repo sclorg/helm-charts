@@ -42,7 +42,7 @@
         "mysql_version": {
             "type": "string",
             "description": "Specify mysql imagestream tag",
-            "enum": [ "latest", "8.0-el9", "8.0-el8", "8.0-el7" ]
+            "enum": [ "latest", "8.0-el9", "8.0-el8" ]
         }
     }
 }

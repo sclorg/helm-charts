@@ -19,19 +19,19 @@ class TestHelmRHELHttpdImageStreams:
         self.hc_api.delete_project()
 
     @pytest.mark.parametrize(
-        "version,registry",
+        "version,registry,expected",
         [
-            ("2.4-ubi9", "registry.redhat.io/ubi9/httpd-24:latest"),
-            ("2.4-ubi8", "registry.redhat.io/ubi8/httpd-24:latest"),
-            ("2.4-el8", "registry.redhat.io/rhel8/httpd-24"),
-            ("2.4-el9", "registry.redhat.io/rhel9/httpd-24"),
+            ("2.4-ubi9", "registry.redhat.io/ubi9/httpd-24:latest", True),
+            ("2.4-ubi8", "registry.redhat.io/ubi8/httpd-24:latest", True),
+            ("2.4-el8", "registry.redhat.io/rhel8/httpd-24", True),
+            ("2.4-el9", "registry.redhat.io/rhel9/httpd-24", True),
         ],
     )
-    def test_package_imagestream(self, version, registry):
+    def test_package_imagestream(self, version, registry, expected):
         self.hc_api.set_version("0.0.1")
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
-        assert self.hc_api.check_imagestreams(version=version, registry=registry)
+        assert self.hc_api.check_imagestreams(version=version, registry=registry) == expected
 
 
 class TestHelmCentOSHttpdImagestreams:
@@ -44,15 +44,15 @@ class TestHelmCentOSHttpdImagestreams:
         self.hc_api.delete_project()
 
     @pytest.mark.parametrize(
-        "version,registry", 
+        "version,registry,expected",
         [
-            ("2.4-ubi9", "registry.access.redhat.com/ubi9/httpd-24:latest"),
-            ("2.4-ubi8", "registry.access.redhat.com/ubi8/httpd-24:latest"),
-            ("2.4-el8", "quay.io/sclorg/httpd-24-c8s:latest"),
-            ("2.4-el9", "quay.io/sclorg/httpd-24-c9s:latest"),
+            ("2.4-ubi9", "registry.access.redhat.com/ubi9/httpd-24:latest", True),
+            ("2.4-ubi8", "registry.access.redhat.com/ubi8/httpd-24:latest", True),
+            ("2.4-el8", "quay.io/sclorg/httpd-24-c8s:latest", False),
+            ("2.4-el9", "quay.io/sclorg/httpd-24-c9s:latest", True),
         ]
     )
-    def test_package_imagestream(self, version, registry):
+    def test_package_imagestream(self, version, registry, expected):
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
-        assert self.hc_api.check_imagestreams(version=version, registry=registry)
+        assert self.hc_api.check_imagestreams(version=version, registry=registry) == expected

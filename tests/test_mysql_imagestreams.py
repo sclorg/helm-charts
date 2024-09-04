@@ -19,16 +19,16 @@ class TestHelmRHELMySQLImageStreams:
         self.hc_api.delete_project()
 
     @pytest.mark.parametrize(
-        "version,registry",
+        "version,registry,expected",
         [
-            ("8.0-el9", "registry.redhat.io/rhel9/mysql-80:latest"),
-            ("8.0-el8", "registry.redhat.io/rhel8/mysql-80:latest"),
+            ("8.0-el9", "registry.redhat.io/rhel9/mysql-80:latest", True),
+            ("8.0-el8", "registry.redhat.io/rhel8/mysql-80:latest", True),
         ],
     )
-    def test_package_imagestream(self, version, registry):
+    def test_package_imagestream(self, version, registry, expected):
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
-        assert self.hc_api.check_imagestreams(version=version, registry=registry)
+        assert self.hc_api.check_imagestreams(version=version, registry=registry) == expected
 
 
 class TestHelmCentOSMySQLImageStreams:
@@ -42,12 +42,13 @@ class TestHelmCentOSMySQLImageStreams:
         self.hc_api.delete_project()
 
     @pytest.mark.parametrize(
-        "version,registry",
+        "version,registry,expected",
         [
-            ("8.0-el8", "quay.io/sclorg/mysql-80-c8s:latest"),
+            ("8.0-c8s", "quay.io/sclorg/mysql-80-c8s:latest", False),
+            ("8.0-c9s", "quay.io/sclorg/mysql-80-c9s:latest", True),
         ],
     )
-    def test_package_imagestream(self, version, registry):
+    def test_package_imagestream(self, version, registry, expected):
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
-        assert self.hc_api.check_imagestreams(version=version, registry=registry)
+        assert self.hc_api.check_imagestreams(version=version, registry=registry) == expected

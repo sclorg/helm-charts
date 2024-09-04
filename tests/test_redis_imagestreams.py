@@ -19,16 +19,16 @@ class TestHelmRHELRedisImageStreams:
         self.hc_api.delete_project()
 
     @pytest.mark.parametrize(
-        "version,registry",
+        "version,registry,expected",
         [
-            ("6-el9", "registry.redhat.io/rhel9/redis-6:latest"),
-            ("6-el8", "registry.redhat.io/rhel8/redis-6:latest"),
+            ("6-el9", "registry.redhat.io/rhel9/redis-6:latest", True),
+            ("6-el8", "registry.redhat.io/rhel8/redis-6:latest", True),
         ],
     )
-    def test_package_imagestream(self, version, registry):
+    def test_package_imagestream(self, version, registry, expected):
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
-        assert self.hc_api.check_imagestreams(version=version, registry=registry)
+        assert self.hc_api.check_imagestreams(version=version, registry=registry) == expected
 
 
 class TestHelmCentOSRedisImageStreams:
@@ -42,14 +42,14 @@ class TestHelmCentOSRedisImageStreams:
         self.hc_api.delete_project()
 
     @pytest.mark.parametrize(
-        "version,registry",
+        "version,registry,expected",
         [
-            ("6-el8", "quay.io/sclorg/redis-6-c8s:latest"),
-            ("6-el9", "quay.io/sclorg/redis-6-c9s:latest"),
-            ("7-el9", "quay.io/sclorg/redis-7-c9s:latest"),
+            ("6-el8", "quay.io/sclorg/redis-6-c8s:latest", False),
+            ("6-el9", "quay.io/sclorg/redis-6-c9s:latest", True),
+            ("7-el9", "quay.io/sclorg/redis-7-c9s:latest", True),
         ],
     )
-    def test_package_imagestream(self, version, registry):
+    def test_package_imagestream(self, version, registry, expected):
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
-        assert self.hc_api.check_imagestreams(version=version, registry=registry)
+        assert self.hc_api.check_imagestreams(version=version, registry=registry) == expected

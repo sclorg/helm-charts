@@ -19,19 +19,19 @@ class TestHelmRHELMariadbImageStreams:
         self.hc_api.delete_project()
 
     @pytest.mark.parametrize(
-        "version,registry",
+        "version,registry,expected",
         [
-            ("10.11-el9", "registry.redhat.io/rhel9/mariadb-1011:latest"),
-            ("10.11-el8", "registry.redhat.io/rhel8/mariadb-1011:latest"),
-            ("10.5-el9", "registry.redhat.io/rhel9/mariadb-105:latest"),
-            ("10.3-el8", "registry.redhat.io/rhel8/mariadb-103:latest"),
-            ("10.5-el8", "registry.redhat.io/rhel8/mariadb-105:latest"),
+            ("10.11-el9", "registry.redhat.io/rhel9/mariadb-1011:latest", True),
+            ("10.11-el8", "registry.redhat.io/rhel8/mariadb-1011:latest", True),
+            ("10.5-el9", "registry.redhat.io/rhel9/mariadb-105:latest", True),
+            ("10.3-el8", "registry.redhat.io/rhel8/mariadb-103:latest", True),
+            ("10.5-el8", "registry.redhat.io/rhel8/mariadb-105:latest", True),
         ],
     )
-    def test_package_imagestream(self, version, registry):
+    def test_package_imagestream(self, version, registry, expected):
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
-        assert self.hc_api.check_imagestreams(version=version, registry=registry)
+        assert self.hc_api.check_imagestreams(version=version, registry=registry) == expected
 
 
 class TestHelmCentOSMariadbImageStreams:
@@ -45,16 +45,16 @@ class TestHelmCentOSMariadbImageStreams:
         self.hc_api.delete_project()
 
     @pytest.mark.parametrize(
-        "version,registry",
+        "version,registry,expected",
         [
-            ("10.3-el8", "quay.io/sclorg/mariadb-103-c8s:latest"),
-            ("10.5-el8", "quay.io/sclorg/mariadb-105-c8s:latest"),
-            ("10.5-el9", "quay.io/sclorg/mariadb-105-c9s:latest"),
-            ("10.11-el8", "quay.io/sclorg/mariadb-1011-c8s:latest"),
-            ("10.11-el9", "quay.io/sclorg/mariadb-1011-c9s:latest"),
+            ("10.3-el8", "quay.io/sclorg/mariadb-103-c8s:latest", False),
+            ("10.5-el8", "quay.io/sclorg/mariadb-105-c8s:latest", False),
+            ("10.5-el9", "quay.io/sclorg/mariadb-105-c9s:latest", True),
+            ("10.11-el8", "quay.io/sclorg/mariadb-1011-c8s:latest", False),
+            ("10.11-el9", "quay.io/sclorg/mariadb-1011-c9s:latest", True),
         ],
     )
-    def test_package_imagestream(self, version, registry):
+    def test_package_imagestream(self, version, registry, expected):
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
-        assert self.hc_api.check_imagestreams(version=version, registry=registry)
+        assert self.hc_api.check_imagestreams(version=version, registry=registry) == expected

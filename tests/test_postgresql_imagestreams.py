@@ -19,20 +19,21 @@ class TestHelmRHELPostgresqlImageStreams:
         self.hc_api.delete_project()
 
     @pytest.mark.parametrize(
-        "version,registry",
+        "version,registry,expected",
         [
-            ("13-el8", "registry.redhat.io/rhel8/postgresql-13:latest"),
-            ("13-el9", "registry.redhat.io/rhel9/postgresql-13:latest"),
-            ("15-el8", "registry.redhat.io/rhel8/postgresql-15:latest"),
-            ("15-el9", "registry.redhat.io/rhel9/postgresql-15:latest"),
-            ("16-el8", "registry.redhat.io/rhel8/postgresql-16:latest"),
-            ("16-el9", "registry.redhat.io/rhel9/postgresql-16:latest"),
+            ("10-el8", "registry.redhat.io/rhel8/postgresql-10:latest", False),
+            ("13-el8", "registry.redhat.io/rhel8/postgresql-13:latest", True),
+            ("13-el9", "registry.redhat.io/rhel9/postgresql-13:latest", True),
+            ("15-el8", "registry.redhat.io/rhel8/postgresql-15:latest", True),
+            ("15-el9", "registry.redhat.io/rhel9/postgresql-15:latest", True),
+            ("16-el8", "registry.redhat.io/rhel8/postgresql-16:latest", True),
+            ("16-el9", "registry.redhat.io/rhel9/postgresql-16:latest", True),
         ],
     )
-    def test_package_imagestream(self, version, registry):
+    def test_package_imagestream(self, version, registry, expected):
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
-        assert self.hc_api.check_imagestreams(version=version, registry=registry)
+        assert self.hc_api.check_imagestreams(version=version, registry=registry) == expected
 
 
 class TestHelmCentOSLPostgresqlImageStreams:
@@ -46,18 +47,18 @@ class TestHelmCentOSLPostgresqlImageStreams:
         self.hc_api.delete_project()
 
     @pytest.mark.parametrize(
-        "version,registry",
+        "version,registry,expected",
         [
-            ("16-el9", "quay.io/sclorg/postgresql-16-c9s:latest"),
-            ("16-el8", "quay.io/sclorg/postgresql-16-c8s:latest"),
-            ("15-el9", "quay.io/sclorg/postgresql-15-c9s:latest"),
-            ("15-el8", "quay.io/sclorg/postgresql-15-c8s:latest"),
-            ("13-el9", "quay.io/sclorg/postgresql-13-c9s:latest"),
-            ("13-el8", "quay.io/sclorg/postgresql-13-c8s:latest"),
-            ("12-el8", "quay.io/sclorg/postgresql-12-c8s:latest"),
+            ("16-el9", "quay.io/sclorg/postgresql-16-c9s:latest", True),
+            ("16-el8", "quay.io/sclorg/postgresql-16-c8s:latest", False),
+            ("15-el9", "quay.io/sclorg/postgresql-15-c9s:latest", True),
+            ("15-el8", "quay.io/sclorg/postgresql-15-c8s:latest", False),
+            ("13-el9", "quay.io/sclorg/postgresql-13-c9s:latest", True),
+            ("13-el8", "quay.io/sclorg/postgresql-13-c8s:latest", False),
+            ("12-el8", "quay.io/sclorg/postgresql-12-c8s:latest", False),
         ],
     )
-    def test_package_imagestream(self, version, registry):
+    def test_package_imagestream(self, version, registry, expected):
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
-        assert self.hc_api.check_imagestreams(version=version, registry=registry)
+        assert self.hc_api.check_imagestreams(version=version, registry=registry) == expected

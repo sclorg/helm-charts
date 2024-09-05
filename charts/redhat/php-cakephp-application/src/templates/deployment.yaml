@@ -47,7 +47,7 @@ spec:
               name: {{ .Values.name }}
         - name: OPCACHE_REVALIDATE_FREQ
           value: "{{ .Values.opcache_revalidate_freq }}"
-        image: " "
+        image: "{{ .Values.name }}:latest"
         livenessProbe:
           httpGet:
             path: /

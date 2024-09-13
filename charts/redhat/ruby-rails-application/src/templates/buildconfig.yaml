@@ -14,10 +14,10 @@ spec:
       kind: ImageStreamTag
       name: {{ .Values.name }}:latest
   source:
-    contextDir: {{ .Values.context_dir }}
+    contextDir: "{{ .Values.context_dir }}"
     git:
-      ref: {{ .Values.source_repository_ref }}
-      uri: {{ .Values.source_repository_url }}
+      ref: "{{ .Values.source_repository_ref }}"
+      uri: "{{ .Values.source_repository_url }}"
     type: Git
   strategy:
     sourceStrategy:

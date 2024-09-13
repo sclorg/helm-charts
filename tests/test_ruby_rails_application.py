@@ -18,7 +18,18 @@ class TestHelmCakePHPTemplate:
     def teardown_method(self):
         self.hc_api.delete_project()
 
-    def test_curl_connection(self):
+    @pytest.mark.parametrize(
+        "version,branch",
+        [
+            ("3.3-ubi9", "3.3"),
+            ("3.3-ubi8", "3.3"),
+            ("3.1-ubi9", "master"),
+            ("3.1-ubi8", "master"),
+            ("3.0-ubi9", "master"),
+            ("2.5-ubi8", "master"),
+        ],
+    )
+    def test_curl_connection(self, version, branch):
         if self.hc_api.oc_api.shared_cluster:
             pytest.skip("Do NOT test on shared cluster")
         self.hc_api.package_name = "ruby-imagestreams"
@@ -28,7 +39,8 @@ class TestHelmCakePHPTemplate:
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation(
             values={
-                "ruby_version": "3.1-ubi9",
+                "ruby_version": version,
+                "source_repository_ref": branch,
                 "namespace": self.hc_api.namespace
             }
         )
@@ -38,7 +50,18 @@ class TestHelmCakePHPTemplate:
             expected_str="Welcome to your Rails application"
         )
 
-    def test_by_helm_test(self):
+    @pytest.mark.parametrize(
+        "version,branch",
+        [
+            ("3.3-ubi9", "3.3"),
+            ("3.3-ubi8", "3.3"),
+            ("3.1-ubi9", "master"),
+            ("3.1-ubi8", "master"),
+            ("3.0-ubi9", "master"),
+            ("2.5-ubi8", "master"),
+        ],
+    )
+    def test_by_helm_test(self, version, branch):
         self.hc_api.package_name = "ruby-imagestreams"
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
@@ -46,7 +69,8 @@ class TestHelmCakePHPTemplate:
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation(
             values={
-                "ruby_version": "3.1-ubi9",
+                "ruby_version": version,
+                "source_repository_ref": branch,
                 "namespace": self.hc_api.namespace
             }
         )

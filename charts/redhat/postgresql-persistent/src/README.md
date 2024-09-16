@@ -1,7 +1,5 @@
 # PostgreSQL helm chart
 
-# MariaDB helm chart
-
 A Helm chart for building and deploying a [PostgreSQL](https://github/sclorg/postgresql-container) application on OpenShift.
 
 For more information about helm charts see the official [Helm Charts Documentation](https://helm.sh/).

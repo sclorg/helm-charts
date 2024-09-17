@@ -28,7 +28,7 @@ class TestHelmNginxTemplate:
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation(
             values={
-                "nginx_version": "1.20-ubi8",
+                "nginx_version": "1.24-ubi8",
                 "namespace": self.hc_api.namespace
             }
         )
@@ -47,7 +47,7 @@ class TestHelmNginxTemplate:
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation(
             values={
-                "nginx_version": "1.20-ubi8",
+                "nginx_version": "1.24-ubi8",
                 "namespace": self.hc_api.namespace
             }
         )

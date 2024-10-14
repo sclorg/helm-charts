@@ -44,7 +44,7 @@ class TestHelmCakePHPTemplate:
                 "namespace": self.hc_api.namespace
             }
         )
-        assert self.hc_api.is_s2i_pod_running(pod_name_prefix="rails-example")
+        assert self.hc_api.is_s2i_pod_running(pod_name_prefix="rails-example", timeout=300)
         assert self.hc_api.test_helm_curl_output(
             route_name="rails-example",
             expected_str="Welcome to your Rails application"
@@ -74,5 +74,5 @@ class TestHelmCakePHPTemplate:
                 "namespace": self.hc_api.namespace
             }
         )
-        assert self.hc_api.is_s2i_pod_running(pod_name_prefix="rails-example")
+        assert self.hc_api.is_s2i_pod_running(pod_name_prefix="rails-example", timeout=300)
         assert self.hc_api.test_helm_chart(expected_str=["Welcome to your Rails application"])

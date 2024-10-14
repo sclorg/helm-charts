@@ -39,8 +39,8 @@ class TestHelmCakePHPTemplate:
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation(
             values={
-                "ruby_version": version,
-                "source_repository_ref": branch,
+                "ruby_version": f"{version}",
+                "source_repository_ref": f"{branch}",
                 "namespace": self.hc_api.namespace
             }
         )
@@ -69,8 +69,8 @@ class TestHelmCakePHPTemplate:
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation(
             values={
-                "ruby_version": version,
-                "source_repository_ref": branch,
+                "ruby_version": f"{version}",
+                "source_repository_ref": f"{branch}",
                 "namespace": self.hc_api.namespace
             }
         )

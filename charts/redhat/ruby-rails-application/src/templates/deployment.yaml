@@ -35,7 +35,7 @@ spec:
       - env:
         - name: RAILS_ENV
           value: {{ .Values.rails_env }}
-        image: ' '
+        image: "{{ .Values.name }}:latest"
         livenessProbe:
           httpGet:
             path: /

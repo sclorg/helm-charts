@@ -47,7 +47,8 @@ class TestHelmHTTPDTemplate:
         assert self.hc_api.helm_installation(
             values={
                 "httpd_version": "2.4-el8",
-                "namespace": self.hc_api.namespace
+                "namespace": self.hc_api.namespace,
+                "name": "httpd-example"
             }
         )
         assert self.hc_api.is_s2i_pod_running(pod_name_prefix="httpd-example")

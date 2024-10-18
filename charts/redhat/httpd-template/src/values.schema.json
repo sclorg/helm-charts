@@ -31,13 +31,21 @@
             "type": "string",
             "description": "Set this to the relative path to your project if it is not in the root of your repository."
         },
-        "name": {
-            "type": "string",
-            "description": "The name of registry that will be used for pushing built image."
-        },
-        "namespace": {
-            "type": "string",
-            "description": "The namespace of registry that will be used for pushing built image."
+        "registry": {
+            "type": "object",
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of registry that will be used for pushing built image."
+                },
+                "namespace": {
+                    "type": "string",
+                    "description": "The namespace of registry that will be used for pushing built image."
+                }
+            }
         }
     }
 }

@@ -21,24 +21,32 @@ class TestHelmHTTPDTemplate:
     def test_package_persistent_by_curl(self):
         if self.hc_api.oc_api.shared_cluster:
             pytest.skip("Do NOT test on shared cluster")
-        self.hc_api.package_name = "httpd-imagestreams"
-        assert self.hc_api.helm_package()
-        assert self.hc_api.helm_installation()
-        self.hc_api.package_name = "httpd-template"
-        assert self.hc_api.helm_package()
-        assert self.hc_api.helm_installation(
-            values={
-                "httpd_version": "2.4-el8",
-                "namespace": self.hc_api.namespace
-            }
-        )
-        assert self.hc_api.is_s2i_pod_running(pod_name_prefix="httpd-example")
-        assert self.hc_api.test_helm_curl_output(
-            route_name="httpd-example",
-            expected_str="Welcome to your static httpd application on OpenShift"
-        )
+        else:
+            self.hc_api.package_name = "httpd-imagestreams"
+            assert self.hc_api.helm_package()
+            assert self.hc_api.helm_installation()
+            self.hc_api.package_name = "httpd-template"
+            assert self.hc_api.helm_package()
+            assert self.hc_api.helm_installation(
+                values={
+                    "httpd_version": "2.4-el8",
+                    "namespace": self.hc_api.namespace
+                }
+            )
+            assert self.hc_api.is_s2i_pod_running(pod_name_prefix="httpd-example")
+            assert self.hc_api.test_helm_curl_output(
+                route_name="httpd-example",
+                expected_str="Welcome to your static httpd application on OpenShift"
+            )
 
-    def test_package_persistent_by_helm_chart_test(self):
+    @pytest.mark.parametrize(
+        "version",
+        [
+            "2.4-el8",
+            "2.4-el9",
+        ],
+    )
+    def test_package_persistent_by_helm_chart_test(self, version):
         self.hc_api.package_name = "httpd-imagestreams"
         self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
@@ -46,9 +54,8 @@ class TestHelmHTTPDTemplate:
         self.hc_api.helm_package()
         assert self.hc_api.helm_installation(
             values={
-                "httpd_version": "2.4-el8",
+                "httpd_version": version,
                 "namespace": self.hc_api.namespace,
-                "name": "httpd-example"
             }
         )
         assert self.hc_api.is_s2i_pod_running(pod_name_prefix="httpd-example")

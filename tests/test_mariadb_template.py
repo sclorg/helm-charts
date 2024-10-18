@@ -18,12 +18,28 @@ class TestHelmMariaDBPersistent:
     def teardown_method(self):
         self.hc_api.delete_project()
 
-    def test_package_persistent(self):
+    @pytest.mark.parametrize(
+        "version",
+        [
+            "10.3-el8",
+            "10.3-el9",
+            "10.5-el8",
+            "10.5-el9",
+            "10.11-el8",
+            "10.11-el9",
+        ],
+    )
+    def test_package_persistent(self, version):
         self.hc_api.package_name = "mariadb-imagestreams"
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
         self.hc_api.package_name = "mariadb-persistent"
         assert self.hc_api.helm_package()
-        assert self.hc_api.helm_installation(values={".mariadb_version": "10.5-el8", ".namespace": self.hc_api.namespace})
+        assert self.hc_api.helm_installation(
+            values={
+                "mariadb_version": version,
+                "namespace": self.hc_api.namespace,
+            }
+        )
         assert self.hc_api.is_pod_running(pod_name_prefix="mariadb")
         assert self.hc_api.test_helm_chart(expected_str=["42", "testval"])

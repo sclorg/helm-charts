@@ -27,8 +27,7 @@ class TestHelmRHELHttpdImageStreams:
             ("2.4-el9", "registry.redhat.io/rhel9/httpd-24", True),
         ],
     )
-    def test_package_imagestream(self, version, registry, expected):
-        self.hc_api.set_version("0.0.1")
+    def test_httpd_imagestream(self, version, registry, expected):
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
         assert self.hc_api.check_imagestreams(version=version, registry=registry) == expected
@@ -52,7 +51,7 @@ class TestHelmCentOSHttpdImagestreams:
             ("2.4-el9", "quay.io/sclorg/httpd-24-c9s:latest", True),
         ]
     )
-    def test_package_imagestream(self, version, registry, expected):
+    def test_httpd_imagestream(self, version, registry, expected):
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
         assert self.hc_api.check_imagestreams(version=version, registry=registry) == expected

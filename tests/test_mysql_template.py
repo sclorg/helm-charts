@@ -18,12 +18,19 @@ class TestHelmMySQLDBPersistent:
     def teardown_method(self):
         self.hc_api.delete_project()
 
-    def test_package_persistent(self):
+    @pytest.mark.parametrize(
+        "version",
+        [
+            "8.0-el9",
+            "8.0-el8",
+        ],
+    )
+    def test_package_persistent(self, version):
         self.hc_api.package_name = "mysql-imagestreams"
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
         self.hc_api.package_name = "mysql-persistent"
         assert self.hc_api.helm_package()
-        assert self.hc_api.helm_installation(values={".mysql_version": "8.0-el8", ".namespace": self.hc_api.namespace})
+        assert self.hc_api.helm_installation(values={".mysql_version": version, ".namespace": self.hc_api.namespace})
         assert self.hc_api.is_pod_running(pod_name_prefix="mysql")
         assert self.hc_api.test_helm_chart(expected_str=["42", "testval"])

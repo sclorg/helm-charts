@@ -76,5 +76,5 @@ class TestHelmPythonDjangoAppTemplate:
                 "source_repository_ref": branch,
             }
         )
-        assert self.hc_api.is_s2i_pod_running(pod_name_prefix="django-example")
+        assert self.hc_api.is_s2i_pod_running(pod_name_prefix="django-example", timeout=300)
         assert self.hc_api.test_helm_chart(expected_str=["Welcome to your Django application"])

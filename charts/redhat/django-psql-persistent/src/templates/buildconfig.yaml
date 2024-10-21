@@ -9,10 +9,19 @@ metadata:
     template: django-psql
   name: {{ .Values.name }}
 spec:
+  {{ if .Values.registry.enabled }}
+  output:
+    to:
+      kind: DockerImage
+      name: "{{ .Values.registry.name }}/{{ .Values.registry.namespace }}/{{ .Values.name }}:latest"
+    pushSecret:
+      name: images-paas-push-config
+  {{ else }}
   output:
     to:
       kind: ImageStreamTag
       name: {{ .Values.name }}:latest
+  {{ end }}
   postCommit:
     script: ./manage.py test
   source:

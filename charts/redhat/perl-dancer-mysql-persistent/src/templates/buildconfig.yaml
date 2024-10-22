@@ -9,10 +9,21 @@ metadata:
     template: dancer-mysql-persistent
   name: {{ .Values.name }}
 spec:
+  {{ if .Values.registry.enabled }}
+  output:
+    to:
+      kind: DockerImage
+      name: "{{ .Values.registry.name }}/{{ .Values.registry.namespace }}/{{ .Values.name }}:latest"
+    pushSecret:
+      name: {{ .Values.registry.push_secret }}
+    pullSecret:
+      name:
+  {{ else }}
   output:
     to:
       kind: ImageStreamTag
       name: {{ .Values.name }}:latest
+  {{ end }}
   postCommit:
     script: perl -I extlib/lib/perl5 -I lib t/*
   source:

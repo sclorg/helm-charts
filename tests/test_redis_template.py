@@ -14,6 +14,9 @@ class TestHelmRedisPersistent:
         package_name = "redis-persistent"
         path = test_dir / "../charts/redhat"
         self.hc_api = HelmChartsAPI(path=path, package_name=package_name, tarball_dir=test_dir)
+        self.hc_api.package_name = "redis-imagestreams"
+        assert self.hc_api.helm_package()
+        assert self.hc_api.helm_installation()
 
     def teardown_method(self):
         self.hc_api.delete_project()
@@ -26,11 +29,14 @@ class TestHelmRedisPersistent:
         ],
     )
     def test_package_persistent(self, version):
-        self.hc_api.package_name = "redis-imagestreams"
-        assert self.hc_api.helm_package()
-        assert self.hc_api.helm_installation()
+
         self.hc_api.package_name = "redis-persistent"
         assert self.hc_api.helm_package()
-        assert self.hc_api.helm_installation(values={".redis_version": version, ".namespace": self.hc_api.namespace})
+        assert self.hc_api.helm_installation(
+            values={
+                "redis_version": version,
+                "namespace": self.hc_api.namespace
+            }
+        )
         assert self.hc_api.is_pod_running(pod_name_prefix="redis")
         assert self.hc_api.test_helm_chart(expected_str=["PONG"])

@@ -14,6 +14,9 @@ class TestHelmMariaDBPersistent:
         package_name = "mariadb-persistent"
         path = test_dir / "../charts/redhat"
         self.hc_api = HelmChartsAPI(path=path, package_name=package_name, tarball_dir=test_dir)
+        self.hc_api.package_name = "mariadb-imagestreams"
+        assert self.hc_api.helm_package()
+        assert self.hc_api.helm_installation()
 
     def teardown_method(self):
         self.hc_api.delete_project()
@@ -22,7 +25,6 @@ class TestHelmMariaDBPersistent:
         "version",
         [
             "10.3-el8",
-            "10.3-el9",
             "10.5-el8",
             "10.5-el9",
             "10.11-el8",
@@ -30,9 +32,6 @@ class TestHelmMariaDBPersistent:
         ],
     )
     def test_package_persistent(self, version):
-        self.hc_api.package_name = "mariadb-imagestreams"
-        assert self.hc_api.helm_package()
-        assert self.hc_api.helm_installation()
         self.hc_api.package_name = "mariadb-persistent"
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation(

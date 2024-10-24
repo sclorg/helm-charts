@@ -18,7 +18,15 @@ class TestHelmPerlDancerMysqlAppTemplate:
     def teardown_method(self):
         self.hc_api.delete_project()
 
-    def test_dancer_application(self):
+    @pytest.mark.parametrize(
+        "version",
+        [
+            "5.32-ubi9",
+            "5.32-ubi8",
+            "5.26-ubi8",
+        ]
+    )
+    def test_dancer_application(self, version):
         if self.hc_api.oc_api.shared_cluster:
             pytest.skip("Do NOT test on shared cluster")
         self.hc_api.package_name = "perl-imagestreams"
@@ -26,30 +34,41 @@ class TestHelmPerlDancerMysqlAppTemplate:
         assert self.hc_api.helm_installation()
         self.hc_api.package_name = "perl-dancer-application"
         assert self.hc_api.helm_package()
+        pod_name = f"dancer-ex-{version}".replace(".", "-")
         assert self.hc_api.helm_installation(
             values={
-                "perl_version": "5.32-ubi8",
-                "namespace": self.hc_api.namespace
+                "perl_version": version,
+                "namespace": self.hc_api.namespace,
+                "name": pod_name
             }
         )
-        assert self.hc_api.is_s2i_pod_running(pod_name_prefix="dancer-example")
+        assert self.hc_api.is_s2i_pod_running(pod_name_prefix=pod_name, timeout=600)
         assert self.hc_api.test_helm_curl_output(
-            route_name="dancer-example",
+            route_name=pod_name,
             expected_str="Welcome to your Dancer application"
         )
 
-
-    def test_dancer_application_helm_test(self):
+    @pytest.mark.parametrize(
+        "version",
+        [
+            "5.32-ubi9",
+            "5.32-ubi8",
+            "5.26-ubi8",
+        ]
+    )
+    def test_dancer_application_helm_test(self, version):
         self.hc_api.package_name = "perl-imagestreams"
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
         self.hc_api.package_name = "perl-dancer-application"
         assert self.hc_api.helm_package()
+        pod_name = f"dancer-ex-{version}".replace(".", "-")
         assert self.hc_api.helm_installation(
             values={
-                "perl_version": "5.32-ubi8",
-                "namespace": self.hc_api.namespace
+                "perl_version": version,
+                "namespace": self.hc_api.namespace,
+                "name": pod_name
             }
         )
-        assert self.hc_api.is_s2i_pod_running(pod_name_prefix="dancer-example")
+        assert self.hc_api.is_s2i_pod_running(pod_name_prefix=pod_name, timeout=600)
         assert self.hc_api.test_helm_chart(expected_str=["Welcome to your Dancer application"])

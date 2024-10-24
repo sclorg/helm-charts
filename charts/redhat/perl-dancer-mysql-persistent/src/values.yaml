@@ -16,5 +16,12 @@ perl_version: 5.30-ubi8
 secret_key_base: "" # TODO: must define a default value for .secret_key_base
 source_repository_ref: master # TODO: must define a default value for .source_repository_ref
 source_repository_url: https://github.com/sclorg/dancer-ex.git
-volume_capacity: 1Gi
-
+registry:
+    enabled: false
+    name: "quay.io"
+    namespace: ""
+    push_secret: ""
+pvc:
+  volume_capacity: 1Gi
+  app_code: "something"
+  netapp_nfs: false

@@ -15,7 +15,7 @@ spec:
       kind: DockerImage
       name: "{{ .Values.registry.name }}/{{ .Values.registry.namespace }}/{{ .Values.name }}:latest"
     pushSecret:
-      name: images-paas-push-config
+      name: {{ .Values.registry.push_secret }}
   {{ else }}
   output:
     to:

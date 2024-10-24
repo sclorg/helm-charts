@@ -38,10 +38,11 @@ class TestHelmPerlDancerAppTemplate:
         assert self.hc_api.helm_installation(
             values={
                 "perl_version": version,
-                "namespace": self.hc_api.namespace
+                "namespace": self.hc_api.namespace,
+                "name": pod_name
             }
         )
-        assert self.hc_api.is_s2i_pod_running(pod_name_prefix=pod_name)
+        assert self.hc_api.is_s2i_pod_running(pod_name_prefix=pod_name, timeout=600)
         assert self.hc_api.test_helm_curl_output(
             route_name=pod_name,
             expected_str="Welcome to your Dancer application"

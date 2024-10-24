@@ -42,7 +42,7 @@ class TestHelmPerlDancerMysqlAppTemplate:
                 "name": pod_name
             }
         )
-        assert self.hc_api.is_s2i_pod_running(pod_name_prefix=pod_name)
+        assert self.hc_api.is_s2i_pod_running(pod_name_prefix=pod_name, timeout=600)
         assert self.hc_api.test_helm_curl_output(
             route_name=pod_name,
             expected_str="Welcome to your Dancer application"

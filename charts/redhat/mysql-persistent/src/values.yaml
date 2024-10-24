@@ -6,4 +6,7 @@ mysql_root_password: testur # TODO: must define a default value for .mysql_root_
 mysql_user: testu # TODO: must define a default value for .mysql_user'
 mysql_version: 8.0-el8
 namespace: openshift
-volume_capacity: 1Gi
+pvc:
+  volume_capacity: 1Gi
+  app_code: "something"
+  netapp_nfs: false

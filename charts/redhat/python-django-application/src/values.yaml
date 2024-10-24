@@ -14,3 +14,4 @@ registry:
     enabled: false
     name: "quay.io"
     namespace: "something"
+    push_secret: ""

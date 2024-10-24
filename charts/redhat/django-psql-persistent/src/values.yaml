@@ -21,6 +21,7 @@ registry:
     enabled: false
     name: "quay.io"
     namespace: "something"
+    push_secret: ""
 pvc:
   volume_capacity: 1Gi
   app_code: "something"

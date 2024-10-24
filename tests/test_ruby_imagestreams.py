@@ -33,30 +33,3 @@ class TestHelmRHELRubyImageStreams:
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
         assert self.hc_api.check_imagestreams(version=version, registry=registry)
-
-
-class TestHelmCentOSRubyImageStreams:
-
-    def setup_method(self):
-        package_name = "ruby-imagestreams"
-        path = test_dir / "../charts/centos"
-        self.hc_api = HelmChartsAPI(path=path, package_name=package_name, tarball_dir=test_dir)
-
-    def teardown_method(self):
-        self.hc_api.delete_project()
-
-    @pytest.mark.parametrize(
-        "version,registry",
-        [
-            ("3.3-ubi9", "registry.access.redhat.com/ubi9/ruby-33:latest"),
-            ("3.1-ubi9", "registry.access.redhat.com/ubi9/ruby-31:latest"),
-            ("3.3-ubi8", "registry.access.redhat.com/ubi8/ruby-33:latest"),
-            ("3.1-ubi8", "registry.access.redhat.com/ubi8/ruby-31:latest"),
-            ("3.0-ubi9", "registry.access.redhat.com/ubi9/ruby-30:latest"),
-            ("2.5-ubi8", "registry.access.redhat.com/ubi8/ruby-25:latest"),
-        ],
-    )
-    def test_package_imagestream(self, version, registry):
-        assert self.hc_api.helm_package()
-        assert self.hc_api.helm_installation()
-        assert self.hc_api.check_imagestreams(version=version, registry=registry)

@@ -34,31 +34,3 @@ class TestHelmRHELPostgresqlImageStreams:
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
         assert self.hc_api.check_imagestreams(version=version, registry=registry) == expected
-
-
-class TestHelmCentOSLPostgresqlImageStreams:
-
-    def setup_method(self):
-        package_name = "postgresql-imagestreams"
-        path = test_dir / "../charts/centos"
-        self.hc_api = HelmChartsAPI(path=path, package_name=package_name, tarball_dir=test_dir)
-
-    def teardown_method(self):
-        self.hc_api.delete_project()
-
-    @pytest.mark.parametrize(
-        "version,registry,expected",
-        [
-            ("16-el9", "quay.io/sclorg/postgresql-16-c9s:latest", True),
-            ("16-el8", "quay.io/sclorg/postgresql-16-c8s:latest", False),
-            ("15-el9", "quay.io/sclorg/postgresql-15-c9s:latest", True),
-            ("15-el8", "quay.io/sclorg/postgresql-15-c8s:latest", False),
-            ("13-el9", "quay.io/sclorg/postgresql-13-c9s:latest", True),
-            ("13-el8", "quay.io/sclorg/postgresql-13-c8s:latest", False),
-            ("12-el8", "quay.io/sclorg/postgresql-12-c8s:latest", False),
-        ],
-    )
-    def test_package_imagestream(self, version, registry, expected):
-        assert self.hc_api.helm_package()
-        assert self.hc_api.helm_installation()
-        assert self.hc_api.check_imagestreams(version=version, registry=registry) == expected

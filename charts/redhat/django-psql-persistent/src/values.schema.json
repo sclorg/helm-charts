@@ -77,14 +77,45 @@
             "sliderMax": 65536,
             "sliderUnit": "Mi"
         },
-        "volume_capacity": {
-            "type": "string",
-            "title": "Persistent Volume Size",
-            "form": true,
-            "render": "slider",
-            "sliderMin": 1,
-            "sliderMax": 100,
-            "sliderUnit": "Gi"
+        "registry": {
+            "type": "object",
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of registry that will be used for pushing built image."
+                },
+                "namespace": {
+                    "type": "string",
+                    "description": "The namespace of registry that will be used for pushing built image."
+                },
+                "push_secret": {
+                    "type": "string",
+                    "description": "The push secret to push image to registry."
+                }
+            }
+        },
+        "pvc": {
+            "type": "object",
+            "properties": {
+                "volume_capacity": {
+                    "type": "string",
+                    "title": "Persistent Volume Size",
+                    "form": true,
+                    "render": "slider",
+                    "sliderMin": 1,
+                    "sliderMax": 100,
+                    "sliderUnit": "Gi"
+                },
+                "netapp_nfs": {
+                    "type": "boolean"
+                },
+                "app_code": {
+                    "type": "string"
+                }
+            }
         }
     }
 }

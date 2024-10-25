@@ -7,6 +7,7 @@ from container_ci_suite.helm import HelmChartsAPI
 
 test_dir = Path(os.path.abspath(os.path.dirname(__file__)))
 
+
 class TestHelmCentOSValkeyImageStreams:
 
     def setup_method(self):

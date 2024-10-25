@@ -18,12 +18,23 @@ class TestHelmPostgresqlPersistent:
     def teardown_method(self):
         self.hc_api.delete_project()
 
-    def test_package_persistent(self):
+    @pytest.mark.parametrize(
+        "version",
+        [
+            "13-el8",
+            "13-el9",
+            "15-el8",
+            "15-el9",
+            "16-el8",
+            "16-el9",
+        ],
+    )
+    def test_package_persistent(self, version):
         self.hc_api.package_name = "postgresql-imagestreams"
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
         self.hc_api.package_name = "postgresql-persistent"
         assert self.hc_api.helm_package()
-        assert self.hc_api.helm_installation(values={".image.tag": "13-el8", ".namespace": self.hc_api.namespace})
+        assert self.hc_api.helm_installation(values={".image.tag": version, ".namespace": self.hc_api.namespace})
         assert self.hc_api.is_pod_running(pod_name_prefix="postgresql-persistent")
         assert self.hc_api.test_helm_chart(expected_str=["accepting connection"])

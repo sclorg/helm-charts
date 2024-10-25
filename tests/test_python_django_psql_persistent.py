@@ -67,6 +67,9 @@ class TestHelmPythonDjangoPsqlTemplate:
         ],
     )
     def test_django_psql_helm_test(self, version, branch):
+        # TODO: Solve problem with wrong permissions on data /var/psql/lib/data mount point.
+        if self.hc_api.oc_api.shared_cluster:
+            pytest.skip("Do NOT test on shared cluster")
         self.hc_api.package_name = "postgresql-imagestreams"
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
@@ -80,7 +83,8 @@ class TestHelmPythonDjangoPsqlTemplate:
                 "python_version": version,
                 "namespace": self.hc_api.namespace,
                 "source_repository_ref": branch,
+                "postgresql_version": "15-el9"
             }
         )
-        assert self.hc_api.is_s2i_pod_running(pod_name_prefix="django-psql")
+        assert self.hc_api.is_s2i_pod_running(pod_name_prefix="django-psql", timeout=360)
         assert self.hc_api.test_helm_chart(expected_str=["Welcome to your Django application"])

@@ -5,16 +5,16 @@ on:
 jobs:
   openshift-tests:
     # This job only runs for '[test]' pull request comments by owner, member
-    name: "Integration tests for Helm charts ${{ matrix.helm_chart }} tested on RHEL-8 OpenShift 4"
+    name: "Integration tests for NOS2I Helm charts ${{ matrix.helm_chart }} tested on RHEL-8 OpenShift 4"
     runs-on: ubuntu-20.04
     strategy:
       fail-fast: false
       matrix:
-        helm_chart: ["httpd", "mariadb", "mysql", "nginx", "postgresql", "redis", "php", "perl", "nodejs", "ruby", "python", "valkey" ]
+        helm_chart: ["httpd", "mariadb", "mysql", "postgresql", "redis", "valkey" ]
 
     if: |
       github.event.issue.pull_request
-      && contains(github.event.comment.body, '[test]')
+      && contains((github.event.comment.body, '[test-nos2i]') || (github.event.comment.body, '[test-all]'))
       && contains(fromJson('["OWNER", "MEMBER"]'), github.event.comment.author_association)
     steps:
       - name: Checkout repo
@@ -32,5 +32,5 @@ jobs:
           tf_scope: "private"
           tmt_plan_regex: "rhel8-openshift-helms"
           update_pull_request_status: true
-          pull_request_status_name: "Helm chart - ${{ matrix.helm_chart }}"
+          pull_request_status_name: "Helm chart - NOS2I - ${{ matrix.helm_chart }}"
           variables: "REPO_URL=${{ github.server_url }}/${{ github.repository }};REPO_NAME=${{ github.repository }};PR_NUMBER=${{ github.event.issue.number }};TEST_NAME=test-${{ matrix.helm_chart }}"

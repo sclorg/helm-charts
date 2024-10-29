@@ -37,16 +37,18 @@ class TestHelmCakePHPTemplate:
         assert self.hc_api.helm_installation()
         self.hc_api.package_name = "ruby-rails-application"
         assert self.hc_api.helm_package()
+        pod_name = f"rails-ex-{version}".replace(".", "-")
         assert self.hc_api.helm_installation(
             values={
                 "ruby_version": f"{version}",
                 "source_repository_ref": f"{branch}",
-                "namespace": self.hc_api.namespace
+                "namespace": self.hc_api.namespace,
+                "name": pod_name
             }
         )
-        assert self.hc_api.is_s2i_pod_running(pod_name_prefix="rails-example", timeout=300)
+        assert self.hc_api.is_s2i_pod_running(pod_name_prefix=pod_name, timeout=600)
         assert self.hc_api.test_helm_curl_output(
-            route_name="rails-example",
+            route_name=pod_name,
             expected_str="Welcome to your Rails application"
         )
 
@@ -67,12 +69,14 @@ class TestHelmCakePHPTemplate:
         assert self.hc_api.helm_installation()
         self.hc_api.package_name = "ruby-rails-application"
         assert self.hc_api.helm_package()
+        pod_name = f"rails-ex-{version}".replace(".", "-")
         assert self.hc_api.helm_installation(
             values={
                 "ruby_version": f"{version}",
                 "source_repository_ref": f"{branch}",
-                "namespace": self.hc_api.namespace
+                "namespace": self.hc_api.namespace,
+                "name": pod_name
             }
         )
-        assert self.hc_api.is_s2i_pod_running(pod_name_prefix="rails-example", timeout=300)
+        assert self.hc_api.is_s2i_pod_running(pod_name_prefix=pod_name, timeout=600)
         assert self.hc_api.test_helm_chart(expected_str=["Welcome to your Rails application"])

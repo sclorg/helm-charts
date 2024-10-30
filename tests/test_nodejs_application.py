@@ -39,7 +39,7 @@ class TestHelmNodeJSApplication:
         assert self.hc_api.helm_installation()
         self.hc_api.package_name = "nodejs-application"
         assert self.hc_api.helm_package()
-        pod_name = f"nodejs-ex-{version}"
+        pod_name = f"nodejs-ex-{version}".replace("-minimal", "")
         assert self.hc_api.helm_installation(
             values={
                 "nodejs_version": version,
@@ -72,7 +72,7 @@ class TestHelmNodeJSApplication:
         assert self.hc_api.helm_installation()
         self.hc_api.package_name = "nodejs-application"
         assert self.hc_api.helm_package()
-        pod_name = f"nodejs-ex-{version}"
+        pod_name = f"nodejs-ex-{version}".replace("-minimal", "")
         assert self.hc_api.helm_installation(
             values={
                 "nodejs": version,

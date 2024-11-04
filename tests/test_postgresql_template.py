@@ -35,6 +35,11 @@ class TestHelmPostgresqlPersistent:
         assert self.hc_api.helm_installation()
         self.hc_api.package_name = "postgresql-persistent"
         assert self.hc_api.helm_package()
-        assert self.hc_api.helm_installation(values={".image.tag": version, ".namespace": self.hc_api.namespace})
+        assert self.hc_api.helm_installation(
+            values={
+                "image.tag": version,
+                "namespace": self.hc_api.namespace
+            }
+        )
         assert self.hc_api.is_pod_running(pod_name_prefix="postgresql-persistent")
         assert self.hc_api.test_helm_chart(expected_str=["accepting connection"])

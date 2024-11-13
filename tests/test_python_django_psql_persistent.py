@@ -41,16 +41,18 @@ class TestHelmPythonDjangoPsqlTemplate:
         assert self.hc_api.helm_installation()
         self.hc_api.package_name = "django-psql-persistent"
         assert self.hc_api.helm_package()
+        pod_name = f"django-psql-{version}".replace(".", "-")
         assert self.hc_api.helm_installation(
             values={
                 "python_version": version,
                 "namespace": self.hc_api.namespace,
                 "source_repository_ref": branch,
+                "name": pod_name
             }
         )
-        assert self.hc_api.is_s2i_pod_running(pod_name_prefix="django-psql")
+        assert self.hc_api.is_s2i_pod_running(pod_name_prefix=pod_name)
         assert self.hc_api.test_helm_curl_output(
-            route_name="django-psql",
+            route_name=pod_name,
             expected_str="Welcome to your Django application"
         )
 
@@ -78,13 +80,15 @@ class TestHelmPythonDjangoPsqlTemplate:
         assert self.hc_api.helm_installation()
         self.hc_api.package_name = "django-psql-persistent"
         assert self.hc_api.helm_package()
+        pod_name = f"django-psql-{version}".replace(".", "-")
         assert self.hc_api.helm_installation(
             values={
                 "python_version": version,
                 "namespace": self.hc_api.namespace,
                 "source_repository_ref": branch,
-                "postgresql_version": "15-el9"
+                "postgresql_version": "15-el9",
+                "name": pod_name
             }
         )
-        assert self.hc_api.is_s2i_pod_running(pod_name_prefix="django-psql", timeout=360)
+        assert self.hc_api.is_s2i_pod_running(pod_name_prefix=pod_name, timeout=600)
         assert self.hc_api.test_helm_chart(expected_str=["Welcome to your Django application"])

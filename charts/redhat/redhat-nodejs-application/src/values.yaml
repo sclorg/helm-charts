@@ -5,7 +5,7 @@ github_webhook_secret: "SOMETHING"# TODO: must define a default value for .githu
 memory_limit: 512Mi
 name: nodejs-example
 namespace: openshift
-nodejs_version: 20-ubi8
+nodejs_version: 22-ubi9
 npm_mirror: "" # TODO: must define a default value for .npm_mirror
 source_repository_ref: "master" # TODO: must define a default value for .source_repository_ref
 source_repository_url: https://github.com/sclorg/nodejs-ex.git

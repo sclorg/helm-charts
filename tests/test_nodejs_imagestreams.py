@@ -11,7 +11,7 @@ test_dir = Path(os.path.abspath(os.path.dirname(__file__)))
 class TestHelmRHELNodeJSImageStreams:
 
     def setup_method(self):
-        package_name = "nodejs-imagestreams"
+        package_name = "redhat-nodejs-imagestreams"
         path = test_dir / "../charts/redhat"
         self.hc_api = HelmChartsAPI(path=path, package_name=package_name, tarball_dir=test_dir)
 
@@ -21,6 +21,8 @@ class TestHelmRHELNodeJSImageStreams:
     @pytest.mark.parametrize(
         "version,registry",
         [
+            ("22-ubi9", "registry.redhat.io/ubi9/nodejs-22:latest"),
+            ("22-ubi9-minimal", "registry.redhat.io/ubi9/nodejs-22-minimal:latest"),
             ("20-ubi9", "registry.redhat.io/ubi9/nodejs-20:latest"),
             ("20-ubi9-minimal", "registry.redhat.io/ubi9/nodejs-20-minimal:latest"),
             ("20-ubi8", "registry.redhat.io/ubi8/nodejs-20:latest"),

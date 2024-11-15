@@ -11,7 +11,7 @@ test_dir = Path(os.path.abspath(os.path.dirname(__file__)))
 class TestHelmNodeJSApplication:
 
     def setup_method(self):
-        package_name = "nodejs-application"
+        package_name = "redhat-nodejs-application"
         path = test_dir / "../charts/redhat"
         self.hc_api = HelmChartsAPI(path=path, package_name=package_name, tarball_dir=test_dir)
 
@@ -21,6 +21,8 @@ class TestHelmNodeJSApplication:
     @pytest.mark.parametrize(
         "version",
         [
+            "22-ubi9",
+            "22-ubi9-minimal",
             "20-ubi9",
             "20-ubi9-minimal"
             "20-ubi8",
@@ -34,10 +36,10 @@ class TestHelmNodeJSApplication:
     def test_curl_connection(self, version):
         if self.hc_api.oc_api.shared_cluster:
             pytest.skip("Do NOT test on shared cluster")
-        self.hc_api.package_name = "nodejs-imagestreams"
+        self.hc_api.package_name = "redhat-nodejs-imagestreams"
         self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
-        self.hc_api.package_name = "nodejs-application"
+        self.hc_api.package_name = "redhat-nodejs-application"
         assert self.hc_api.helm_package()
         pod_name = f"nodejs-ex-{version}".replace("-minimal", "")
         assert self.hc_api.helm_installation(
@@ -56,6 +58,8 @@ class TestHelmNodeJSApplication:
     @pytest.mark.parametrize(
         "version",
         [
+            "22-ubi9",
+            "22-ubi9-minimal",
             "20-ubi9",
             "20-ubi9-minimal"
             "20-ubi8",
@@ -67,10 +71,10 @@ class TestHelmNodeJSApplication:
         ],
     )
     def test_by_helm_test(self, version):
-        self.hc_api.package_name = "nodejs-imagestreams"
+        self.hc_api.package_name = "redhat-nodejs-imagestreams"
         self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
-        self.hc_api.package_name = "nodejs-application"
+        self.hc_api.package_name = "redhat-nodejs-application"
         assert self.hc_api.helm_package()
         pod_name = f"nodejs-ex-{version}".replace("-minimal", "")
         assert self.hc_api.helm_installation(

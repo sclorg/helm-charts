@@ -45,6 +45,11 @@
             "description": "Specify PERL imagestream tag",
             "enum": [ "latest", "5.26-ubi8", "5.30-ubi8", "5.30-ubi9", "5.32-ubi8", "5.32-ubi9" ]
         },
+        "mysql_version": {
+            "type": "string",
+            "description": "Specify MySQL imagestream tag",
+            "enum": [ "latest", "8.0-el8", "8.0-el9" ]
+        },
         "mysql_default_authentication_plugin": {
             "type": "string",
             "description": "The custom MySQL default authentication plugin (default: mysql_native_password), might be changed to caching_sha2_password once clients support it."

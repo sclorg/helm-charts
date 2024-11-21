@@ -10,3 +10,8 @@ rubygem_mirror: "" # TODO: must define a default value for .rubygem_mirror
 secret_key_base: "" # TODO: must define a default value for .secret_key_base
 source_repository_ref: "master" # TODO: must define a default value for .source_repository_ref
 source_repository_url: https://github.com/sclorg/rails-ex.git
+registry:
+    enabled: false
+    name: "quay.io"
+    namespace: "something"
+    push_secret: ""

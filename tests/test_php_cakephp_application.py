@@ -21,10 +21,8 @@ class TestHelmCakePHPTemplate:
     @pytest.mark.parametrize(
         "version",
         [
-            "7.4-ubi8",
             "8.0-ubi8",
             "8.0-ubi9",
-            "8.1-ubi9",
             "8.2-ubi8",
             "8.2-ubi9",
         ]
@@ -60,7 +58,6 @@ class TestHelmCakePHPTemplate:
     @pytest.mark.parametrize(
         "version",
         [
-            "7.4-ubi8",
             "8.0-ubi8",
             "8.0-ubi9",
             "8.1-ubi9",

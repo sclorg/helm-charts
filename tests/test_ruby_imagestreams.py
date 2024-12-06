@@ -9,7 +9,7 @@ test_dir = Path(os.path.abspath(os.path.dirname(__file__)))
 
 @pytest.fixture(scope="module")
 def helm_api(request):
-    helm_api = HelmChartsAPI(path=test_dir / "../charts/redhat", package_name="ruby-imagestreams", tarball_dir=test_dir)
+    helm_api = HelmChartsAPI(path=test_dir / "../charts/redhat", package_name="redhat-ruby-imagestreams", tarball_dir=test_dir)
     print(request)
     # app_name = os.path.basename(request.param)
     yield helm_api

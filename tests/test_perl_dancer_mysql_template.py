@@ -11,7 +11,7 @@ test_dir = Path(os.path.abspath(os.path.dirname(__file__)))
 class TestHelmPerlDancerMysqlAppTemplate:
 
     def setup_method(self):
-        package_name = "perl-dancer-application"
+        package_name = "redhat-perl-dancer-application"
         path = test_dir / "../charts/redhat"
         self.hc_api = HelmChartsAPI(path=path, package_name=package_name, tarball_dir=test_dir)
 
@@ -29,10 +29,10 @@ class TestHelmPerlDancerMysqlAppTemplate:
     def test_dancer_application(self, version):
         if self.hc_api.oc_api.shared_cluster:
             pytest.skip("Do NOT test on shared cluster")
-        self.hc_api.package_name = "perl-imagestreams"
+        self.hc_api.package_name = "redhat-perl-imagestreams"
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
-        self.hc_api.package_name = "perl-dancer-application"
+        self.hc_api.package_name = "redhat-perl-dancer-application"
         assert self.hc_api.helm_package()
         pod_name = f"dancer-ex-{version}".replace(".", "-")
         assert self.hc_api.helm_installation(
@@ -57,10 +57,10 @@ class TestHelmPerlDancerMysqlAppTemplate:
         ]
     )
     def test_dancer_application_helm_test(self, version):
-        self.hc_api.package_name = "perl-imagestreams"
+        self.hc_api.package_name = "redhat-perl-imagestreams"
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
-        self.hc_api.package_name = "perl-dancer-application"
+        self.hc_api.package_name = "redhat-perl-dancer-application"
         assert self.hc_api.helm_package()
         pod_name = f"dancer-ex-{version}".replace(".", "-")
         assert self.hc_api.helm_installation(

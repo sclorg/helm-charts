@@ -1,9 +1,0 @@
-chart:
-  name: dancer-app-server
-  description: This is the Red Hat dancer application server
-publicPgpKey: null
-users:
-  - githubUsername: phracek
-vendor:
-  label: redhat
-  name: Red Hat

@@ -11,7 +11,7 @@ test_dir = Path(os.path.abspath(os.path.dirname(__file__)))
 class TestHelmPythonDjangoAppTemplate:
 
     def setup_method(self):
-        package_name = "python-django-application"
+        package_name = "redhat-python-django-application"
         path = test_dir / "../charts/redhat"
         self.hc_api = HelmChartsAPI(path=path, package_name=package_name, tarball_dir=test_dir)
 
@@ -33,10 +33,10 @@ class TestHelmPythonDjangoAppTemplate:
     def test_django_application_curl_output(self, version, branch):
         if self.hc_api.oc_api.shared_cluster:
             pytest.skip("Do NOT test on shared cluster")
-        self.hc_api.package_name = "python-imagestreams"
+        self.hc_api.package_name = "redhat-python-imagestreams"
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
-        self.hc_api.package_name = "python-django-application"
+        self.hc_api.package_name = "redhat-python-django-application"
         self.hc_api.helm_package()
         pod_name = f"django-{version}".replace(".", "-")
         assert self.hc_api.helm_installation(
@@ -66,10 +66,10 @@ class TestHelmPythonDjangoAppTemplate:
         ],
     )
     def test_django_application_helm_test(self, version, branch):
-        self.hc_api.package_name = "python-imagestreams"
+        self.hc_api.package_name = "redhat-python-imagestreams"
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
-        self.hc_api.package_name = "python-django-application"
+        self.hc_api.package_name = "redhat-python-django-application"
         assert self.hc_api.helm_package()
         pod_name = f"django-{version}".replace(".", "-")
         assert self.hc_api.helm_installation(

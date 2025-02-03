@@ -14,7 +14,7 @@ class TestHelmRedisPersistent:
         package_name = "redis-persistent"
         path = test_dir / "../charts/redhat"
         self.hc_api = HelmChartsAPI(path=path, package_name=package_name, tarball_dir=test_dir)
-        self.hc_api.package_name = "redis-imagestreams"
+        self.hc_api.package_name = "redhat-redis-imagestreams"
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
 

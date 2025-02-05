@@ -11,7 +11,7 @@ test_dir = Path(os.path.abspath(os.path.dirname(__file__)))
 class TestHelmCakePHPTemplate:
 
     def setup_method(self):
-        package_name = "php-cakephp-application"
+        package_name = "redhat-php-cakephp-application"
         path = test_dir / "../charts/redhat"
         self.hc_api = HelmChartsAPI(path=path, package_name=package_name, tarball_dir=test_dir)
 
@@ -21,7 +21,6 @@ class TestHelmCakePHPTemplate:
     @pytest.mark.parametrize(
         "version",
         [
-            "8.0-ubi8",
             "8.0-ubi9",
             "8.2-ubi8",
             "8.2-ubi9",
@@ -35,10 +34,10 @@ class TestHelmCakePHPTemplate:
         if version.startswith("8.2") or version.startswith("8.3"):
             branch_to_test = "5.X"
             check_msg = "Welcome to CakePHP 4.5"
-        self.hc_api.package_name = "php-imagestreams"
+        self.hc_api.package_name = "redhat-php-imagestreams"
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
-        self.hc_api.package_name = "php-cakephp-application"
+        self.hc_api.package_name = "redhat-php-cakephp-application"
         assert self.hc_api.helm_package()
         pod_name = f"cakephp-ex-{version}".replace(".", "-")
         assert self.hc_api.helm_installation(
@@ -58,7 +57,6 @@ class TestHelmCakePHPTemplate:
     @pytest.mark.parametrize(
         "version",
         [
-            "8.0-ubi8",
             "8.0-ubi9",
             "8.1-ubi9",
             "8.2-ubi8",
@@ -71,10 +69,10 @@ class TestHelmCakePHPTemplate:
         if version.startswith("8.2") or version.startswith("8.3"):
             branch_to_test = "5.X"
             check_msg = "Welcome to CakePHP"
-        self.hc_api.package_name = "php-imagestreams"
+        self.hc_api.package_name = "redhat-php-imagestreams"
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
-        self.hc_api.package_name = "php-cakephp-application"
+        self.hc_api.package_name = "redhat-php-cakephp-application"
         assert self.hc_api.helm_package()
         pod_name = f"cakephp-ex-{version}".replace(".", "-")
         assert self.hc_api.helm_installation(

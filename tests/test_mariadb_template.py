@@ -11,10 +11,10 @@ test_dir = Path(os.path.abspath(os.path.dirname(__file__)))
 class TestHelmMariaDBPersistent:
 
     def setup_method(self):
-        package_name = "mariadb-persistent"
+        package_name = "redhat-mariadb-persistent"
         path = test_dir / "../charts/redhat"
         self.hc_api = HelmChartsAPI(path=path, package_name=package_name, tarball_dir=test_dir)
-        self.hc_api.package_name = "mariadb-imagestreams"
+        self.hc_api.package_name = "redhat-mariadb-imagestreams"
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
 
@@ -32,7 +32,7 @@ class TestHelmMariaDBPersistent:
         ],
     )
     def test_package_persistent(self, version):
-        self.hc_api.package_name = "mariadb-persistent"
+        self.hc_api.package_name = "redhat-mariadb-persistent"
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation(
             values={

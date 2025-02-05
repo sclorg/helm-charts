@@ -11,7 +11,7 @@ test_dir = Path(os.path.abspath(os.path.dirname(__file__)))
 class TestHelmHTTPDTemplate:
 
     def setup_method(self):
-        package_name = "httpd-template"
+        package_name = "redhat-httpd-template"
         path = test_dir / "../charts/redhat"
         self.hc_api = HelmChartsAPI(path=path, package_name=package_name, tarball_dir=test_dir)
 
@@ -22,10 +22,10 @@ class TestHelmHTTPDTemplate:
         if self.hc_api.oc_api.shared_cluster:
             pytest.skip("Do NOT test on shared cluster")
         else:
-            self.hc_api.package_name = "httpd-imagestreams"
+            self.hc_api.package_name = "redhat-httpd-imagestreams"
             assert self.hc_api.helm_package()
             assert self.hc_api.helm_installation()
-            self.hc_api.package_name = "httpd-template"
+            self.hc_api.package_name = "redhat-httpd-template"
             assert self.hc_api.helm_package()
             assert self.hc_api.helm_installation(
                 values={
@@ -47,10 +47,10 @@ class TestHelmHTTPDTemplate:
         ],
     )
     def test_package_persistent_by_helm_chart_test(self, version):
-        self.hc_api.package_name = "httpd-imagestreams"
+        self.hc_api.package_name = "redhat-httpd-imagestreams"
         self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
-        self.hc_api.package_name = "httpd-template"
+        self.hc_api.package_name = "redhat-httpd-template"
         self.hc_api.helm_package()
         assert self.hc_api.helm_installation(
             values={

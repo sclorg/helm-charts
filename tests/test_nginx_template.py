@@ -11,7 +11,7 @@ test_dir = Path(os.path.abspath(os.path.dirname(__file__)))
 class TestHelmNginxTemplate:
 
     def setup_method(self):
-        package_name = "nginx-template"
+        package_name = "redhat-nginx-template"
         path = test_dir / "../charts/redhat"
         self.hc_api = HelmChartsAPI(path=path, package_name=package_name, tarball_dir=test_dir)
 
@@ -31,10 +31,10 @@ class TestHelmNginxTemplate:
     def test_curl_connection(self, version):
         if self.hc_api.oc_api.shared_cluster:
             pytest.skip("Do NOT test on shared cluster")
-        self.hc_api.package_name = "nginx-imagestreams"
+        self.hc_api.package_name = "redhat-nginx-imagestreams"
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
-        self.hc_api.package_name = "nginx-template"
+        self.hc_api.package_name = "redhat-nginx-template"
         assert self.hc_api.helm_package()
         pod_name = f"nginx-ex-{version}".replace(".", "-")
         assert self.hc_api.helm_installation(
@@ -62,10 +62,10 @@ class TestHelmNginxTemplate:
         ]
     )
     def test_helm_connection(self, version):
-        self.hc_api.package_name = "nginx-imagestreams"
+        self.hc_api.package_name = "redhat-nginx-imagestreams"
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
-        self.hc_api.package_name = "nginx-template"
+        self.hc_api.package_name = "redhat-nginx-template"
         assert self.hc_api.helm_package()
         pod_name = f"nginx-ex-{version}".replace(".", "-")
         assert self.hc_api.helm_installation(

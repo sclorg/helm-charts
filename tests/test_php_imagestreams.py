@@ -9,8 +9,7 @@ test_dir = Path(os.path.abspath(os.path.dirname(__file__)))
 
 @pytest.fixture(scope="module")
 def helm_api(request):
-    helm_api = HelmChartsAPI(path=test_dir / "../charts/redhat", package_name="php-imagestreams", tarball_dir=test_dir)
-    print(request)
+    helm_api = HelmChartsAPI(path=test_dir / "../charts/redhat", package_name="redhat-php-imagestreams", tarball_dir=test_dir)
     # app_name = os.path.basename(request.param)
     yield helm_api
     pass
@@ -27,7 +26,7 @@ class TestHelmRHELPHPImageStreams:
             ("8.2-ubi8", "registry.redhat.io/ubi8/php-82:latest", True),
             ("8.1-ubi9", "registry.redhat.io/ubi9/php-81:latest", True),
             ("8.0-ubi9", "registry.redhat.io/ubi9/php-80:latest", True),
-            ("8.0-ubi8", "registry.redhat.io/ubi8/php-80:latest", True),
+            ("8.0-ubi8", "registry.redhat.io/ubi8/php-80:latest", False),
             ("7.4-ubi8", "registry.redhat.io/ubi8/php-74:latest", True),
         ],
     )

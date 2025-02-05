@@ -11,10 +11,10 @@ test_dir = Path(os.path.abspath(os.path.dirname(__file__)))
 class TestHelmMySQLDBPersistent:
 
     def setup_method(self):
-        package_name = "mysql-persistent"
+        package_name = "redhat-mysql-persistent"
         path = test_dir / "../charts/redhat"
         self.hc_api = HelmChartsAPI(path=path, package_name=package_name, tarball_dir=test_dir)
-        self.hc_api.package_name = "mysql-imagestreams"
+        self.hc_api.package_name = "redhat-mysql-imagestreams"
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
 
@@ -30,7 +30,7 @@ class TestHelmMySQLDBPersistent:
     )
     def test_package_persistent(self, version):
 
-        self.hc_api.package_name = "mysql-persistent"
+        self.hc_api.package_name = "redhat-mysql-persistent"
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation(
             values={

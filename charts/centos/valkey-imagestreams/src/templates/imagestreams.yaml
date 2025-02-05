@@ -8,9 +8,9 @@ spec:
   tags:
     - annotations:
         description: >-
-          Provides a Valkey 7 database on CentOS Stream 10. For more information
+          Provides a Valkey 8 database on CentOS Stream 10. For more information
           about using this database image, including OpenShift considerations, see 
-          https://github.com/sclorg/valkey-container/tree/master/7/README.md.
+          https://github.com/sclorg/valkey-container/tree/master/8/README.md.
 
           WARNING: By selecting this tag, your application will automatically 
           update to use the latest version of Valkey available on OpenShift, 
@@ -21,23 +21,23 @@ spec:
         tags: valkey
       from:
         kind: ImageStreamTag
-        name: 7-c10s
+        name: 8-c10s
       referencePolicy:
         type: Local
       name: latest
     - annotations:
         description: >-
-          Provides a Valkey 7 database on CentOS Stream 10. For more information about 
+          Provides a Valkey 8 database on CentOS Stream 10. For more information about 
           using this database image, including OpenShift considerations, see 
-          https://github.com/sclorg/valkey-container/tree/master/6/README.md.
+          https://github.com/sclorg/valkey-container/tree/master/8/README.md.
         iconClass: icon-valkey
-        openshift.io/display-name: Valkey 7 (CentOS Stream 10)
+        openshift.io/display-name: Valkey 8 (CentOS Stream 10)
         openshift.io/provider-display-name: Red Hat, Inc.
         tags: valkey
-        version: "7"
+        version: "8"
       from:
         kind: DockerImage
-        name: quay.io/sclorg/valkey-7-c10s:latest
+        name: quay.io/sclorg/valkey-8-c10s:latest
       referencePolicy:
         type: Local
-      name: 7-el10
+      name: 8-el10

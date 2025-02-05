@@ -33,10 +33,10 @@ class TestHelmPythonDjangoPsqlTemplate:
     def test_django_psql_curl_output(self, version, branch):
         if self.hc_api.oc_api.shared_cluster:
             pytest.skip("Do NOT test on shared cluster")
-        self.hc_api.package_name = "postgresql-imagestreams"
+        self.hc_api.package_name = "redhat-postgresql-imagestreams"
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
-        self.hc_api.package_name = "python-imagestreams"
+        self.hc_api.package_name = "redhat-python-imagestreams"
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
         self.hc_api.package_name = "django-psql-persistent"
@@ -72,10 +72,10 @@ class TestHelmPythonDjangoPsqlTemplate:
         # TODO: Solve problem with wrong permissions on data /var/psql/lib/data mount point.
         if self.hc_api.oc_api.shared_cluster:
             pytest.skip("Do NOT test on shared cluster")
-        self.hc_api.package_name = "postgresql-imagestreams"
+        self.hc_api.package_name = "redhat-postgresql-imagestreams"
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
-        self.hc_api.package_name = "python-imagestreams"
+        self.hc_api.package_name = "redhat-python-imagestreams"
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
         self.hc_api.package_name = "django-psql-persistent"

@@ -1,0 +1,9 @@
+chart:
+  name: redhat-dancer-app-mysql-server
+  description: This is the Red Hat dancer application with a MySQL database
+publicPgpKey: null
+users:
+  - githubUsername: phracek
+vendor:
+  label: redhat
+  name: Red Hat

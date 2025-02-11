@@ -11,7 +11,7 @@ test_dir = Path(os.path.abspath(os.path.dirname(__file__)))
 class TestHelmRedisPersistent:
 
     def setup_method(self):
-        package_name = "redis-persistent"
+        package_name = "redhat-redis-persistent"
         path = test_dir / "../charts/redhat"
         self.hc_api = HelmChartsAPI(path=path, package_name=package_name, tarball_dir=test_dir)
         self.hc_api.package_name = "redhat-redis-imagestreams"
@@ -30,7 +30,7 @@ class TestHelmRedisPersistent:
     )
     def test_package_persistent(self, version):
 
-        self.hc_api.package_name = "redis-persistent"
+        self.hc_api.package_name = "redhat-redis-persistent"
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation(
             values={

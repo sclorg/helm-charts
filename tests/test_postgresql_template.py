@@ -13,7 +13,7 @@ class TestHelmPostgresqlPersistent:
     def setup_method(self):
         package_name = "redhat-postgresql-persistent"
         path = test_dir / "../charts/redhat"
-        self.hc_api = HelmChartsAPI(path=path, package_name=package_name, tarball_dir=test_dir, shared_cluster=False)
+        self.hc_api = HelmChartsAPI(path=path, package_name=package_name, tarball_dir=test_dir)
 
     def teardown_method(self):
         self.hc_api.delete_project()

@@ -13,7 +13,7 @@ class TestHelmMySQLDBPersistent:
     def setup_method(self):
         package_name = "redhat-mysql-persistent"
         path = test_dir / "../charts/redhat"
-        self.hc_api = HelmChartsAPI(path=path, package_name=package_name, tarball_dir=test_dir)
+        self.hc_api = HelmChartsAPI(path=path, package_name=package_name, tarball_dir=test_dir, shared_cluster=True)
         self.hc_api.package_name = "redhat-mysql-imagestreams"
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()

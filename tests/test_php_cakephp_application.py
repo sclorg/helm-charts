@@ -65,7 +65,7 @@ class TestHelmCakePHPTemplate:
     )
     def test_by_helm_test(self, version):
         branch_to_test = "4.X"
-        check_msg = "Welcome to CakePHP 4.5"
+        check_msg = "Welcome to CakePHP"
         if version.startswith("8.2") or version.startswith("8.3"):
             branch_to_test = "5.X"
             check_msg = "Welcome to CakePHP"

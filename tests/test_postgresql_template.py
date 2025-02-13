@@ -13,7 +13,7 @@ class TestHelmPostgresqlPersistent:
     def setup_method(self):
         package_name = "redhat-postgresql-persistent"
         path = test_dir / "../charts/redhat"
-        self.hc_api = HelmChartsAPI(path=path, package_name=package_name, tarball_dir=test_dir, shared_cluster=False)
+        self.hc_api = HelmChartsAPI(path=path, package_name=package_name, tarball_dir=test_dir)
 
     def teardown_method(self):
         self.hc_api.delete_project()
@@ -35,6 +35,6 @@ class TestHelmPostgresqlPersistent:
         assert self.hc_api.helm_installation()
         self.hc_api.package_name = "redhat-postgresql-persistent"
         assert self.hc_api.helm_package()
-        assert self.hc_api.helm_installation(values={".image.tag": version, ".namespace": self.hc_api.namespace})
-        assert self.hc_api.is_pod_running(pod_name_prefix="postgresql-persistent")
+        assert self.hc_api.helm_installation(values={"image.tag": version, "namespace": self.hc_api.namespace})
+        assert self.hc_api.is_pod_running(pod_name_prefix="redhat-postgresql-persistent")
         assert self.hc_api.test_helm_chart(expected_str=["accepting connection"])

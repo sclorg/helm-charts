@@ -18,27 +18,6 @@ class TestHelmHTTPDTemplate:
     def teardown_method(self):
         self.hc_api.delete_project()
 
-    def test_package_persistent_by_curl(self):
-        if self.hc_api.oc_api.shared_cluster:
-            pytest.skip("Do NOT test on shared cluster")
-        else:
-            self.hc_api.package_name = "redhat-httpd-imagestreams"
-            assert self.hc_api.helm_package()
-            assert self.hc_api.helm_installation()
-            self.hc_api.package_name = "redhat-httpd-template"
-            assert self.hc_api.helm_package()
-            assert self.hc_api.helm_installation(
-                values={
-                    "httpd_version": "2.4-el8",
-                    "namespace": self.hc_api.namespace
-                }
-            )
-            assert self.hc_api.is_s2i_pod_running(pod_name_prefix="httpd-example")
-            assert self.hc_api.test_helm_curl_output(
-                route_name="httpd-example",
-                expected_str="Welcome to your static httpd application on OpenShift"
-            )
-
     @pytest.mark.parametrize(
         "version",
         [

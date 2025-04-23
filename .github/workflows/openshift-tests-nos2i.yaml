@@ -6,7 +6,7 @@ jobs:
   openshift-tests:
     # This job only runs for '[test]' pull request comments by owner, member
     name: "Integration tests for NOS2I Helm charts ${{ matrix.helm_chart }} tested on RHEL-8 OpenShift 4"
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:

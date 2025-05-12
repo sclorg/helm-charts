@@ -22,6 +22,8 @@ class TestHelmRHELPythonImageStreams:
     @pytest.mark.parametrize(
         "version,registry",
         [
+            ("3.12-ubi10", "registry.redhat.io/ubi10/python-312-minimal:latest"),
+            ("3.12-minimal-ubi9", "registry.redhat.io/ubi9/python-312-minimal:latest"),
             ("3.12-ubi9", "registry.redhat.io/ubi9/python-312:latest"),
             ("3.12-ubi8", "registry.redhat.io/ubi8/python-312:latest"),
             ("3.11-ubi9", "registry.redhat.io/ubi9/python-311:latest"),

@@ -13,7 +13,7 @@ class TestHelmCakePHPTemplate:
     def setup_method(self):
         package_name = "redhat-php-cakephp-application"
         path = test_dir / "../charts/redhat"
-        self.hc_api = HelmChartsAPI(path=path, package_name=package_name, tarball_dir=test_dir, shared_cluster=False)
+        self.hc_api = HelmChartsAPI(path=path, package_name=package_name, tarball_dir=test_dir, shared_cluster=True)
 
     def teardown_method(self):
         self.hc_api.delete_project()
@@ -25,6 +25,8 @@ class TestHelmCakePHPTemplate:
             "8.1-ubi9",
             "8.2-ubi8",
             "8.2-ubi9",
+            "8.3-ubi9",
+            "8.3-ubi10",
         ]
     )
     def test_by_helm_test(self, version):

@@ -13,7 +13,7 @@ class TestHelmRubyExTemplate:
     def setup_method(self):
         package_name = "redhat-ruby-rails-application"
         path = test_dir / "../charts/redhat"
-        self.hc_api = HelmChartsAPI(path=path, package_name=package_name, tarball_dir=test_dir, shared_cluster=False)
+        self.hc_api = HelmChartsAPI(path=path, package_name=package_name, tarball_dir=test_dir, shared_cluster=True)
 
     def teardown_method(self):
         self.hc_api.delete_project()
@@ -33,14 +33,13 @@ class TestHelmRubyExTemplate:
         assert self.hc_api.helm_installation()
         self.hc_api.package_name = "redhat-ruby-rails-application"
         assert self.hc_api.helm_package()
-        pod_name = f"rails-{version.replace(".", "")}"
+        pod_name = f"rails-{version}".replace(".", "-")
         assert self.hc_api.helm_installation(
             values={
                 "ruby_version": f"{version}",
                 "source_repository_ref": f"{branch}",
-                "source_repository_url": "https://github.com/sclorg/rails-ex.git",
                 "namespace": self.hc_api.namespace,
-                "name": pod_name,
+                "name": pod_name
             }
         )
         assert self.hc_api.is_s2i_pod_running(pod_name_prefix=pod_name, timeout=480)

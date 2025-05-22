@@ -21,16 +21,14 @@ class TestHelmNodeJSApplication:
     @pytest.mark.parametrize(
         "version",
         [
+            "22-ubi10",
+            "22-ubi10-minimal",
             "22-ubi9",
             "22-ubi9-minimal",
             "20-ubi9",
             "20-ubi9-minimal"
             "20-ubi8",
             "20-ubi8-minimal",
-            "18-ubi9",
-            "18-ubi9-minimal",
-            "18-ubi8",
-            "18-ubi8-minimal",
         ],
     )
     def test_by_helm_test(self, version):

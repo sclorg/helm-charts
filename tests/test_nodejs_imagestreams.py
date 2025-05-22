@@ -19,23 +19,23 @@ class TestHelmRHELNodeJSImageStreams:
 
 
     @pytest.mark.parametrize(
-        "version,registry",
+        "version,registry,expected",
         [
-            ("22-ubi10", "registry.redhat.io/ubi10/nodejs-22:latest"),
-            ("22-ubi10-minimal", "registry.redhat.io/ubi10/nodejs-22-minimal:latest"),
-            ("22-ubi9", "registry.redhat.io/ubi9/nodejs-22:latest"),
-            ("22-ubi9-minimal", "registry.redhat.io/ubi9/nodejs-22-minimal:latest"),
-            ("20-ubi9", "registry.redhat.io/ubi9/nodejs-20:latest"),
-            ("20-ubi9-minimal", "registry.redhat.io/ubi9/nodejs-20-minimal:latest"),
-            ("20-ubi8", "registry.redhat.io/ubi8/nodejs-20:latest"),
-            ("20-ubi8-minimal", "registry.redhat.io/ubi8/nodejs-20-minimal:latest"),
-            ("18-ubi9", "registry.redhat.io/ubi9/nodejs-18:latest"),
-            ("18-ubi9-minimal", "registry.redhat.io/ubi9/nodejs-18-minimal:latest"),
-            ("18-ubi8", "registry.redhat.io/ubi8/nodejs-18:latest"),
-            ("18-ubi8-minimal", "registry.redhat.io/ubi8/nodejs-18-minimal:latest"),
+            ("22-ubi10", "registry.redhat.io/ubi10/nodejs-22:latest", True),
+            ("22-ubi10-minimal", "registry.redhat.io/ubi10/nodejs-22-minimal:latest", True),
+            ("22-ubi9", "registry.redhat.io/ubi9/nodejs-22:latest", True),
+            ("22-ubi9-minimal", "registry.redhat.io/ubi9/nodejs-22-minimal:latest", True),
+            ("20-ubi9", "registry.redhat.io/ubi9/nodejs-20:latest", True),
+            ("20-ubi9-minimal", "registry.redhat.io/ubi9/nodejs-20-minimal:latest", True),
+            ("20-ubi8", "registry.redhat.io/ubi8/nodejs-20:latest", True),
+            ("20-ubi8-minimal", "registry.redhat.io/ubi8/nodejs-20-minimal:latest", True),
+            ("18-ubi9", "registry.redhat.io/ubi9/nodejs-18:latest", False),
+            ("18-ubi9-minimal", "registry.redhat.io/ubi9/nodejs-18-minimal:latest", False),
+            ("18-ubi8", "registry.redhat.io/ubi8/nodejs-18:latest", False),
+            ("18-ubi8-minimal", "registry.redhat.io/ubi8/nodejs-18-minimal:latest", False),
         ],
     )
-    def test_package_imagestream(self, helm_api, version, registry):
+    def test_package_imagestream(self, helm_api, version, registry, expected):
         assert helm_api.helm_package()
         assert helm_api.helm_installation()
-        assert helm_api.check_imagestreams(version=version, registry=registry)
+        assert helm_api.check_imagestreams(version=version, registry=registry) == expected

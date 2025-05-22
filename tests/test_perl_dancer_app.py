@@ -13,7 +13,7 @@ class TestHelmPerlDancerAppTemplate:
     def setup_method(self):
         package_name = "redhat-perl-dancer-application"
         path = test_dir / "../charts/redhat"
-        self.hc_api = HelmChartsAPI(path=path, package_name=package_name, tarball_dir=test_dir)
+        self.hc_api = HelmChartsAPI(path=path, package_name=package_name, tarball_dir=test_dir, shared_cluster=True)
 
     def teardown_method(self):
         self.hc_api.delete_project()
@@ -21,6 +21,7 @@ class TestHelmPerlDancerAppTemplate:
     @pytest.mark.parametrize(
         "version",
         [
+            "5.40-ubi10",
             "5.32-ubi9",
             "5.32-ubi8",
             "5.26-ubi8",

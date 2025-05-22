@@ -100,6 +100,22 @@ spec:
       name: registry.redhat.io/ubi9/nodejs-20-minimal:latest
     referencePolicy:
       type: Local
+  - name: 22-ubi10-minimal
+    annotations:
+      openshift.io/display-name: Node.js 22 (UBI 10 Minimal)
+      openshift.io/provider-display-name: Red Hat, Inc.
+      description: Build and run Node.js 22 applications on UBI 10 Minimal. For more
+        information about using this builder image, including OpenShift considerations,
+        see https://github.com/sclorg/s2i-nodejs-container/blob/master/22-minimal/README.md.
+      iconClass: icon-nodejs
+      tags: builder,nodejs
+      version: '22'
+      sampleRepo: https://github.com/sclorg/nodejs-ex.git
+    from:
+      kind: DockerImage
+      name: registry.redhat.io/ubi10/nodejs-22-minimal:latest
+    referencePolicy:
+      type: Local
   - name: 22-ubi9-minimal
     annotations:
       openshift.io/display-name: Node.js 22 (UBI 9 Minimal)

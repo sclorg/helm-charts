@@ -53,7 +53,7 @@ spec:
       sampleRepo: https://github.com/sclorg/cakephp-ex.git
     from:
       kind: DockerImage
-      name: registry.redhat.io/ubi9/php-82:latest
+      name: registry.redhat.io/ubi9/php-83:latest
     referencePolicy:
       type: Local
   - name: 8.2-ubi9

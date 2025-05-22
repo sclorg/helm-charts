@@ -11,7 +11,7 @@ test_dir = Path(os.path.abspath(os.path.dirname(__file__)))
 class TestHelmPythonDjangoPsqlTemplate:
 
     def setup_method(self):
-        package_name = "django-psql-persistent"
+        package_name = "redhat-django-psql-persistent"
         path = test_dir / "../charts/redhat"
         self.hc_api = HelmChartsAPI(path=path, package_name=package_name, tarball_dir=test_dir, shared_cluster=False)
 
@@ -21,6 +21,7 @@ class TestHelmPythonDjangoPsqlTemplate:
     @pytest.mark.parametrize(
         "version,branch",
         [
+            ("3.12-minimal-ubi10", "4.2.x"),
             ("3.12-ubi9", "4.2.x"),
             ("3.12-ubi8", "4.2.x"),
             ("3.11-ubi9", "4.2.x"),
@@ -40,7 +41,7 @@ class TestHelmPythonDjangoPsqlTemplate:
         self.hc_api.package_name = "redhat-python-imagestreams"
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
-        self.hc_api.package_name = "django-psql-persistent"
+        self.hc_api.package_name = "redhat-django-psql-persistent"
         assert self.hc_api.helm_package()
         pod_name = f"django-psql-{version}".replace(".", "-")
         assert self.hc_api.helm_installation(

@@ -19,19 +19,19 @@ class TestHelmPythonDjangoPsqlTemplate:
         self.hc_api.delete_project()
 
     @pytest.mark.parametrize(
-        "version,branch",
+        "version,pod_version,branch",
         [
-            ("3.12-minimal-ubi10", "4.2.x"),
-            ("3.12-ubi9", "4.2.x"),
-            ("3.12-ubi8", "4.2.x"),
-            ("3.11-ubi9", "4.2.x"),
-            ("3.11-ubi8", "4.2.x"),
-            ("3.9-ubi9", "master"),
-            ("3.9-ubi8", "master"),
-            ("3.6-ubi8", "master"),
+            ("3.12-minimal-ubi10", "3.12", "4.2.x"),
+            ("3.12-ubi9", "3.12", "4.2.x"),
+            ("3.12-ubi8", "3.12","4.2.x"),
+            ("3.11-ubi9", "3.11", "4.2.x"),
+            ("3.11-ubi8", "3.11", "4.2.x"),
+            ("3.9-ubi9", "3.9", "master"),
+            ("3.9-ubi8", "3.9", "master"),
+            ("3.6-ubi8", "3.6", "master"),
         ],
     )
-    def test_django_psql_helm_test(self, version, branch):
+    def test_django_psql_helm_test(self, version, pod_version, branch):
         self.hc_api.package_name = "redhat-postgresql-imagestreams"
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
@@ -40,7 +40,7 @@ class TestHelmPythonDjangoPsqlTemplate:
         assert self.hc_api.helm_installation()
         self.hc_api.package_name = "redhat-django-psql-persistent"
         assert self.hc_api.helm_package()
-        pod_name = f"django-{version}".replace(".", "-")
+        pod_name = f"django-{pod_version}".replace(".", "-")
         assert self.hc_api.helm_installation(
             values={
                 "python_version": version,

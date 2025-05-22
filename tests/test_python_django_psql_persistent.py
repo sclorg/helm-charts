@@ -43,7 +43,7 @@ class TestHelmPythonDjangoPsqlTemplate:
         assert self.hc_api.helm_installation()
         self.hc_api.package_name = "redhat-django-psql-persistent"
         assert self.hc_api.helm_package()
-        pod_name = f"django-psql-{version}".replace(".", "-")
+        pod_name = f"django-{version}".replace(".", "-")
         assert self.hc_api.helm_installation(
             values={
                 "python_version": version,

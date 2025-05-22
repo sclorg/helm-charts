@@ -21,7 +21,7 @@
         "python_version": {
             "type": "string",
             "description": "Specify Python imagestream tag",
-            "enum": [ "latest", "3.6-ubi8", "3.9-ubi8", "3.11-ubi8", "3.12-ubi8", "3.9-ubi9", "3.11-ubi9", "3.12-ubi9", "3.12-minimal-ubi10" ]
+            "enum": [ "latest", "3.6-ubi8", "3.9-ubi8", "3.11-ubi8", "3.12-ubi8", "3.9-ubi9", "3.11-ubi9", "3.12-ubi9", "3.12-minimal-ubi9", "3.12-minimal-ubi10" ]
         },
         "application_domain": {
             "type": "string",

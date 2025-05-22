@@ -1,8 +1,8 @@
 database_service_name: redis
 memory_limit: 512Mi
-namespace: redis-persistent-testing
-redis_password: testp # TODO: must define a default value for .redis_password'
-redis_version: 6-el8
+namespace: valkey-persistent-testing
+redis_password: testp # TODO: must define a default value for .valkey_password'
+redis_version: 8-el10
 pvc:
   volume_capacity: 1Gi
   app_code: "something"

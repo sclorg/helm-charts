@@ -43,7 +43,7 @@
         "perl_version": {
             "type": "string",
             "description": "Specify PERL imagestream tag",
-            "enum": [ "latest", "5.26-ubi8", "5.30-ubi8", "5.30-ubi9", "5.32-ubi8", "5.32-ubi9" ]
+            "enum": [ "latest", "5.26-ubi8", "5.30-ubi8", "5.30-ubi9", "5.32-ubi8", "5.32-ubi9", "5.40-ubi10" ]
         },
         "mysql_default_authentication_plugin": {
             "type": "string",

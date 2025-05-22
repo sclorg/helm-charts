@@ -7,7 +7,7 @@ config:
   postgresql_user: testu
   port: 5432
 image:
-  tag: "13-el8"
+  tag: "16-el9"
 pvc:
   volume_capacity: 1Gi
   app_code: "something"

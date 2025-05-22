@@ -32,9 +32,6 @@ class TestHelmPythonDjangoPsqlTemplate:
         ],
     )
     def test_django_psql_helm_test(self, version, branch):
-        # TODO: Solve problem with wrong permissions on data /var/psql/lib/data mount point.
-        if self.hc_api.oc_api.shared_cluster:
-            pytest.skip("Do NOT test on shared cluster")
         self.hc_api.package_name = "redhat-postgresql-imagestreams"
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()

@@ -1,4 +1,4 @@
-.PHONY: test test-httpd test-php test-perl test-mariadb test-mysql test-nginx test-postgresql test-redis test-all test-nodejs test-ruby test-python test-valkey
+.PHONY: test test-httpd test-php test-perl test-mariadb test-mysql test-nginx test-postgresql test-redis test-all test-nodejs test-ruby test-python test-valkey test-all-imagestreams
 
 test:
 	cd tests && PYTHONPATH=$(CURDIR) python3.12 -m pytest --color=yes -s -rA --verbose -vv --showlocals test_varnish_*.py
@@ -38,6 +38,9 @@ test-ruby:
 
 test-valkey:
 	cd tests && PYTHONPATH=$(CURDIR) python3.12 -m pytest --color=yes -s -rA --verbose -vv --showlocals test_valkey_*.py
+
+test-all-imagestreams:
+	cd tests && PYTHONPATH=$(CURDIR) python3.12 -m pytest --color=yes -s -rA --verbose -vv --showlocals test_*_imagestreams.py
 
 test-all: test test-php test-httpd test-mariadb test-mysql test-nginx test-postgresql test-redis test-perl test-python test-ruby test-nodejs test-valkey
 

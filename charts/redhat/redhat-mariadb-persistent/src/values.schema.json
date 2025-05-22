@@ -33,7 +33,7 @@
         "mariadb_version": {
             "type": "string",
             "description": "Specify mariadb imagestream tag",
-            "enum": [ "latest", "10.5-el9", "10.11-el9", "10.3-el8", "10.5-el8", "10.11-el8", "10.3" ]
+            "enum": [ "latest", "10.5-el9", "10.11-el9", "10.11-el10", "10.3-el8", "10.5-el8", "10.11-el8", "10.3" ]
         },
         "pvc": {
             "type": "object",

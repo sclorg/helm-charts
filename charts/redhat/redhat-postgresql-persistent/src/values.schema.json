@@ -41,7 +41,7 @@
                 "tag": {
                     "type": "string",
                     "description": "Specify postgresql imagestream tag",
-                    "enum": ["latest", "13-el9", "13-el8", "12-el8", "12" ]
+                    "enum": ["latest", "13-el9", "13-el8", "12-el8", "12", "15-el9", "15-el8", "16-el9", "16-el8", "16-el10" ]
                 }
             }
         },

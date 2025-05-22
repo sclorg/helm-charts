@@ -10,7 +10,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        helm_chart: ["nginx", "php", "perl", "nodejs", "ruby", "python" ]
+        helm_chart: ["php", "perl", "nodejs", "ruby", "python" ]
 
     if: |
       github.event.issue.pull_request

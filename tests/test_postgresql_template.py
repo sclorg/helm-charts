@@ -27,6 +27,7 @@ class TestHelmPostgresqlPersistent:
             "15-el9",
             "16-el8",
             "16-el9",
+            "16-el10",
         ],
     )
     def test_package_persistent(self, version):

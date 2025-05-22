@@ -21,6 +21,7 @@ class TestHelmPythonDjangoAppTemplate:
     @pytest.mark.parametrize(
         "version,branch",
         [
+            ("3.12-minimal-ubi10", "4.2.x"),
             ("3.12-ubi9", "4.2.x"),
             ("3.12-ubi8", "4.2.x"),
             ("3.11-ubi9", "4.2.x"),

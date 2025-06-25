@@ -1,5 +1,5 @@
 description: |-
-  This content is experimental, do not use it in production. Redis in-memory data structure store, with persistent storage.
+  This content is experimental, do not use it in production. Valkey in-memory data structure store, with persistent storage.
   For more information about using this template, including OpenShift considerations, see https://github.com/sclorg/valkey-container/blob/master/8.
 
   NOTE: You must have persistent volumes available in your cluster to use this template.

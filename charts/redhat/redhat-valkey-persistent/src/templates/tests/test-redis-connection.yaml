@@ -10,14 +10,14 @@ metadata:
 spec:
   #serviceAccount: {{ .Values.serviceAccount }}
   containers:
-    - name: "redis-connection-test"
-      image: "registry.redhat.io/rhel8/redis-6:latest"
+    - name: "valkey-connection-test"
+      image: "registry.redhat.io/rhel10/valkey-8:latest"
       imagePullPolicy: IfNotPresent
       env:
-        - name: REDIS_PASSWORD
-          value: "{{ .Values.redis_password }}"
+        - name: VALKEY_PASSWORD
+          value: "{{ .Values.valkey_password }}"
       command:
         - /bin/bash
         - -ec
-        - "timeout 15 redis-cli -h {{ .Values.database_service_name }} -a $REDIS_PASSWORD ping"
+        - "timeout 15 valkey-cli -h {{ .Values.database_service_name }} -a $VALKEY_PASSWORD ping"
   restartPolicy: Never

@@ -9,7 +9,7 @@
         "namespace": {
             "type": "string"
         },
-        "redis_password": {
+        "valkey_password": {
             "type": "string"
         },
         "memory_limit": {
@@ -21,7 +21,7 @@
             "sliderMax": 65536,
             "sliderUnit": "Mi"
         },
-        "redis_version": {
+        "valkey_version": {
             "type": "string",
             "description": "Specify valkey imagestream tag",
             "enum": [ "latest", "8-el10" ]

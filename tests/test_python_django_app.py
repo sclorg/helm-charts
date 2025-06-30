@@ -37,7 +37,7 @@ class TestHelmPythonDjangoAppTemplate:
         assert self.hc_api.helm_installation()
         self.hc_api.package_name = "redhat-python-django-application"
         assert self.hc_api.helm_package()
-        pod_name = f"django-{version}".replace(".", "-")
+        pod_name = f"django-{version}".replace(".", "-").replace("-minimal", "")
         assert self.hc_api.helm_installation(
             values={
                 "python_version": version,

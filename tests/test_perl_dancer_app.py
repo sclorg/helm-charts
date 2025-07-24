@@ -23,7 +23,6 @@ class TestHelmPerlDancerAppTemplate:
         [
             "5.40-ubi10",
             "5.32-ubi9",
-            "5.32-ubi8",
             "5.26-ubi8",
         ]
     )

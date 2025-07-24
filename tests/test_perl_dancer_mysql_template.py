@@ -22,7 +22,6 @@ class TestHelmPerlDancerMysqlAppTemplate:
         "version",
         [
             "5.32-ubi9",
-            "5.32-ubi8",
             "5.26-ubi8",
         ]
     )

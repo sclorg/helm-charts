@@ -27,6 +27,8 @@ class TestHelmRHELNodeJSImageStreams:
             ("22-ubi9-minimal", "registry.redhat.io/ubi9/nodejs-22-minimal:latest", True),
             ("20-ubi9", "registry.redhat.io/ubi9/nodejs-20:latest", True),
             ("20-ubi9-minimal", "registry.redhat.io/ubi9/nodejs-20-minimal:latest", True),
+            ("22-ubi8", "registry.redhat.io/ubi8/nodejs-22:latest", True),
+            ("22-ubi8-minimal", "registry.redhat.io/ubi8/nodejs-22-minimal:latest", True),
             ("20-ubi8", "registry.redhat.io/ubi8/nodejs-20:latest", True),
             ("20-ubi8-minimal", "registry.redhat.io/ubi8/nodejs-20-minimal:latest", True),
             ("18-ubi9", "registry.redhat.io/ubi9/nodejs-18:latest", False),

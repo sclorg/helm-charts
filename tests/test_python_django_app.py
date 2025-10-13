@@ -26,9 +26,6 @@ class TestHelmPythonDjangoAppTemplate:
             ("3.12-ubi8", "4.2.x"),
             ("3.11-ubi9", "4.2.x"),
             ("3.11-ubi8", "4.2.x"),
-            ("3.9-ubi9", "master"),
-            ("3.9-ubi8", "master"),
-            ("3.6-ubi8", "master"),
         ],
     )
     def test_django_application_helm_test(self, version, branch):

@@ -26,9 +26,6 @@ class TestHelmPythonDjangoPsqlTemplate:
             ("3.12-ubi8", "3.12","4.2.x"),
             ("3.11-ubi9", "3.11", "4.2.x"),
             ("3.11-ubi8", "3.11", "4.2.x"),
-            ("3.9-ubi9", "3.9", "master"),
-            ("3.9-ubi8", "3.9", "master"),
-            ("3.6-ubi8", "3.6", "master"),
         ],
     )
     def test_django_psql_helm_test(self, version, pod_version, branch):

@@ -21,6 +21,10 @@ class TestHelmRHELNodeJSImageStreams:
     @pytest.mark.parametrize(
         "version,registry,expected",
         [
+            ("24-ubi10", "registry.redhat.io/ubi10/nodejs-24:latest", True),
+            ("24-ubi10-minimal", "registry.redhat.io/ubi10/nodejs-24-minimal:latest", True),
+            ("24-ubi9", "registry.redhat.io/ubi9/nodejs-24:latest", True),
+            ("24-ubi9-minimal", "registry.redhat.io/ubi9/nodejs-24-minimal:latest", True),
             ("22-ubi10", "registry.redhat.io/ubi10/nodejs-22:latest", True),
             ("22-ubi10-minimal", "registry.redhat.io/ubi10/nodejs-22-minimal:latest", True),
             ("22-ubi9", "registry.redhat.io/ubi9/nodejs-22:latest", True),

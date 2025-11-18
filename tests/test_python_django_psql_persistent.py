@@ -9,11 +9,15 @@ test_dir = Path(os.path.abspath(os.path.dirname(__file__)))
 
 
 class TestHelmPythonDjangoPsqlTemplate:
-
     def setup_method(self):
         package_name = "redhat-django-psql-persistent"
         path = test_dir / "../charts/redhat"
-        self.hc_api = HelmChartsAPI(path=path, package_name=package_name, tarball_dir=test_dir, shared_cluster=False)
+        self.hc_api = HelmChartsAPI(
+            path=path,
+            package_name=package_name,
+            tarball_dir=test_dir,
+            shared_cluster=False,
+        )
 
     def teardown_method(self):
         self.hc_api.delete_project()
@@ -23,12 +27,9 @@ class TestHelmPythonDjangoPsqlTemplate:
         [
             ("3.12-minimal-ubi10", "3.12", "4.2.x"),
             ("3.12-ubi9", "3.12", "4.2.x"),
-            ("3.12-ubi8", "3.12","4.2.x"),
+            ("3.12-ubi8", "3.12", "4.2.x"),
             ("3.11-ubi9", "3.11", "4.2.x"),
             ("3.11-ubi8", "3.11", "4.2.x"),
-            ("3.9-ubi9", "3.9", "master"),
-            ("3.9-ubi8", "3.9", "master"),
-            ("3.6-ubi8", "3.6", "master"),
         ],
     )
     def test_django_psql_helm_test(self, version, pod_version, branch):
@@ -47,8 +48,10 @@ class TestHelmPythonDjangoPsqlTemplate:
                 "namespace": self.hc_api.namespace,
                 "source_repository_ref": branch,
                 "postgresql_version": "15-el9",
-                "name": pod_name
+                "name": pod_name,
             }
         )
         assert self.hc_api.is_s2i_pod_running(pod_name_prefix=pod_name, timeout=600)
-        assert self.hc_api.test_helm_chart(expected_str=["Welcome to your Django application"])
+        assert self.hc_api.test_helm_chart(
+            expected_str=["Welcome to your Django application"]
+        )

@@ -24,7 +24,7 @@
         "valkey_version": {
             "type": "string",
             "description": "Specify valkey imagestream tag",
-            "enum": [ "latest", "8-el10" ]
+            "enum": [ "latest", "8-el10", "8-el9" ]
         },
         "pvc": {
             "type": "object",

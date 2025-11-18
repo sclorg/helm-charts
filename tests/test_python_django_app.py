@@ -9,11 +9,15 @@ test_dir = Path(os.path.abspath(os.path.dirname(__file__)))
 
 
 class TestHelmPythonDjangoAppTemplate:
-
     def setup_method(self):
         package_name = "redhat-python-django-application"
         path = test_dir / "../charts/redhat"
-        self.hc_api = HelmChartsAPI(path=path, package_name=package_name, tarball_dir=test_dir, shared_cluster=False)
+        self.hc_api = HelmChartsAPI(
+            path=path,
+            package_name=package_name,
+            tarball_dir=test_dir,
+            shared_cluster=False,
+        )
 
     def teardown_method(self):
         self.hc_api.delete_project()
@@ -40,8 +44,10 @@ class TestHelmPythonDjangoAppTemplate:
                 "python_version": version,
                 "namespace": self.hc_api.namespace,
                 "source_repository_ref": branch,
-                "name": pod_name
+                "name": pod_name,
             }
         )
         assert self.hc_api.is_s2i_pod_running(pod_name_prefix=pod_name, timeout=600)
-        assert self.hc_api.test_helm_chart(expected_str=["Welcome to your Django application"])
+        assert self.hc_api.test_helm_chart(
+            expected_str=["Welcome to your Django application"]
+        )

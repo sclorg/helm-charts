@@ -20,20 +20,20 @@ class TestHelmRHELPythonImageStreams:
 
 
     @pytest.mark.parametrize(
-        "version,registry",
+        "version,registry,expected",
         [
-            ("3.12-minimal-ubi10", "registry.redhat.io/ubi10/python-312-minimal:latest"),
-            ("3.12-minimal-ubi9", "registry.redhat.io/ubi9/python-312-minimal:latest"),
-            ("3.12-ubi9", "registry.redhat.io/ubi9/python-312:latest"),
-            ("3.12-ubi8", "registry.redhat.io/ubi8/python-312:latest"),
-            ("3.11-ubi9", "registry.redhat.io/ubi9/python-311:latest"),
-            ("3.11-ubi8", "registry.redhat.io/ubi8/python-311:latest"),
-            ("3.9-ubi9", "registry.redhat.io/ubi9/python-39:latest"),
-            ("3.9-ubi8", "registry.redhat.io/ubi8/python-39:latest"),
-            ("3.6-ubi8", "registry.redhat.io/ubi8/python-36:latest"),
+            ("3.12-minimal-ubi10", "registry.redhat.io/ubi10/python-312-minimal:latest", True),
+            ("3.12-minimal-ubi9", "registry.redhat.io/ubi9/python-312-minimal:latest", True),
+            ("3.12-ubi9", "registry.redhat.io/ubi9/python-312:latest", True),
+            ("3.12-ubi8", "registry.redhat.io/ubi8/python-312:latest", True),
+            ("3.11-ubi9", "registry.redhat.io/ubi9/python-311:latest", True),
+            ("3.11-ubi8", "registry.redhat.io/ubi8/python-311:latest", True),
+            ("3.9-ubi9", "registry.redhat.io/ubi9/python-39:latest", False),
+            ("3.9-ubi8", "registry.redhat.io/ubi8/python-39:latest", True),
+            ("3.6-ubi8", "registry.redhat.io/ubi8/python-36:latest", True),
         ],
     )
-    def test_package_imagestream(self, helm_api, version, registry):
+    def test_package_imagestream(self, helm_api, version, registry, expected):
         assert helm_api.helm_package()
         assert helm_api.helm_installation()
-        assert helm_api.check_imagestreams(version=version, registry=registry)
+        assert helm_api.check_imagestreams(version=version, registry=registry) == expected

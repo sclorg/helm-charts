@@ -22,6 +22,8 @@ class TestHelmRHELRubyImageStreams:
     @pytest.mark.parametrize(
         "version,registry,expected",
         [
+            ("4.0-ubi10", "registry.redhat.io/ubi10/ruby-40:latest", True),
+            ("4.0-ubi9", "registry.redhat.io/ubi9/ruby-40:latest", True),
             ("3.3-ubi10", "registry.redhat.io/ubi10/ruby-33:latest", True),
             ("3.3-ubi9", "registry.redhat.io/ubi9/ruby-33:latest", True),
             ("3.3-ubi8", "registry.redhat.io/ubi8/ruby-33:latest", True),

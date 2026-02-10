@@ -21,7 +21,9 @@ class TestHelmRHELMariadbImageStreams:
     @pytest.mark.parametrize(
         "version,registry,expected",
         [
-            ("10.11-el10", "registry.redhat.io/rhel10/mariadb-1011:latest", True),
+            ("11.8-el10", "registry.redhat.io/rhel10/mariadb-118:latest", True),
+            ("11.8-el10", "registry.redhat.io/rhel10/mariadb-118:latest", True),
+            ("10.11-el9", "registry.redhat.io/rhel9/mariadb-1011:latest", True),
             ("10.11-el9", "registry.redhat.io/rhel9/mariadb-1011:latest", True),
             ("10.11-el8", "registry.redhat.io/rhel8/mariadb-1011:latest", True),
             ("10.5-el9", "registry.redhat.io/rhel9/mariadb-105:latest", True),

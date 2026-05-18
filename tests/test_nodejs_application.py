@@ -29,12 +29,8 @@ class TestHelmNodeJSApplication:
             "22-ubi10-minimal",
             "22-ubi9",
             "22-ubi9-minimal",
-            "20-ubi9",
-            "20-ubi9-minimal"
             "22-ubi8",
             "22-ubi8-minimal",
-            "20-ubi8",
-            "20-ubi8-minimal",
         ],
     )
     def test_by_helm_test(self, version):

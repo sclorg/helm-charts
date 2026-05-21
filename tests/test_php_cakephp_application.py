@@ -26,6 +26,7 @@ class TestHelmCakePHPTemplate:
             "8.2-ubi9",
             "8.3-ubi9",
             "8.3-ubi10",
+            "8.4-ubi10",
         ]
     )
     def test_by_helm_test(self, version):

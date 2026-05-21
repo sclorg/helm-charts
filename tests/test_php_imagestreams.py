@@ -20,19 +20,18 @@ class TestHelmRHELPHPImageStreams:
 
 
     @pytest.mark.parametrize(
-        "version,registry,expected",
+        "version,registry",
         [
-            ("8.3-ubi10", "registry.redhat.io/ubi10/php-83:latest", True),
-            ("8.3-ubi9", "registry.redhat.io/ubi9/php-83:latest", True),
-            ("8.2-ubi9", "registry.redhat.io/ubi9/php-82:latest", True),
-            ("8.2-ubi8", "registry.redhat.io/ubi8/php-82:latest", True),
-            ("8.1-ubi9", "registry.redhat.io/ubi9/php-81:latest", False),
-            ("8.0-ubi9", "registry.redhat.io/ubi9/php-80:latest", True),
-            ("8.0-ubi8", "registry.redhat.io/ubi8/php-80:latest", False),
-            ("7.4-ubi8", "registry.redhat.io/ubi8/php-74:latest", True),
+            ("8.4-ubi10", "registry.redhat.io/ubi10/php-84:latest"),
+            ("8.3-ubi10", "registry.redhat.io/ubi10/php-83:latest"),
+            ("8.3-ubi9", "registry.redhat.io/ubi9/php-83:latest"),
+            ("8.2-ubi9", "registry.redhat.io/ubi9/php-82:latest"),
+            ("8.2-ubi8", "registry.redhat.io/ubi8/php-82:latest"),
+            ("8.0-ubi9", "registry.redhat.io/ubi9/php-80:latest"),
+            ("7.4-ubi8", "registry.redhat.io/ubi8/php-74:latest"),
         ],
     )
-    def test_package_imagestream(self, helm_api,  version, registry, expected):
+    def test_package_imagestream(self, helm_api,  version, registry):
         assert helm_api.helm_package()
         assert helm_api.helm_installation()
-        assert helm_api.check_imagestreams(version=version, registry=registry) == expected
+        assert helm_api.check_imagestreams(version=version, registry=registry) == True

@@ -29,6 +29,8 @@ class TestHelmMariaDBPersistent:
             "10.5-el9",
             "10.11-el8",
             "10.11-el9",
+            "11.8-el9",
+            "11.8-el10"
         ],
     )
     def test_package_persistent(self, version):

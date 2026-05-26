@@ -21,6 +21,7 @@ class TestHelmRubyExTemplate:
     @pytest.mark.parametrize(
         "version,branch",
         [
+            ("4.0-ubi9", "4.0"),
             ("3.3-ubi9", "3.3"),
             ("3.3-ubi8", "3.3"),
             ("3.0-ubi9", "master"),

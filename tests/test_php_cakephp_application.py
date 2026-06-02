@@ -26,20 +26,21 @@ class TestHelmCakePHPTemplate:
             "8.2-ubi9",
             "8.3-ubi9",
             "8.3-ubi10",
+            "8.4-ubi10",
         ]
     )
     def test_by_helm_test(self, version):
-        branch_to_test = "4.X"
+        branch_to_test = "5.X"
         check_msg = "Welcome to CakePHP"
-        if version.startswith("8.2") or version.startswith("8.3"):
-            branch_to_test = "5.X"
+        if version.startswith("8.0"):
+            branch_to_test = "4.X"
             check_msg = "Welcome to CakePHP"
         self.hc_api.package_name = "redhat-php-imagestreams"
         assert self.hc_api.helm_package()
         assert self.hc_api.helm_installation()
         self.hc_api.package_name = "redhat-cakephp-application-template"
         assert self.hc_api.helm_package()
-        pod_name = f"cakephp-ex-{version}".replace(".", "-")
+        pod_name = f"cakephp-ex-{version}".replace(".", "")
         assert self.hc_api.helm_installation(
             values={
                 "php_version": version,

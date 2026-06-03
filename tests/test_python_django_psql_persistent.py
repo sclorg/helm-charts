@@ -25,11 +25,12 @@ class TestHelmPythonDjangoPsqlTemplate:
     @pytest.mark.parametrize(
         "version,pod_version,branch",
         [
+            ("3.14-minimal-ubi10", "3.14", "4.2.x"),
+            ("3.14-minimal-ubi9", "3.14", "4.2.x"),
             ("3.12-minimal-ubi10", "3.12", "4.2.x"),
+            ("3.14-ubi9", "3.14", "4.2.x"),
             ("3.12-ubi9", "3.12", "4.2.x"),
             ("3.12-ubi8", "3.12", "4.2.x"),
-            ("3.11-ubi9", "3.11", "4.2.x"),
-            ("3.11-ubi8", "3.11", "4.2.x"),
         ],
     )
     def test_django_psql_helm_test(self, version, pod_version, branch):
@@ -52,6 +53,4 @@ class TestHelmPythonDjangoPsqlTemplate:
             }
         )
         assert self.hc_api.is_s2i_pod_running(pod_name_prefix=pod_name, timeout=600)
-        assert self.hc_api.test_helm_chart(
-            expected_str=["Welcome to your Django application"]
-        )
+        assert self.hc_api.test_helm_chart(expected_str=["Welcome to your Django application"])

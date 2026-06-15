@@ -1,46 +1,46 @@
-.PHONY: test test-httpd test-php test-perl test-mariadb test-mysql test-nginx test-postgresql test-redis test-all test-nodejs test-ruby test-python test-valkey test-all-imagestreams
+.PHONY: test_varnish test-httpd test-php test-perl test-mariadb test-mysql test-nginx test-postgresql test-redis test-all test-nodejs test-ruby test-python test-valkey test-all-imagestreams
 
-test:
-	cd tests && PYTHONPATH=$(CURDIR) python3.12 -m pytest --color=yes -s -rA --verbose -vv --showlocals test_varnish_*.py
+test_varnish:
+	tests/run-pytest varnish
 
 test-httpd:
-	cd tests && PYTHONPATH=$(CURDIR) python3.12 -m pytest --color=yes -s -rA --verbose -vv --showlocals test_httpd_*.py
+	tests/run-pytest httpd
 
 test-mariadb:
-	cd tests && PYTHONPATH=$(CURDIR) python3.12 -m pytest --color=yes -s -rA --verbose -vv --showlocals test_mariadb_*.py
+	tests/run-pytest mariadb
 
 test-mysql:
-	cd tests && PYTHONPATH=$(CURDIR) python3.12 -m pytest --color=yes -s -rA --verbose -vv --showlocals test_mysql_*.py
+	tests/run-pytest mysql
 
 test-nginx:
-	cd tests && PYTHONPATH=$(CURDIR) python3.12 -m pytest --color=yes -s -rA --verbose -vv --showlocals test_nginx_*.py
+	tests/run-pytest nginx
 
 test-postgresql:
-	cd tests && PYTHONPATH=$(CURDIR) python3.12 -m pytest --color=yes -s -rA --verbose -vv --showlocals test_postgresql_*.py
+	tests/run-pytest postgresql
 
 test-redis:
-	cd tests && PYTHONPATH=$(CURDIR) python3.12 -m pytest --color=yes -s -rA --verbose -vv --showlocals test_redis_*.py
+	tests/run-pytest redis
 
 test-php:
-	cd tests && PYTHONPATH=$(CURDIR) python3.12 -m pytest --color=yes -s -rA --verbose -vv --showlocals test_php_*.py
+	tests/run-pytest php
 
 test-perl:
-	cd tests && PYTHONPATH=$(CURDIR) python3.12 -m pytest --color=yes -s -rA --verbose -vv --showlocals test_perl_*.py
+	tests/run-pytest perl
 
 test-nodejs:
-	cd tests && PYTHONPATH=$(CURDIR) python3.12 -m pytest --color=yes -s -rA --verbose -vv --showlocals test_nodejs_*.py
+	tests/run-pytest nodejs
 
 test-python:
-	cd tests && PYTHONPATH=$(CURDIR) python3.12 -m pytest --color=yes -s -rA --verbose -vv --showlocals test_python_*.py
+	tests/run-pytest python
 
 test-ruby:
-	cd tests && PYTHONPATH=$(CURDIR) python3.12 -m pytest --color=yes -s -rA --verbose -vv --showlocals test_ruby_*.py
+	tests/run-pytest ruby
 
 test-valkey:
-	cd tests && PYTHONPATH=$(CURDIR) python3.12 -m pytest --color=yes -s -rA --verbose -vv --showlocals test_valkey_*.py
+	tests/run-pytest valkey
 
 test-all-imagestreams:
-	cd tests && PYTHONPATH=$(CURDIR) python3.12 -m pytest --color=yes -s -rA --verbose -vv --showlocals test_*_imagestreams.py
+	tests/run-pytest imagestreams
 
 test-all: test test-php test-httpd test-mariadb test-mysql test-nginx test-postgresql test-redis test-perl test-python test-ruby test-nodejs test-valkey
 

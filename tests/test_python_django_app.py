@@ -25,11 +25,11 @@ class TestHelmPythonDjangoAppTemplate:
     @pytest.mark.parametrize(
         "version,branch",
         [
+            ("3.14-minimal-ubi10", "4.2.x"),
+            ("3.14-ubi9", "4.2.x"),
             ("3.12-minimal-ubi10", "4.2.x"),
             ("3.12-ubi9", "4.2.x"),
             ("3.12-ubi8", "4.2.x"),
-            ("3.11-ubi9", "4.2.x"),
-            ("3.11-ubi8", "4.2.x"),
         ],
     )
     def test_django_application_helm_test(self, version, branch):
@@ -48,6 +48,4 @@ class TestHelmPythonDjangoAppTemplate:
             }
         )
         assert self.hc_api.is_s2i_pod_running(pod_name_prefix=pod_name, timeout=600)
-        assert self.hc_api.test_helm_chart(
-            expected_str=["Welcome to your Django application"]
-        )
+        assert self.hc_api.test_helm_chart(expected_str=["Welcome to your Django application"])

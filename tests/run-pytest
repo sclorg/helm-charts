@@ -16,7 +16,7 @@ if [[ -z "$1" ]]; then
   exit 1
 fi
 
-if [[ "$2" == "imagestreams" ]]; then
+if [[ "$1" == "imagestreams" ]]; then
   cd "${THISDIR}" && "python${PYTHON_VERSION}" -m pytest -s -rA --showlocals -vv test_*_imagestreams.py
 else
   cd "${THISDIR}" && "python${PYTHON_VERSION}" -m pytest -s -rA --showlocals -vv test_${1}_*.py

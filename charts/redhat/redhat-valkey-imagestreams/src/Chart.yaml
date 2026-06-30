@@ -3,6 +3,8 @@ description: |-
   For more information about Valkey container see https://github.com/sclorg/valkey-container/.
 annotations:
   charts.openshift.io/name: Provides a Valkey database on RHEL imagestreams (experimental)
+  charts.openshift.io/provider: Red Hat
+  charts.openshift.io/providerType: redhat
 apiVersion: v2
 appVersion: 0.0.2
 kubeVersion: '>=1.20.0'

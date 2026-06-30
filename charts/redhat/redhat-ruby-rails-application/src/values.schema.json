@@ -13,7 +13,16 @@
         "ruby_version": {
             "type": "string",
             "description": "Version of Ruby image to be used (3.0-ubi8 by default).",
-            "enum": [ "latest", "2.5-ubi8", "3.3-ubi8", "3.0-ubi9", "3.3-ubi9", "3.3-ubi10", "4.0-ubi9", "4.0-ubi10"]
+            "enum": [
+                "latest",
+                "2.5-ubi8",
+                "3.3-ubi8",
+                "3.0-ubi9",
+                "3.3-ubi9",
+                "3.3-ubi10",
+                "4.0-ubi9",
+                "4.0-ubi10"
+            ]
         },
         "memory_limit": {
             "type": "string",

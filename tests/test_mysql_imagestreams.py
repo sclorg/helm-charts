@@ -18,15 +18,14 @@ def helm_api(request):
 class TestHelmRHELMySQLImageStreams:
 
     @pytest.mark.parametrize(
-        "version,registry,expected",
+        "version,registry",
         [
-            ("8.4-el10", "registry.redhat.io/rhel10/mysql-84:latest", True),
-            ("8.4-el9", "registry.redhat.io/rhel9/mysql-84:latest", True),
-            ("8.0-el9", "registry.redhat.io/rhel9/mysql-80:latest", True),
-            ("8.0-el8", "registry.redhat.io/rhel8/mysql-80:latest", True),
+            ("8.4-el10", "registry.redhat.io/rhel10/mysql-84:latest"),
+            ("8.4-el9", "registry.redhat.io/rhel9/mysql-84:latest"),
+            ("8.4-el8", "registry.redhat.io/rhel8/mysql-84:latest"),
         ],
     )
-    def test_package_imagestream(self, helm_api, version, registry, expected):
+    def test_package_imagestream(self, helm_api, version, registry):
         assert helm_api.helm_package()
         assert helm_api.helm_installation()
-        assert helm_api.check_imagestreams(version=version, registry=registry) == expected
+        assert helm_api.check_imagestreams(version=version, registry=registry)

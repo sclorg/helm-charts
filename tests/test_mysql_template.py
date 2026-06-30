@@ -24,8 +24,9 @@ class TestHelmMySQLDBPersistent:
     @pytest.mark.parametrize(
         "version",
         [
-            "8.0-el9",
-            "8.0-el8",
+            "8.4-el10",
+            "8.4-el9",
+            "8.4-el8",
         ],
     )
     def test_package_persistent(self, version):

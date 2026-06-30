@@ -24,7 +24,12 @@
         "redis_version": {
             "type": "string",
             "description": "Specify redis imagestream tag",
-            "enum": [ "latest", "7-el9", "6-el9", "6-el8" ]
+            "enum": [
+                "latest",
+                "7-el9",
+                "6-el9",
+                "6-el8"
+            ]
         },
         "pvc": {
             "type": "object",
@@ -48,4 +53,3 @@
         }
     }
 }
-

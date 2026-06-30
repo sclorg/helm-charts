@@ -11,7 +11,7 @@ spec:
   #serviceAccount: {{ .Values.serviceAccount }}
   containers:
     - name: "mysql-connection-test"
-      image: "registry.redhat.io/rhel8/mysql-80:latest"
+      image: "registry.redhat.io/rhel9/mysql-84:latest"
       imagePullPolicy: IfNotPresent
       env:
         - name: MARIADB_USER

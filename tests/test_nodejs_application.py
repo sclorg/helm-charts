@@ -21,6 +21,12 @@ class TestHelmNodeJSApplication:
     @pytest.mark.parametrize(
         "version",
         [
+            "26-ubi10",
+            "26-ubi10-minimal",
+            "26-ubi9",
+            "26-ubi9-minimal",
+            "26-ubi8",
+            "26-ubi8-minimal",
             "24-ubi10",
             "24-ubi10-minimal",
             "24-ubi9",
